@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 // schema for User Collection
 const userSchema = new Schema({
 	googleId: String,
-	credits: { type: Number, default: 0 }
+	name: String,
+	image: String
 });
 
 mongoose.model('users', userSchema);

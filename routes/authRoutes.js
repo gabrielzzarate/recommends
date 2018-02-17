@@ -21,22 +21,9 @@ module.exports = app => {
 		'/auth/google/callback',
 		passport.authenticate('google'),
 		(req, res) => {
-			res.redirect('/surveys');
+			res.redirect('/dashboard');
 		}
 	);
-
-	/* 	the app object represents the underlying running express server
-	 	app.get creates a brand new route handler
-	 	.get watches for incoming requests with a get method
-	 	'/' the route portion of the handler, '/' means if anyone comes to our root route
-	 	req = request, a javascript object that represents the incoming request
-	 	res = response, an object that respresents the outgoing response
-	 	res.send = immediately send json data
-
-	 	app.get('/', (req, res) => {
-			res.send({ hello: 'world' });
-		});
-	*/
 
 	app.get('/api/current_user', (req, res) => {
 		res.send(req.user);

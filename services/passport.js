@@ -16,11 +16,6 @@ passport.deserializeUser((id, done) => {
 	});
 });
 
-// new GoogleStrategy creates new instance of the GoogleStrategy, inside the constructor, pass in
-// configuration for the app
-// passport.use is a generic register telling passport what strategy to use
-// callbackURL:
-
 passport.use(
 	new GoogleStrategy(
 		{
@@ -31,38 +26,22 @@ passport.use(
 		},
 		async (accessToken, refreshToken, profile, done) => {
 			// initiate query to prevent duplicate user records
-			const existingUser = await User.findOne({ googleId: profile.id });
-				
+			const existingUser = await User.findOne({
+				googleId: profile.id
+			});
+			console.log(profile);
 			if (existingUser) {
 				// we already have a record with the given profileId
 				done(null, existingUser);
 			} else {
 				// we don't have a user record with this iD, make a new record
-				const user = await new User({ googleId: profile.id }).save();
+				const user = await new User({
+					googleId: profile.id,
+					name: profile.displayName,
+					image: profile.photos[0].value
+				}).save();
 				done(null, user); // the user we get back from the db, we make use of this one instead of the initial user
 			}
 		}
 	)
 );
-
-
-// write a function to retrieve a blog of json
-// make an ajax request! Use the 'fetch' function
-
-// function fetchAlbums(){
-// 	fetch('https://rallycoding.herokuapp.com/api/music-albums')
-// 		.then(res => res.json())
-// 		.then(json => console.log(json));
-// }
-
-
-
-
-
-
-/* returns 
-	accessToken -> allows us to reach back over to google and proves that we are allowed to use the profiles info
-	refreshToken -> the accessToken automatically expires over time. the refreshToken allows us to refresh that accessToken
-	profile -> the information that we will use in our application
-*/
-
