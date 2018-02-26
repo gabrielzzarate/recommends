@@ -1,0 +1,274 @@
+// Breakponts
+
+@mixin desktop-large {
+  @media all and (min-width: 1321px) {
+    @content;
+  }
+}
+
+@mixin desktop-small {
+  @media all and (min-width: 1025px) and (max-width: 1320px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media all and (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media all and (min-width: 767px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet-small {
+  @media all and (max-width: 766px) {
+    @content;
+  }
+}
+
+@mixin form-flip {
+  @media all and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin not-mobile {
+  @media all and (min-width: 561px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media all and (max-width: 560px) {
+    @content;
+  }
+}
+
+@mixin mobile-medium {
+  @media all and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media all and (max-width: 360px) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media all and (min-width: 901px) {
+    @content;
+  }
+}
+
+@mixin vertical {
+  @media all and (max-width: 900px) {
+    @content;
+  }
+}
+
+// Mixins
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-55%);
+  -ms-transform: translateY(-55%);
+  transform: translateY(-55%);
+}
+
+@mixin vertical-align-absolute {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-55%);
+  -ms-transform: translateY(-55%);
+  transform: translateY(-55%);
+}
+
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > .grid-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+@mixin background-opacity($color, $opacity: 0.7) {
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
+
+@mixin absolute-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+// Button mixins
+
+$buttongray-bottom: #c3cace;
+$buttongray-top: #d5dadd;
+
+@mixin gray-button {
+  border: 1px solid $buttongray-bottom;
+  background: $buttongray-top;
+  background: -moz-linear-gradient(
+    top,
+    $buttongray-top 1%,
+    $buttongray-bottom 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    $buttongray-top 1%,
+    $buttongray-bottom 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    $buttongray-top 1%,
+    $buttongray-bottom 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr='$buttongray-top',
+      endColorstr='$buttongray-bottom',
+      GradientType=0
+    );
+  opacity: 0.6;
+}
+
+@mixin material-button {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  @include border-radius(50%);
+}
+
+@mixin icon-font {
+  font-family: 'seicons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin sky-gradient-bottom {
+  background: #fff;
+  background: -moz-linear-gradient(top, $sky 0%, $sky 18%, #fff 100%);
+  background: -webkit-linear-gradient(top, $sky 0%, $sky 18%, #fff 100%);
+  background: linear-gradient(to bottom, $sky 0%, $sky 18%, #fff 100%);
+}
+
+@mixin sky-gradient-top {
+  background: #fff;
+  background: -moz-linear-gradient(top, #fff 0%, #fff 18%, $sky 100%);
+  background: -webkit-linear-gradient(top, #fff 0%, #fff 18%, $sky 100%);
+  background: linear-gradient(to bottom, #fff 0%, #fff 18%, $sky 100%);
+}
+
+// Tint a color
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Shade a color
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// Clearfix
+
+%clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// animations
+
+@keyframes modal-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes modal-zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}

@@ -4,11 +4,14 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+const request = require('request');
 // must require in the User Model before passport.js executes, order of require statements can result
 // in errors in the application
 
 // require server models
 require('./models/User');
+require('./models/Entry');
+require('./models/Category');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -29,6 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/entryRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
 	// express will serve up production assets

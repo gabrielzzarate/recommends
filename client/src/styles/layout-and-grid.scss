@@ -1,0 +1,235 @@
+// //////////////////////
+// Structure and Flexbox Grid
+// //////////////////////
+
+// 1. Variables
+// 2. General Layout
+// 3. Flexbox Grid
+
+// 1. Dimensions
+
+$container-width: 1120px;
+$col-padding: 20px;
+$section-tb-padding: 36px;
+$section-rl-padding: 48px;
+$section-tb-padding-mobile: 16px;
+$section-rl-padding-mobile: 24px;
+
+// 2. General Structure/Layout
+
+html {
+	background-color: $ltblue;
+}
+
+body,
+html {
+	margin: 0;
+
+	&.no-scroll {
+		overflow: hidden;
+		height: 100vh;
+	}
+}
+
+header,
+main,
+section,
+footer,
+nav,
+div {
+	width: 100%;
+
+	&.light {
+		//background: $light;
+	}
+
+	&.white {
+		background: #fff;
+	}
+
+	&.blue {
+		//background: $blue;
+		color: #fff;
+	}
+
+	&.purple {
+		//background: $oly-purple;
+		color: #fff;
+	}
+
+	&.orange {
+		//background: $orange;
+		color: #fff;
+	}
+
+	&.popcorn {
+		//background: $popcorn;
+	}
+
+	&.sky {
+		//background: $sky;
+	}
+
+	&.border-bottom {
+		//border-bottom: 1px solid $grayborder;
+	}
+
+	&.border-top {
+		//border-top: 1px solid $grayborder;
+	}
+
+	&.center-text {
+		text-align: center;
+	}
+
+	&.knockout {
+		color: #fff;
+	}
+}
+
+section {
+	&.standard-padding {
+		padding: $section-tb-padding 24px;
+
+		@include mobile {
+			padding: $section-tb-padding-mobile 0;
+		}
+	}
+
+	&.overlap-section-frontpage {
+		position: relative;
+		padding: 0 24px $section-tb-padding 24px;
+
+		@include not-mobile {
+			padding: 0 16px;
+			transform: translate3d(0, -250px, 0);
+		}
+	}
+
+	&.overlap-section-sweeps {
+		position: relative;
+		padding: 0 24px $section-tb-padding 24px;
+
+		@include not-mobile {
+			padding: 0 16px;
+			transform: translate3d(0, -120px, 0);
+		}
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: $container-width;
+	padding: $section-rl-padding-mobile;
+	margin: 0 auto;
+
+	@include not-mobile {
+		padding: $section-rl-padding;
+	}
+
+	&.collapsible {
+		position: relative;
+	}
+}
+
+// 3. Flexbox Grid
+
+.flex-row {
+	box-sizing: border-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 1 auto;
+	flex: 0 1 auto;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.flex-col {
+	box-sizing: border-box;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	-ms-flex-preferred-size: 100%;
+	flex-basis: 100%;
+	max-width: 100%;
+
+	&.flex-one-fourth {
+		@include landscape {
+			-ms-flex-preferred-size: 25%;
+			flex-basis: 25%;
+			max-width: 25%;
+		}
+	}
+
+	&.flex-one-third {
+		@include landscape {
+			-ms-flex-preferred-size: 33.33333%;
+			flex-basis: 33.33333%;
+			max-width: 33.33333%;
+		}
+	}
+
+	&.flex-half {
+		@include landscape {
+			-ms-flex-preferred-size: 50%;
+			flex-basis: 50%;
+			max-width: 50%;
+		}
+	}
+
+	&.flex-two-thirds {
+		@include landscape {
+			-ms-flex-preferred-size: 66.6666%;
+			flex-basis: 66.6666%;
+			max-width: 66.6666%;
+		}
+	}
+
+	&.flex-three-fourths {
+		@include landscape {
+			-ms-flex-preferred-size: 75%;
+			flex-basis: 75%;
+			max-width: 75%;
+		}
+	}
+
+	&.padded-left {
+		padding: $col-padding 0;
+
+		@include landscape {
+			padding: 0 $col-padding 0 0;
+		}
+	}
+
+	&.padded-right {
+		padding: $col-padding 0;
+
+		@include landscape {
+			padding: 0 0 0 $col-padding;
+		}
+	}
+}
+
+.top-xs {
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+}
+
+.middle-xs {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.bottom-xs {
+	-webkit-box-align: end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+}
