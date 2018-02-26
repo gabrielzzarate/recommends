@@ -24,7 +24,6 @@ class Dashboard extends Component {
 				{this.renderEntries()}
 
 				<SearchForm searchEntries={this.props.searchEntries} />
-				<EntryList entries={this.props.entries} />
 				<SearchList venues={this.props.venues} />
 			</div>
 		);
