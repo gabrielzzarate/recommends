@@ -15,33 +15,19 @@ module.exports = app => {
 	});
 
 	app.post('/api/entries', requireLogin, async (req, res) => {
-		const { name, id, location, categories } = req.body;
-
-		const options = {
-			url: `https://api.foursquare.com/v2/venues/${id}/photos`,
-			method: 'GET',
-			qs: {
-				client_id: keys.fourSquareClientID,
-				client_secret: keys.fourSquareClientSecret,
-				v: '20170801',
-				limit: 1
-			}
-		};
-
-		// let photos;
-
-		// const imageRequest = await request(options, (err, response, body) => {
-		// 	let json = JSON.parse(body);
-		// 	console.log(json.response.photos.items);
-		// 	photos = json.response.photos.items;
-		// });
+		const { name, id, location, categories, featuredPhotos, price } = req.body.venue;
+		const { userRecommendation } = req.body.userInput;
 
 		const entry = new Entry({
 			name,
-			//photos: photos,
+			photo: featuredPhotos.items[0],
 			venueId: id,
-			location: location.address,
-			category: categories.name,
+			address: location.address,
+			lat: location.lat,
+			lng: location.lng,
+			price: price.tier,
+			category: categories[0].shortName,
+			userRecommendation: userRecommendation,
 			_user: req.user.id
 		});
 
@@ -56,25 +42,26 @@ module.exports = app => {
 	});
 
 	app.post('/api/search', requireLogin, async (req, res) => {
-		const { lat, lon, values } = req.body;
+		const { lat, lng, values } = req.body;
 		const { term } = values;
 
-		//console.log(req.body);
 		const options = {
-			url: 'https://api.foursquare.com/v2/venues/search',
+			url: 'https://api.foursquare.com/v2/venues/explore',
 			method: 'GET',
 			qs: {
 				client_id: keys.fourSquareClientID,
 				client_secret: keys.fourSquareClientSecret,
-				ll: `${lat}, ${lon}`,
+				ll: `${lat}, ${lng}`,
 				query: term,
 				v: '20170801',
-				limit: 20
+				limit: 10,
+				venuePhotos: 1
 			}
 		};
 
 		const foursquareRequest = await request(options, (err, response, body) => {
 			let json = JSON.parse(body);
+			console.log('res', json);
 			res.send(json);
 		});
 	});

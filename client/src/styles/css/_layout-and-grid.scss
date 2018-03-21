@@ -8,7 +8,8 @@
 
 // 1. Dimensions
 
-$container-width: 1120px;
+$container-width: 1080px;
+$container-width-slim: 800px;
 $col-padding: 20px;
 $section-tb-padding: 36px;
 $section-rl-padding: 48px;
@@ -19,11 +20,30 @@ $section-rl-padding-mobile: 24px;
 
 html {
 	background-color: $ltblue;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+*, *::before, *:after {
+	box-sizing: inherit;
+}
+
+body,
+#root,
+#app {
+	min-height: 100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100%;
+	overflow: hidden;
 }
 
 body,
 html {
 	margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
 	&.no-scroll {
 		overflow: hidden;
@@ -39,55 +59,17 @@ nav,
 div {
 	width: 100%;
 
-	&.light {
-		//background: $light;
-	}
-
 	&.white {
 		background: #fff;
-	}
-
-	&.blue {
-		//background: $blue;
-		color: #fff;
-	}
-
-	&.purple {
-		//background: $oly-purple;
-		color: #fff;
-	}
-
-	&.orange {
-		//background: $orange;
-		color: #fff;
-	}
-
-	&.popcorn {
-		//background: $popcorn;
-	}
-
-	&.sky {
-		//background: $sky;
-	}
-
-	&.border-bottom {
-		//border-bottom: 1px solid $grayborder;
-	}
-
-	&.border-top {
-		//border-top: 1px solid $grayborder;
 	}
 
 	&.center-text {
 		text-align: center;
 	}
-
-	&.knockout {
-		color: #fff;
-	}
 }
 
-section {
+section,
+div {
 	&.standard-padding {
 		padding: $section-tb-padding 24px;
 
@@ -95,40 +77,15 @@ section {
 			padding: $section-tb-padding-mobile 0;
 		}
 	}
-
-	&.overlap-section-frontpage {
-		position: relative;
-		padding: 0 24px $section-tb-padding 24px;
-
-		@include not-mobile {
-			padding: 0 16px;
-			transform: translate3d(0, -250px, 0);
-		}
-	}
-
-	&.overlap-section-sweeps {
-		position: relative;
-		padding: 0 24px $section-tb-padding 24px;
-
-		@include not-mobile {
-			padding: 0 16px;
-			transform: translate3d(0, -120px, 0);
-		}
-	}
 }
 
 .container {
 	width: 100%;
 	max-width: $container-width;
-	padding: $section-rl-padding-mobile;
 	margin: 0 auto;
 
-	@include not-mobile {
-		padding: $section-rl-padding;
-	}
-
-	&.collapsible {
-		position: relative;
+	&.slim-container {
+		max-width: $container-width-slim;
 	}
 }
 
@@ -148,6 +105,17 @@ section {
 	flex-direction: row;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
+
+	&.vertically-centered {
+		height: 100%;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	&.full-height {
+		height: 100%;
+	}
 }
 
 .flex-col {
@@ -213,6 +181,44 @@ section {
 		@include landscape {
 			padding: 0 0 0 $col-padding;
 		}
+	}
+
+	// custom columns
+
+	&.flex-sidebar {
+		-ms-flex-preferred-size: 85px;
+		flex-basis: 85px;
+		max-width: 85px;
+	}
+
+	&.flex-dashboard {
+		-ms-flex-preferred-size: calc(100% - 85px);
+		flex-basis: calc(100% - 85px);
+		max-width: calc(100% - 85px);
+	}
+
+	&.flex-search-image {
+		-ms-flex-preferred-size: 300px;
+		flex-basis: 300px;
+		max-width: 300px;
+	}
+
+	&.flex-search-content {
+		-ms-flex-preferred-size: calc(100% - 300px);
+		flex-basis: calc(100% - 300px);
+		max-width: calc(100% - 300px);
+	}
+
+	&.flex-card-content {
+		-ms-flex-preferred-size: calc(100% - 80px);
+		flex-basis: calc(100% - 80px);
+		max-width: calc(100% - 80px);
+	}
+
+	&.flex-card-actions {
+		-ms-flex-preferred-size: 80px;
+		flex-basis: 80px;
+		max-width: 80px;
 	}
 }
 

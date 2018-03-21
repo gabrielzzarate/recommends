@@ -1,3 +1,18 @@
-@import 'styles/colors';
-@import 'styles/mixins.scss';
-@import 'styles/layout-and-grid.scss';
+// structure
+
+@import 'styles/css/colors';
+@import 'styles/css/mixins.scss';
+//@import 'styles/css/icons.scss';
+@import 'styles/css/typography.scss';
+@import 'styles/css/layout-and-grid.scss';
+@import 'styles/css/form-styles.scss';
+@import 'styles/css/buttons.scss';
+@import 'styles/css/modal-window.scss';
+@import 'styles/css/ui-elements.scss';
+@import 'styles/css/lists.scss';
+
+// components
+
+@import 'styles/css/cards.scss';
+@import 'styles/css/header.scss';
+@import 'styles/css/sidebar.scss';

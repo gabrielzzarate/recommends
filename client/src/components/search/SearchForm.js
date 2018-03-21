@@ -1,47 +1,51 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-
-// const options = {
-// 	enableHighAccuracy: true,
-// 	timeout: 8000,
-// 	maximumAge: 0
-// };
-
-// function success(pos) {
-// 	return { lat: pos.coords.latitude, lon: pos.coords.longitude };
-// }
-
-// function error(err) {
-// 	console.warn(`ERROR(${err.code}): ${err.message}`);
-// }
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class SearchForm extends Component {
 	handleSearch(values) {
-		var $this = this;
-		navigator.geolocation.getCurrentPosition(function(position) {
-			$this.props.searchEntries(
-				values,
-				position.coords.latitude,
-				position.coords.longitude
+		const { lat, lng } = this.props.userLocation;
+		console.log('handleSearch', this.props.userLocation);
+
+		this.props.searchEntries(
+			values, 
+			lat,
+			lng,
+			this.props.history
 			);
-		});
+		
+		this.props.updateSearchTerm(values.term);
 	}
 	render() {
+		console.log('searchFormProps', this.props);
 		return (
-			<div>
+			<div className="container slim-container">
 				<form onSubmit={this.props.handleSubmit(this.handleSearch.bind(this))}>
-					<Field
-						key="term"
-						component="input"
-						type="text"
-						label="Search for your Reccomendations"
-						name="term"
-					/>
-					<button type="submit">submit</button>
+					<div className="field-wrapper full-width-field inline-form">
+						<Field
+							key="term"
+							component="input"
+							type="text"
+							label="Search for your Reccomendations"
+							name="term"
+							value={this.props.term ? this.props.term : null}
+							className="inline-field"
+						/>
+						<button className="button" type="submit">
+							<span className="icon-search" />
+						</button>
+					</div>
 				</form>
 			</div>
 		);
 	}
 }
 
-export default reduxForm({ form: 'searchForm' })(SearchForm);
+function mapStateToProps({ userLocation }) {
+	return {
+		userLocation
+	}
+}
+
+export default connect(mapStateToProps)(reduxForm({ form: 'searchForm' })(withRouter(SearchForm)));

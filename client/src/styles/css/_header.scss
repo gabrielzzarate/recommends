@@ -1,0 +1,70 @@
+// header styles
+
+$header-height: 85px;
+
+
+.header-greeting {
+	max-width: 300px;
+	padding: 15px;
+
+	p {
+		display: block; 
+	}
+}
+
+
+.Header {
+	@extend %clearfix;
+	background: $purple;
+	height: $header-height;
+	width: 100%;
+	color: #fff;
+
+	&__navleft {
+		float: left;
+		width: calc(100% - 400px);
+	}
+
+	&__navright {
+		float: left;
+		width: 400px;
+	}
+
+	&__navright-inner {
+		width: 100%;
+	}
+
+	&__navright-inner,
+	&__usergreeting {
+		height: 100%;
+	}
+
+	&__logo {
+		background: $zumthor;
+		width: 85px;
+
+		img {
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 35px;
+		}
+	}
+
+	&__usergreeting,
+	&__useravatar,
+	&__username {
+		display: inline-block;
+	}
+
+	&__username {
+		font-weight: 600;
+		padding: 0 25px;
+		max-width: 120px;
+	}
+
+	&__useravatar {
+		border-radius: 50%;
+		box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.24);
+	}
+}

@@ -6,7 +6,11 @@ const entrySchema = new Schema({
 	name: String,
 	venueId: String,
 	address: String,
-	photos: Array,
+	userRecommendation: String,
+	photo: Object,
+	lat: Number,
+	lng: Number,
+	price: Number,
 	category: String,
 	_user: { type: Schema.Types.ObjectId, ref: 'User' },
 	dateCreated: Date

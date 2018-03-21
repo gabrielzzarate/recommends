@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './Header.css';
+import logo from '../styles/images/recommends-logo_grayscale.svg';
 
 class Header extends Component {
 	renderContent() {
@@ -11,30 +10,45 @@ class Header extends Component {
 			case false:
 				return (
 					<li>
-						<a href="/auth/google">Login With Google</a>
+						<a className="button" href="/auth/google">
+							Login With Google
+						</a>
 					</li>
 				);
 			default:
 				return (
-					<div className="nav-inner">
-						<div className="user-greeting">
-							<img src={this.props.auth.image} alt={this.props.auth.name} />
-							<div className="user-text">
-								<h4>Dashboard</h4>
-								<h3>{this.props.auth.name}</h3>
-							</div>
+					<div className="Header__navright-inner flex-row vertically-centered">
+						<a className="button" href="/api/logout">
+							Logout
+						</a>
+						<div className="Header__username">
+							<span>{this.props.auth.name}</span>
 						</div>
-						<a href="/api/logout">Logout</a>
+						<img
+							className="Header__useravatar"
+							src={this.props.auth.image}
+							alt={this.props.auth.name}
+						/>
 					</div>
 				);
 		}
 	}
 
 	render() {
-		console.log('header props', this.props);
 		return (
-			<nav>
-				<div className="nav-wrapper">{this.renderContent()}</div>
+			<nav className="Header">
+				<div className="Header__navleft flex-row vertically-centered">
+					<div className="Header__logo flex-row vertically-centered">
+						<img src={logo} alt="Recommends Logo" />
+					</div>
+					<div className="header-greeting">
+						<h3>Recommends</h3>
+						<p className="italic">Share your favorite restaurants</p>
+					</div>
+				</div>
+				<div className="Header__navright flex-row vertically-centered">
+					{this.renderContent()}
+				</div>
 			</nav>
 		);
 	}

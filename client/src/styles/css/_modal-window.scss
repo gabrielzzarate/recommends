@@ -1,0 +1,87 @@
+// Modal Window Styles
+
+$modal-width: 590px;
+$dialog-width: 420px;
+$video-width: 800px;
+
+// General modal
+.modal-wrapper {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 24px 16px;
+	min-height: 100vh;
+	@include background-opacity($melrose, 0.8);
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 999;
+	-webkit-backface-visibility: hidden;
+
+	@include not-mobile {
+		padding: $section-rl-padding-mobile;
+	}
+
+	@include landscape {
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	@include mobile-medium {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.modal-outer-centered {
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+
+	.modal-inner-centered {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.modal-container {
+		position: relative;
+		width: 100%;
+		padding: 50px 20px 20px;
+		margin: 0 auto;
+		max-width: $modal-width;
+		background: #fff;
+		box-shadow: 0 10px 40px rgba(45, 94, 117, 0.3);
+		border-radius: 2px;
+		//border: 2px solid $melrose;
+		animation: modal-zoom 0.35s ease-out;
+
+		@include not-mobile {
+			padding: 50px 32px 32px;
+		}
+
+		&.dialog-modal {
+			max-width: $dialog-width;
+		}
+
+		&.video-modal {
+			max-width: $video-width;
+		}
+
+		.modal-header {
+			padding-bottom: 16px;
+			border-bottom: 2px solid $ltgray;
+			text-align: left;
+
+			&.no-pad {
+				padding-bottom: 0;
+			}
+		}
+
+		.modal-content {
+			padding: 16px 0 0 0;
+		}
+	}
+}

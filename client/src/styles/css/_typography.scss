@@ -1,0 +1,345 @@
+// Import Fonts
+
+/* import Roboto */
+
+@font-face {
+	font-family: 'Roboto'; // regular
+	src: url('./styles/fonts/roboto-regular.woff2') format('woff2'),
+		url('./styles/fonts/roboto-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: regular;
+}
+
+@font-face {
+	font-family: 'Roboto'; // regular italic
+	src: url('./styles/fonts/roboto-italic.woff2') format('woff2'),
+		url('./styles/fonts/roboto-italic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Roboto'; // bold
+	src: url('./styles/fonts/roboto-bold.woff2') format('woff2'),
+		url('./styles/fonts/roboto-bold.woff') format('woff');
+	font-weight: 800;
+	font-style: regular;
+}
+
+/* import Open Sans */
+
+@font-face {
+	font-family: 'Open Sans'; // light
+	src: url('./styles/fonts/opensans-light.woff2') format('woff2'),
+		url('./styles/fonts/opensans-light.woff') format('woff');
+	font-weight: 300;
+	font-style: regular;
+}
+
+@font-face {
+	font-family: 'Open Sans'; // regular
+	src: url('./styles/fonts/opensans-regular.woff2') format('woff2'),
+		url('./styles/fonts/opensans-regular.woff') format('woff');
+	font-weight: 400;
+	font-style: regular;
+}
+
+@font-face {
+	font-family: 'Open Sans'; // bold
+	src: url('./styles/fonts/opensans-bold.woff2') format('woff2'),
+		url('./styles/fonts/opensans-bold.woff') format('woff');
+	font-weight: 800;
+	font-style: regular;
+}
+
+@font-face {
+	font-family: 'Open Sans'; // bold italic
+	src: url('./styles/fonts/opensans-bolditalic.woff2') format('woff2'),
+		url('./styles/fonts/opensans-bolditalic.woff') format('woff');
+	font-weight: 800;
+	font-style: italic;
+}
+
+// Font Variables
+
+$heading-font: 'Roboto', Helvetica, Arial, sans-serif;
+$body-font: 'Open Sans', Helvetica, Arial, sans-serif;
+
+// Default Font Styling
+
+body {
+	font-family: $body-font;
+	font-weight: 400;
+	color: $black;
+}
+
+h1 {
+	@include font-size(48px);
+	font-family: $heading-font;
+	font-weight: 300;
+	line-height: 1.15;
+	margin: 0 0 0.15em 0;
+
+	@include vertical {
+		@include font-size(50px);
+	}
+
+	@include mobile {
+		@include font-size(32px);
+		margin: 0 0 10px 0;
+	}
+
+	&.smaller {
+		@include font-size(48px);
+
+		@include vertical {
+			@include font-size(40px);
+		}
+
+		@include mobile {
+			@include font-size(32px);
+		}
+	}
+}
+
+h2 {
+	@include font-size(36px);
+	font-family: $heading-font;
+	font-weight: 500;
+	line-height: 1.1;
+	margin: 0 0 0.75em 0;
+
+	@include mobile {
+		@include font-size(24px);
+	}
+}
+
+h3 {
+	font-size: 1.25rem;
+	font-family: $heading-font;
+	font-weight: 500;
+	line-height: 2rem;
+	letter-spacing: 0.02em;
+	margin: 0 0 0.75em 0;
+
+	@include mobile {
+		@include font-size(18px);
+	}
+}
+
+h4 {
+	@include font-size(20px);
+	font-family: $heading-font;
+	font-size: 0.938rem;
+	line-height: 1.5rem;
+	font-weight: 400;
+	letter-spacing: 0.04em;
+	font-weight: 500;
+	line-height: 1.25;
+	margin: 0 0 0.5em 0;
+
+	@include mobile {
+		@include font-size(15px);
+	}
+}
+
+h5 {
+	@include font-size(16px);
+	font-family: $heading-font;
+	font-weight: 500;
+	line-height: 1.15;
+	margin: 0 0 1em 0;
+	padding: 0 0 0.5em 5px;
+	border-bottom: 1px solid $melrose;
+
+	@include mobile {
+		@include font-size(15px);
+	}
+}
+
+p,
+li {
+	@include font-size(16px);
+	font-weight: 400;
+	line-height: 1.5;
+
+	@include mobile {
+		@include font-size(15px);
+		line-height: 1.4;
+	}
+
+	&.smaller {
+		@include font-size(14px);
+		@include mobile {
+			@include font-size(13px);
+		}
+	}
+
+	&.intro {
+		@include font-size(18px);
+		font-weight: 400;
+		@include mobile-medium {
+			@include font-size(16px);
+		}
+	}
+
+	&.caption {
+		@include font-size(12px);
+		font-style: italic;
+		padding-top: 10px;
+		@include mobile {
+			@include font-size(11px);
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+p a,
+span a,
+.inline-trigger {
+	text-decoration: none;
+	color: $blue;
+
+	&:visited {
+		color: $blue;
+	}
+
+	&:hover,
+	&:focus {
+		color: shade($blue, 50%);
+	}
+}
+
+p,
+ul {
+	margin: 0 0 1.25em 0;
+}
+
+ul.text-list {
+	li {
+		position: relative;
+		margin: 0 0 7px 0;
+		padding-left: 12px;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 8px;
+			left: 0;
+			width: 4px;
+			height: 4px;
+			background: $black;
+			border-radius: 50%;
+		}
+	}
+}
+
+ol {
+	list-style: decimal;
+}
+
+strong {
+	font-weight: 500;
+}
+
+em {
+	font-weight: 500;
+	font-style: italic;
+}
+
+hr {
+	width: 100%;
+	height: 2px;
+	border: 0;
+	outline: 0;
+	margin: 30px auto;
+	background: $melrose;
+
+	@include mobile {
+		margin: 24px auto;
+	}
+
+	&.light-hr {
+		background: $ltgray;
+	}
+}
+
+blockquote {
+	display: inline-block;
+	width: 100%;
+	@include font-size(24px);
+	font-family: $heading-font;
+	font-weight: 300;
+	line-height: 1.6;
+	color: $black;
+	padding: 10px 0 10px 24px;
+	margin: 20px 0;
+	border-left: 2px solid $blue;
+
+	@include mobile {
+		@include font-size(19px);
+		padding: 10px 0 10px 16px;
+	}
+
+	&:before {
+		content: '\201C';
+		display: inline-block;
+		height: 40px;
+		width: 100%;
+		color: $blue;
+		@include font-size(72px);
+		font-weight: 700;
+		line-height: 1;
+		overflow: hidden;
+	}
+
+	.caption {
+		padding-left: 0;
+	}
+}
+
+span.mobile-only-text {
+	display: inline;
+
+	@include landscape {
+		display: none;
+	}
+}
+
+span.desktop-only-text {
+	display: inline;
+
+	@include vertical {
+		display: none;
+	}
+}
+
+br.mobile-break {
+	display: none;
+
+	@include mobile {
+		display: block;
+	}
+}
+
+.mobile-center {
+	@include mobile {
+		text-align: center;
+	}
+}
+
+.light {
+	color: $light;
+}
+
+.purple {
+	color: $purple;
+}
+
+.mdblue-bg {
+	background: $mdblue;
+}
