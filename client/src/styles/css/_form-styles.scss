@@ -11,7 +11,7 @@ $mdgray: gray;
 $field-height: 32px;
 $button-height: 48px;
 $form-field-gray: #a7b1b7;
-$button-background-primary: $purple;
+$button-background-primary: $accent-color1;
 
 // 2. Form Layout
 
@@ -69,7 +69,7 @@ form {
 }
 
 .form-divider {
-	background: $black;
+	background: $accent-color2;
 	margin: 15px 0 30px 0;
 }
 
@@ -84,7 +84,7 @@ form {
 	position: absolute;
 	top: 21px;
 	left: 12px;
-	color: $melrose;
+	color: $accent-color2;
 }
 
 .inline-form {
@@ -98,16 +98,19 @@ form {
 	.button {
 		float: left;
 		display: inline-block;
-		height: $field-height + 2px;
+		height: 33px;
+		line-height: 16px;
+		-webkit-box-shadow: none;
 		box-shadow: none;
 		padding: 0;
-		background: $ltpurple;
+		background: $accent-color2;
 		color: #fff;
 		max-width: 40px;
+		transform: translateY(7.4px);
 		border-radius: 0;
 
 		&:hover {
-			background: shade($ltpurple, 20%);
+			background: shade($accent-color2, 20%);
 		}
 	}
 }
@@ -142,40 +145,29 @@ input[type='date'],
 select,
 textarea {
 	height: $field-height;
-	padding: 0 8px 0 2px;
+	padding: 0 8px 0 3px;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
-	border-bottom: 2px solid $form-field-gray;
+	border-bottom: 2px solid $bg-color-alt;
 	border-radius: 0;
-	background-color: $offwhite;
+	background-color: $bg-color;
 	@include font-size(17px);
 	font-weight: 400;
 	transition: all 0.2s;
 	margin-top: 8px;
+	color: $text-color;
 
 	&:hover {
-		background-color: #fff;
-		border-bottom: 2px solid $mdgray;
+		border-bottom: 2px solid $accent-color1;
 	}
 
 	&:focus {
-		background-color: #fff;
-		border-bottom: 2px solid $ltpurple;
+		border-bottom: 2px solid $accent-color1;
 		outline: 0;
 
 		+ label {
-			color: $ltpurple;
-		}
-	}
-
-	&.alt-input {
-		background: $purple;
-		color: $melrose;
-		border: 0;
-
-		&:focus {
-			border-bottom: 1px solid $melrose;
+			color: $accent-color1;
 		}
 	}
 
@@ -226,19 +218,19 @@ textarea {
 }
 
 ::-webkit-input-placeholder {
-	color: $form-field-gray;
+	color: $accent-color1;
 }
 
 :-moz-placeholder {
-	color: $form-field-gray;
+	color: $accent-color1;
 }
 
 ::-moz-placeholder {
-	color: $form-field-gray;
+	color: $accent-color1;
 }
 
 :-ms-input-placeholder {
-	color: $form-field-gray;
+	color: $accent-color1;
 }
 
 // Checkboxes
@@ -261,8 +253,8 @@ textarea {
 		left: 10px;
 		width: 20px;
 		height: 20px;
-		border: 1px solid $blue;
-		background-color: $blue;
+		border: 1px solid $accent-color2;
+		background-color: $accent-color2;
 		//background-image: url('../images/icon-checkmark.svg');
 		background-repeat: no-repeat;
 		background-position: center center;
@@ -288,92 +280,6 @@ input[type='radio']:checked + .checkbox-label:after {
 	background-image: none;
 	box-shadow: inset 0 1px 0 rgba(35, 40, 43, 0.15);
 }
-
-// // Buttons
-
-// input[type='submit'],
-// button,
-// .button {
-// 	display: inline-block;
-// 	width: 100%;
-// 	max-width: 240px;
-// 	height: $button-height;
-// 	line-height: $button-height;
-// 	padding: 0 16px;
-// 	@include font-size(15px);
-// 	font-weight: 500;
-// 	text-transform: uppercase;
-// 	text-align: center;
-// 	color: #fff;
-// 	border: 2px solid $green;
-// 	background: $button-background-primary;
-// 	box-shadow: 0 2px 0 rgba(35, 40, 43, 0.15);
-// 	border-radius: 4px;
-// 	transition: all 0.2s;
-// 	-webkit-appearance: none;
-// 	cursor: pointer;
-
-// 	&:focus {
-// 		outline: 0;
-// 	}
-
-// 	@include landscape {
-// 		&:hover {
-// 			border: 2px solid $button-primary-hover;
-// 			background: $button-primary-hover;
-// 		}
-// 	}
-
-// 	@include vertical {
-// 		&:focus {
-// 			border: 2px solid $button-primary-hover;
-// 			background: $button-primary-hover;
-// 		}
-// 	}
-
-// 	@include mobile-small {
-// 		@include font-size(14px);
-// 	}
-
-// 	&.outline-white,
-// 	&.outline-green {
-// 		background: transparent;
-// 		border: 2px solid;
-// 		box-shadow: none;
-
-// 		@include landscape {
-// 			&:hover {
-// 				border-color: $button-background-primary;
-// 				background: $button-background-primary;
-// 				color: #fff;
-// 			}
-// 		}
-
-// 		@include vertical {
-// 			&:focus {
-// 				border-color: $button-primary-hover;
-// 				background: $button-primary-hover;
-// 				color: #fff;
-// 			}
-// 		}
-// 	}
-
-// 	&.outline-white {
-// 		border-color: #fff;
-// 	}
-
-// 	&.max-width {
-// 		max-width: 320px;
-
-// 		@include mobile-medium {
-// 			width: 100%;
-// 		}
-// 	}
-
-// 	&.full-width-button {
-// 		max-width: 100%;
-// 	}
-// }
 
 // Required Fields
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import logo from '../styles/images/recommends-logo_grayscale.svg';
 
 class Header extends Component {
@@ -17,7 +18,7 @@ class Header extends Component {
 				);
 			default:
 				return (
-					<div className="Header__navright-inner flex-row vertically-centered">
+					<div className="Header__navright-inner">
 						<a className="button" href="/api/logout">
 							Logout
 						</a>
@@ -37,17 +38,46 @@ class Header extends Component {
 	render() {
 		return (
 			<nav className="Header">
-				<div className="Header__navleft flex-row vertically-centered">
-					<div className="Header__logo flex-row vertically-centered">
+				<div className="Header__navleft">
+					<div className="Header__logo">
 						<img src={logo} alt="Recommends Logo" />
 					</div>
 					<div className="header-greeting">
 						<h3>Recommends</h3>
 						<p className="italic">Share your favorite restaurants</p>
 					</div>
-				</div>
-				<div className="Header__navright flex-row vertically-centered">
-					{this.renderContent()}
+					<NavLink
+						to="/dashboard"
+						exact
+						activeClassName="selected"
+						className="Sidebar__item sidebar-item"
+					>
+						Home
+					</NavLink>
+					<NavLink
+						to="/results"
+						exact
+						activeClassName="selected"
+						className="Sidebar__item sidebar-item"
+					>
+						Search
+					</NavLink>
+					<NavLink
+						to="/share"
+						exact
+						activeClassName="selected"
+						className="Sidebar__item sidebar-item"
+					>
+						Share
+					</NavLink>
+					<NavLink
+						to="/settings"
+						exact
+						activeClassName="selected"
+						className="Sidebar__item sidebar-item"
+					>
+						<i className="material-icons">settings</i>
+					</NavLink>
 				</div>
 			</nav>
 		);

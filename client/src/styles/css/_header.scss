@@ -2,51 +2,75 @@
 
 $header-height: 85px;
 
-
 .header-greeting {
 	max-width: 300px;
 	padding: 15px;
 
 	p {
-		display: block; 
+		display: block;
 	}
 }
 
-
 .Header {
 	@extend %clearfix;
-	background: $purple;
-	height: $header-height;
+	background: $text-color-inverse;
 	width: 100%;
-	color: #fff;
+	overflow: visible;
+	z-index: 100;
+	text-align: center;
+	border-top: 0.2963rem solid #ff668c;
+
+	@media screen and (min-width: 84em) {
+		width: 11.08454em;
+		left: auto;
+	}
+
+	@media screen and (min-height: 20em) and (min-width: 76em) {
+		position: fixed;
+		float: none;
+		top: 0;
+		left: 0.2963rem;
+		bottom: 0;
+	}
+
+	@media screen and (min-width: 76em) {
+		position: absolute;
+		left: 0;
+		width: calc(16.494845360824742% - 0.2963rem);
+		border-top: none;
+	}
 
 	&__navleft {
-		float: left;
-		width: calc(100% - 400px);
+		//float: left;
+		//width: calc(100% - 400px);
 	}
 
 	&__navright {
-		float: left;
-		width: 400px;
+		//float: left;
+		//width: 400px;
 	}
 
 	&__navright-inner {
-		width: 100%;
+		//width: 100%;
 	}
 
 	&__navright-inner,
 	&__usergreeting {
-		height: 100%;
+		//height: 100%;
 	}
 
 	&__logo {
-		background: $zumthor;
+		background: $text-color;
 		width: 85px;
+		height: 85px;
+		border-radius: 50%;
+		margin: 20px auto 0 auto;
 
 		img {
 			display: block;
 			margin: 0 auto;
 			width: 100%;
+			padding-top: 10px;
 			max-width: 35px;
 		}
 	}
@@ -65,6 +89,6 @@ $header-height: 85px;
 
 	&__useravatar {
 		border-radius: 50%;
-		box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.24);
+		//box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.24);
 	}
 }

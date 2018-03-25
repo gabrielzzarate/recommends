@@ -16,38 +16,44 @@ class SearchList extends Component {
 				{this.props.venues.map(data => {
 					const { venue } = data;
 					return (
-						<div
-							className="SearchList__item"
-							key={data.referralId}
-						>
+						<div className="SearchList__item" key={data.referralId}>
 							{venue.featuredPhotos.items ? (
 								<img
 									src={
 										venue.featuredPhotos.items[0].prefix +
-											500 +
+										500 +
 										venue.featuredPhotos.items[0].suffix
 									}
 									alt={venue.name}
 								/>
 							) : null}{' '}
-
 							<div className="search-list-item-content">
 								<div className="search-card-content-inner">
-										<span className="search-card-heading-primary">{venue.name}</span>
+									<span className="search-card-heading-primary">
+										{venue.name}
+									</span>
 
-										{venue.categories ? (
-											<span className="search-card-heading-secondary">
-												{venue.categories[0].shortName ||
+									{venue.categories ? (
+										<span className="search-card-heading-secondary">
+											{/* {venue.categories[0].shortName ||
 												venue.categories[0].category}
-											</span>
-										) : null}
+											*/}
+										</span>
+									) : null}
 
-									<a onClick={() =>
-									this.props.loadVenueReview(venue, this.props.history) } className="action-link" aria-label="Add Recommendation" title="Add Recommendation"><i className="material-icons">add</i></a>
+									<a
+										onClick={() =>
+											this.props.loadVenueReview(venue, this.props.history)
+										}
+										className="action-link"
+										aria-label="Add Recommendation"
+										title="Add Recommendation"
+									>
+										<i className="material-icons">add</i>
+									</a>
 								</div>
 							</div>
-
-						{/*
+							{/*
 							<h4 className="SearchList__item-name">{venue.name}</h4>
 							<span className="SearchList__item-address">
 								{venue.location.address}
@@ -83,7 +89,7 @@ class SearchList extends Component {
 										) : null}
 
 							*/}
-					</div>
+						</div>
 					);
 				})}
 			</div>

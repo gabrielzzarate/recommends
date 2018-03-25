@@ -1,13 +1,85 @@
 $black: #000046;
-$ltblue: #f2f7fe;
-$mdblue: #e7edfd;
-$blue: #4765f5;
-$zumthor: #f0f3fb;
-$purple: #6c67d6;
-$ltpurple: #5c74f5;
-$melrose: #c0bdeb;
+// $ltblue: #f2f7fe;
+// $mdblue: #e7edfd;
+// $blue: #4765f5;
+// $zumthor: #f0f3fb;
+// $purple: #6c67d6;
+// $ltpurple: #5c74f5;
+// $melrose: #c0bdeb;
 
-$regularblack: #000000;
+// 1st Pallette
+// $text-color: darken(white, 70%);
+// $text-color-inverse: white;
+// $bg-color: darken( white, 6%);
+// $bg-color-alt: darken( white, 24% );
+// $accent-color1: darken( white, 54%);
+// $accent-color2: darken( white, 30%);
+
+// 2nd Pallette
+// $text-color: hsl( 321, 14%, 44% );
+// $text-color-inverse: white;
+// $bg-color: hsl( 45, 50%, 94% );
+// $bg-color-alt: hsl( 31, 24%, 88% );
+// $accent-color1: $bg-color-alt;
+// $accent-color2: hsl( 348, 78%, 68% );
+
+// 3rd Pallette -- orange
+
+$text-color: hsl(213.3, 15.1%, 35.1%);
+$text-color-inverse: white;
+$bg-color: hsl(12, 16.1%, 93.9%);
+$bg-color-alt: hsl(40, 34.9%, 83.1%);
+$accent-color1: hsl(26.4, 83.3%, 76.5%);
+$accent-color2: hsl(25.4, 84.2%, 65.3%);
+
+// Orange darken
+// $text-color: hsl(208, 16.7%, 35.3%);
+// $text-color-inverse: white;
+// $bg-color: hsl(45, 30%, 92.2%);
+// $bg-color-alt: hsl(46, 40.9%, 77.5%);
+// $accent-color1: hsl(17.4, 80.6%, 75.7%);
+// $accent-color2: hsl(16.7, 82.5%, 64.1%);
+
+// orange darkest
+// $text-color: hsl(12, 17.2%, 34.1%);
+// $text-color-inverse: white;
+// $bg-color: hsl(200, 17.6%, 93.3%);
+// $bg-color-alt: hsl(198.8, 17%, 81.6%);
+// $accent-color1: hsl(1.6, 74.8%, 79.8%);
+// $accent-color2: hsl(1.8, 78.3%, 67.5%);
+
+// orange darkest alt
+$text-color: hsl(256.2, 12.3%, 41.6%);
+$text-color-inverse: white;
+$bg-color: hsl(120, 6.7%, 94.1%);
+$bg-color-alt: hsl(133.3, 17.8%, 60.4%);
+$accent-color1: hsl(20.9, 77.2%, 70.8%);
+$accent-color2: hsl(19.3, 79.4%, 60%);
+
+// 4th Pallette - Pink
+
+// $text-color: hsl(316.4, 11%, 39.2%);
+// $bg-color: hsl(46.7, 45%, 92.2%);
+// $bg-color-alt: hsl(32.6, 33.3%, 58.8%);
+// $accent-color1: hsl(348.9, 59.6%, 78.6%);
+// $accent-color2: hsl(349.1, 61.4%, 66.5%);
+
+// 5th Pallette - Pink darken
+// $text-color: hsl(285, 11.2%, 34.9%);
+// $text-color-inverse: white;
+// $bg-color: hsl(68.6, 17.9%, 92.4%);
+// $bg-color-alt: hsl(62.9, 31.8%, 74.7%);
+// $accent-color1: hsl(344.8, 74.3%, 80.2%);
+// $accent-color2: hsl(346.1, 77.6%, 68.4%);
+
 $light: #abb2c4;
 $ltgray: #c0c7d0;
 $gray: rgba(0, 0, 0, 0.54);
+
+
+
+
+
+
+
+

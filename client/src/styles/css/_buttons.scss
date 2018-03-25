@@ -14,7 +14,7 @@ button,
 	border-radius: 3px;
 	text-align: center;
 	background: #fff;
-	color: $ltpurple;
+	color: $accent-color2;
 	text-decoration: none;
 	padding: 0 16px;
 	@include font-size(15px);
@@ -35,7 +35,7 @@ button,
 	}
 
 	&.purple-btn {
-		background: $purple;
+		background: $accent-color2;
 		color: #fff;
 	}
 }

@@ -3,7 +3,7 @@
 $sidebar-item-height: 60px;
 
 .Sidebar {
-	background: #fff;
+	background: $accent-color2;
 	position: relative;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -19,34 +19,16 @@ $sidebar-item-height: 60px;
 		flex-grow: 1;
 		display: block;
 		max-height: 60px;
-		line-height: 72px;
+		line-height: $sidebar-item-height;
+		text-transform: uppercase;
+		color: $text-color;
+		border-top: 0.13169rem solid $bg-color;
 		height: $sidebar-item-height;
 		text-align: center;
-		transition: all 0.2s;
-
-
-		&:hover {
-			background: shade($zumthor, 20%);
-
-			i {
-				color: shade($ltgray, 20%);
-			}
-		}
+		transition: all 0.3s;
 
 		&.selected {
-			background: $zumthor;
-
-			i {
-				color: $blue;
-			}
-
-			.arrow-left {
-				display: block;
-			}
-		}
-
-		i {
-			color: $gray;
+			background: shade($bg-color, 10%);
 		}
 	}
 
@@ -59,14 +41,12 @@ $sidebar-item-height: 60px;
 		top: 0;
 		border-top: $sidebar-item-height/2 solid transparent;
 		border-bottom: $sidebar-item-height/2 solid transparent;
-		border-left: 7px solid $blue;
+		border-left: 7px solid $accent-color2;
 		opacity: 0.8;
 	}
 }
 
-
 .sidebar-item {
-
 	&.selected {
 		.arrow-left {
 			display: block;

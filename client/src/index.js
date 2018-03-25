@@ -13,9 +13,9 @@ import reducers from './reducers';
 import App from './components/App';
 
 const persistConfig = {
-  key: 'root',
-  storage,
-}
+	key: 'root',
+	storage
+};
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 const store = createStore(persistedReducer, {}, applyMiddleware(reduxThunk));

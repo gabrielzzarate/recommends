@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAK;EACJ,KAAK,ECAO,OAAsB;EDClC,UAAU,ECCA,OAAuB;;ADElC,EAAG;EACF,aAAa,ECFC,OAAuB",
+"sources": ["_color-overrides.scss","color2.scss"],
+"names": [],
+"file": "color2.css"
+}

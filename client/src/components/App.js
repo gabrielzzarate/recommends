@@ -10,13 +10,12 @@ import Dashboard from './Dashboard';
 //import EntryNew from './entries/EntryNew';
 import SearchList from './search/SearchList';
 import Modal from './Modal';
-import Sidebar from './Sidebar';
 
 class App extends Component {
 	constructor(props) {
-   	super(props);
-   	this.props.findUserLocation();
-  }
+		super(props);
+		this.props.findUserLocation();
+	}
 
 	componentDidMount() {
 		this.props.fetchUser();
@@ -24,16 +23,15 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div id="app">
+				<div id="app" className="wrapper">
 					<Header />
-					<div className="flex-row">
-						<Sidebar />
+					<main>
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/dashboard" component={Dashboard} />
 						<Route path="/results" component={SearchList} />
 						<Route path="/results/review" component={Modal} />
 						{/*<Route path="/dashboard" component={EntryNew} /> */}
-					</div>
+					</main>
 				</div>
 			</BrowserRouter>
 		);

@@ -8,13 +8,8 @@ class SearchForm extends Component {
 		const { lat, lng } = this.props.userLocation;
 		console.log('handleSearch', this.props.userLocation);
 
-		this.props.searchEntries(
-			values, 
-			lat,
-			lng,
-			this.props.history
-			);
-		
+		this.props.searchEntries(values, lat, lng, this.props.history);
+
 		this.props.updateSearchTerm(values.term);
 	}
 	render() {
@@ -33,7 +28,7 @@ class SearchForm extends Component {
 							className="inline-field"
 						/>
 						<button className="button" type="submit">
-							<span className="icon-search" />
+							<i className="material-icons">search</i>
 						</button>
 					</div>
 				</form>
@@ -45,7 +40,9 @@ class SearchForm extends Component {
 function mapStateToProps({ userLocation }) {
 	return {
 		userLocation
-	}
+	};
 }
 
-export default connect(mapStateToProps)(reduxForm({ form: 'searchForm' })(withRouter(SearchForm)));
+export default connect(mapStateToProps)(
+	reduxForm({ form: 'searchForm' })(withRouter(SearchForm))
+);

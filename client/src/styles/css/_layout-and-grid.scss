@@ -19,23 +19,48 @@ $section-rl-padding-mobile: 24px;
 // 2. General Structure/Layout
 
 html {
-	background-color: $ltblue;
 	overflow-x: hidden;
 	box-sizing: border-box;
 }
 
-*, *::before, *:after {
+*,
+*::before,
+*:after {
 	box-sizing: inherit;
 }
 
 body,
 #root,
-#app {
+#app,
+.wrapper {
 	min-height: 100vh;
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 100%;
 	overflow: hidden;
+	background-color: $accent-color2;
+}
+
+.wrapper {
+	position: relative;
+	margin: 0 auto;
+	max-width: 67.2em;
+}
+
+main {
+	position: relative;
+	background: $bg-color;
+	height: 100%;
+	min-height: 100vh;
+	//overflow: visible;
+	clear: both;
+	overflow: hidden;
+
+	@media screen and (min-width: 76em) {
+		float: right;
+		clear: right;
+		width: 83.505154639175258%;
+	}
 }
 
 body,
@@ -55,10 +80,7 @@ header,
 main,
 section,
 footer,
-nav,
-div {
-	width: 100%;
-
+nav {
 	&.white {
 		background: #fff;
 	}

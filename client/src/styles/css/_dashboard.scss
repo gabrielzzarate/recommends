@@ -1,0 +1,22 @@
+.dashboard-section {
+	position: relative;
+	padding-top: 60px !important;
+
+	.dashboard-user-greeting {
+		position: absolute;
+		top: 10px;
+		right: 25px;
+		font-weight: 600;
+
+		span {
+			display: inline-block;
+			transform: translateY(-15px);
+			padding-right: 8px;
+			font-size: 0.9rem;
+		}
+
+		img {
+			max-width: 40px;
+		}
+	}
+}

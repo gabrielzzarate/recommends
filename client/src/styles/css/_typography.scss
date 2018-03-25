@@ -70,7 +70,7 @@ $body-font: 'Open Sans', Helvetica, Arial, sans-serif;
 body {
 	font-family: $body-font;
 	font-weight: 400;
-	color: $black;
+	color: $text-color;
 }
 
 h1 {
@@ -150,7 +150,7 @@ h5 {
 	line-height: 1.15;
 	margin: 0 0 1em 0;
 	padding: 0 0 0.5em 5px;
-	border-bottom: 1px solid $melrose;
+	border-bottom: 1px solid $bg-color-alt;
 
 	@include mobile {
 		@include font-size(15px);
@@ -201,15 +201,15 @@ p a,
 span a,
 .inline-trigger {
 	text-decoration: none;
-	color: $blue;
+	color: $accent-color2;
 
 	&:visited {
-		color: $blue;
+		color: $accent-color2;
 	}
 
 	&:hover,
 	&:focus {
-		color: shade($blue, 50%);
+		color: shade($accent-color2, 50%);
 	}
 }
 
@@ -257,14 +257,10 @@ hr {
 	border: 0;
 	outline: 0;
 	margin: 30px auto;
-	background: $melrose;
+	background: $accent-color1;
 
 	@include mobile {
 		margin: 24px auto;
-	}
-
-	&.light-hr {
-		background: $ltgray;
 	}
 }
 
@@ -278,7 +274,7 @@ blockquote {
 	color: $black;
 	padding: 10px 0 10px 24px;
 	margin: 20px 0;
-	border-left: 2px solid $blue;
+	border-left: 2px solid $accent-color1;
 
 	@include mobile {
 		@include font-size(19px);
@@ -290,7 +286,7 @@ blockquote {
 		display: inline-block;
 		height: 40px;
 		width: 100%;
-		color: $blue;
+		color: $accent-color1;
 		@include font-size(72px);
 		font-weight: 700;
 		line-height: 1;
@@ -337,9 +333,9 @@ br.mobile-break {
 }
 
 .purple {
-	color: $purple;
+	color: $text-color-inverse;
 }
 
 .mdblue-bg {
-	background: $mdblue;
+	background: $accent-color1;
 }

@@ -16,25 +16,48 @@ class Dashboard extends Component {
 				return <EntryList entries={this.props.entries} />;
 		}
 	}
+	renderUser() {
+		switch (this.props.auth) {
+			case null:
+				return;
+			case false:
+				return (
+					<li>
+						<a className="button" href="/auth/google">
+							Login With Google
+						</a>
+					</li>
+				);
+			default:
+				return (
+					<div>
+						<span>Hello, {this.props.auth.name}</span>
+						<img
+							className="Header__useravatar"
+							src={this.props.auth.image}
+							alt={this.props.auth.name}
+						/>
+					</div>
+				);
+		}
+	}
 	render() {
 		return (
-			<div className="flex-col flex-dashboard">
-				<section className="standard-padding">
-					<div className="container">
-						{/* <Link to="/dashboard/entry-new">Add Reccomendation</Link> */}
-
-						<div className="content-space">
-							<h3>Enter a search term to add Recommendations</h3>
-							<SearchForm
-								searchEntries={this.props.searchEntries}
-								updateSearchTerm={this.props.updateSearchTerm}
-							/>
-						</div>
-
-						{this.renderEntries()}
+			<section className="dashboard-section standard-padding">
+				<div className="container">
+					<div className="content-space">
+						<h3>Enter a search term to add Recommendations</h3>
+						<SearchForm
+							searchEntries={this.props.searchEntries}
+							updateSearchTerm={this.props.updateSearchTerm}
+						/>
 					</div>
-				</section>
-			</div>
+
+					{this.renderEntries()}
+				</div>
+
+				<div className="dashboard-user-greeting">{this.renderUser()}</div>
+			</section>
 		);
 	}
 }

@@ -15,7 +15,7 @@ $video-width: 800px;
 	margin: 0;
 	padding: 24px 16px;
 	min-height: 100vh;
-	@include background-opacity($melrose, 0.8);
+	@include background-opacity($accent-color1, 0.8);
 	overflow-x: hidden;
 	overflow-y: hidden;
 	z-index: 999;
@@ -55,7 +55,6 @@ $video-width: 800px;
 		background: #fff;
 		box-shadow: 0 10px 40px rgba(45, 94, 117, 0.3);
 		border-radius: 2px;
-		//border: 2px solid $melrose;
 		animation: modal-zoom 0.35s ease-out;
 
 		@include not-mobile {
@@ -72,7 +71,7 @@ $video-width: 800px;
 
 		.modal-header {
 			padding-bottom: 16px;
-			border-bottom: 2px solid $ltgray;
+			border-bottom: 2px solid $accent-color1;
 			text-align: left;
 
 			&.no-pad {
