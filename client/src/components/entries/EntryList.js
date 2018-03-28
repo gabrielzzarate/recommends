@@ -11,10 +11,10 @@ class EntryList extends Component {
 	renderEntries() {
 		return this.props.entries.reverse().map(entry => {
 			const str = '$';
-			const convertEntryName = (name) => {
-				let words = name.toLowerCase()	.split(" ")
-				return words.join("+");
-			}
+			const convertEntryName = name => {
+				let words = name.toLowerCase().split(' ');
+				return words.join('+');
+			};
 			return (
 				<div className="entry-card" key={entry._id}>
 					{entry.photo ? (
@@ -30,9 +30,21 @@ class EntryList extends Component {
 					<div className="card-secondary">{entry.userRecommendation}</div>
 					<div className="card-actions">
 						<div className="card-action-buttons">
-							<span>{ str.repeat(entry.price)}	</span>
-							<a href={`https://www.google.com/maps/search/?api=1&query=${convertEntryName(entry.name)}`} target="_blank" className="action-button">
-								{ findDistance(entry.lat, entry.lng, this.props.userLocation.lat, this.props.userLocation.lng)} mi
+							<span>{str.repeat(entry.price)} </span>
+							<a
+								href={`https://www.google.com/maps/search/?api=1&query=${convertEntryName(
+									entry.name
+								)}`}
+								target="_blank"
+								className="action-button"
+							>
+								{findDistance(
+									entry.lat,
+									entry.lng,
+									this.props.userLocation.lat,
+									this.props.userLocation.lng
+								)}{' '}
+								mi
 							</a>
 						</div>
 						<div className="card-action-icons">

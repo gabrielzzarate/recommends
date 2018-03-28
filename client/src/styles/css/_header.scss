@@ -11,14 +11,23 @@ $header-height: 85px;
 	}
 }
 
-.Header {
+.header {
 	@extend %clearfix;
 	background: $text-color-inverse;
 	width: 100%;
 	overflow: visible;
 	z-index: 100;
 	text-align: center;
-	border-top: 0.2963rem solid #ff668c;
+	font-family: $heading-font;
+	//font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.035em;
+	line-height: 1.2;
+	border-top: 0.2963rem solid $accent-color2;
+
+	a {
+		background-image: none;
+	}
 
 	@media screen and (min-width: 84em) {
 		width: 11.08454em;
@@ -35,60 +44,153 @@ $header-height: 85px;
 
 	@media screen and (min-width: 76em) {
 		position: absolute;
-		left: 0;
+		//left: 0;
 		width: calc(16.494845360824742% - 0.2963rem);
 		border-top: none;
 	}
 
-	&__navleft {
-		//float: left;
-		//width: calc(100% - 400px);
-	}
+	.header-inner {
+		@include mobile {
+			height: 56.6px;
+		}
 
-	&__navright {
-		//float: left;
-		//width: 400px;
-	}
+		@include vertical {
+			height: 100%;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			height: 75px;
+		}
 
-	&__navright-inner {
-		//width: 100%;
-	}
+		@include landscape {
+			text-align: center;
+			padding: 29.62962962962963%;
+			margin: 0;
+		}
 
-	&__navright-inner,
-	&__usergreeting {
-		//height: 100%;
-	}
+		@media screen and (min-width: 45em) {
+			margin: 0 5.55556%;
+		}
 
-	&__logo {
-		background: $text-color;
-		width: 85px;
-		height: 85px;
-		border-radius: 50%;
-		margin: 20px auto 0 auto;
+		@media screen and (min-width: 35em) {
+			margin: 0 4.71149%;
+		}
 
-		img {
-			display: block;
-			margin: 0 auto;
-			width: 100%;
-			padding-top: 10px;
-			max-width: 35px;
+		@media screen and (min-width: 0) {
+			margin: 0 4.27846%;
 		}
 	}
 
-	&__usergreeting,
-	&__useravatar,
-	&__username {
-		display: inline-block;
+	.header-navleft {
+		@include mobile {
+			width: 58px;
+		}
+
+		@include vertical {
+			float: left;
+			width: 100px;
+		}
+
+		@include landscape {
+			text-align: center;
+			width: 83px;
+
+			.logo {
+				margin: 0 auto;
+			}
+		}
 	}
 
-	&__username {
-		font-weight: 600;
-		padding: 0 25px;
-		max-width: 120px;
+	.header-navright {
+		@include mobile {
+			width: calc(100% - 58px);
+		}
+
+		@include vertical {
+			float: left;
+			width: calc(100% - 100px);
+			text-align: right;
+		}
+
+		@include landscape {
+			text-align: center;
+			//width: 100%;
+			padding-top: 50px;
+			width: 83px;
+			border-bottom: 0.13169rem solid $bg-color;
+		}
 	}
 
-	&__useravatar {
+	.logo {
+		background: $text-color;
+		width: 83px;
+		height: 83px;
 		border-radius: 50%;
-		//box-shadow: 3px 3px 5px 6px rgba(0, 0, 0, 0.24);
+		transition: all 0.2s;
+		display: flex;
+		align-items: center;
+
+		@include vertical {
+			width: 67.5px;
+			height: 67.5px;
+		}
+
+		@include mobile {
+			width: 40.5px;
+			height: 40.5px;
+		}
+
+		svg {
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 35px;
+			stroke: $bg-color;
+			fill: $text-color;
+			stroke-miterlimit: 10;
+			stroke-width: 5px;
+
+			@include vertical {
+				max-width: 28px;
+			}
+
+			@include mobile {
+				max-width: 15px;
+			}
+		}
+
+		&:hover {
+			background: $accent-color2;
+
+			svg {
+				fill: $accent-color2;
+			}
+		}
+	}
+
+	.navigation-item {
+		display: inline-block;
+		transition: all 0.25s;
+		text-transform: uppercase;
+		color: $text-color;
+		font-weight: 600;
+		//line-height: 1;
+		//letter-spacing: 0.035em;
+
+		@include landscape {
+			border-top: 0.13169rem solid $bg-color;
+			padding: 0.44444rem 0;
+			width: 83px;
+			margin: 0;
+			display: block;
+
+			&:hover {
+				color: $accent-color2;
+			}
+		}
+
+		@include vertical {
+			margin: 1.4em 0 0 1em;
+		}
 	}
 }

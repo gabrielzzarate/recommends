@@ -46,7 +46,7 @@ class Dashboard extends Component {
 			<section className="dashboard-section standard-padding">
 				<div className="container">
 					<div className="content-space">
-						<h3>Enter a search term to add Recommendations</h3>
+						<p className="alt">Enter a search term to add Recommendations</p>
 						<SearchForm
 							searchEntries={this.props.searchEntries}
 							updateSearchTerm={this.props.updateSearchTerm}

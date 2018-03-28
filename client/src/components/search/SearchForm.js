@@ -17,18 +17,19 @@ class SearchForm extends Component {
 		return (
 			<div className="container slim-container">
 				<form onSubmit={this.props.handleSubmit(this.handleSearch.bind(this))}>
-					<div className="field-wrapper full-width-field inline-form">
+					<div className="field-wrapper full-width-field inset-submit">
 						<Field
 							key="term"
 							component="input"
 							type="text"
 							label="Search for your Reccomendations"
+							placeholder="Search Venues"
 							name="term"
 							value={this.props.term ? this.props.term : null}
 							className="inline-field"
 						/>
 						<button className="button" type="submit">
-							<i className="material-icons">search</i>
+							Search
 						</button>
 					</div>
 				</form>

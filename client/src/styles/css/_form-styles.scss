@@ -8,8 +8,7 @@ $mdgray: gray;
 
 // 1. Variables
 
-$field-height: 32px;
-$button-height: 48px;
+$field-height: 40px;
 $form-field-gray: #a7b1b7;
 $button-background-primary: $accent-color1;
 
@@ -87,27 +86,22 @@ form {
 	color: $accent-color2;
 }
 
-.inline-form {
-	@extend %clearfix;
-
-	.inline-field {
-		width: calc(100% - 50px);
-		float: left;
-	}
+.inset-submit {
+	position: relative;
 
 	.button {
-		float: left;
-		display: inline-block;
-		height: 33px;
-		line-height: 16px;
-		-webkit-box-shadow: none;
-		box-shadow: none;
-		padding: 0;
-		background: $accent-color2;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		padding: 0.5em;
+		margin: -1.03em 0.55em 0 0;
+		background: $text-color;
 		color: #fff;
-		max-width: 40px;
-		transform: translateY(7.4px);
-		border-radius: 0;
+		border-radius: $border-radius;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.035em;
+		line-height: 1;
 
 		&:hover {
 			background: shade($accent-color2, 20%);
@@ -144,26 +138,22 @@ input[type='number'],
 input[type='date'],
 select,
 textarea {
+	font-size: 1rem;
+	display: block;
+	width: 100%;
+	padding: 0.5em 5.5em 0.5em 0.5em;
+	outline: none;
+	border: none;
 	height: $field-height;
-	padding: 0 8px 0 3px;
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-	border-bottom: 2px solid $bg-color-alt;
 	border-radius: 0;
-	background-color: $bg-color;
-	@include font-size(17px);
-	font-weight: 400;
-	transition: all 0.2s;
+	background-color: $bg-color-alt;
 	margin-top: 8px;
 	color: $text-color;
 
 	&:hover {
-		border-bottom: 2px solid $accent-color1;
 	}
 
 	&:focus {
-		border-bottom: 2px solid $accent-color1;
 		outline: 0;
 
 		+ label {
@@ -218,19 +208,19 @@ textarea {
 }
 
 ::-webkit-input-placeholder {
-	color: $accent-color1;
+	color: #fff;
 }
 
 :-moz-placeholder {
-	color: $accent-color1;
+	color: #fff;
 }
 
 ::-moz-placeholder {
-	color: $accent-color1;
+	color: #fff;
 }
 
 :-ms-input-placeholder {
-	color: $accent-color1;
+	color: #fff;
 }
 
 // Checkboxes

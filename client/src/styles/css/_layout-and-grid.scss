@@ -8,25 +8,59 @@
 
 // 1. Dimensions
 
-$container-width: 1080px;
-$container-width-slim: 800px;
+$container-width: 960px;
+$container-width-expanded: 1120px;
+$container-width-slim: 720px;
+$container-width-tablet: 640px;
 $col-padding: 20px;
-$section-tb-padding: 36px;
+
+$section-tb-padding: 60px;
 $section-rl-padding: 48px;
-$section-tb-padding-mobile: 16px;
+$section-tb-padding-mobile: 40px;
 $section-rl-padding-mobile: 24px;
+$col-initial-padding: 24px;
+$col-middle-padding: 12px;
+$max-width-desktop-lg: 1280px;
+$max-width-desktop: 1000px;
+$max-width-tablet: 680px;
+$container-width-slim: 1000px;
+$container-width-slimmer: 850px;
+$container-width-slimmest: 600px;
 
+$border-radius: 0.19753rem;
 // 2. General Structure/Layout
-
-html {
-	overflow-x: hidden;
-	box-sizing: border-box;
-}
 
 *,
 *::before,
 *:after {
 	box-sizing: inherit;
+}
+
+.cls-1 {
+	//fill: none;
+	//stroke: #333;
+	stroke-miterlimit: 10;
+	stroke-width: 5px;
+}
+
+html {
+	overflow-x: hidden;
+	box-sizing: border-box;
+	font-size: percentage(18/16);
+	//font-size: 112.5%;
+
+	@media screen and (min-width: 60em) {
+		font-size: 125%;
+	}
+}
+
+body {
+	line-height: 1.5;
+	-moz-font-feature-settings: 'liga' 1, 'lnum' 1;
+	-ms-font-feature-settings: 'liga' 1, 'lnum' 1;
+	-o-font-feature-settings: 'liga' 1, 'lnum' 1;
+	-webkit-font-feature-settings: 'liga' 1, 'lnum' 1;
+	font-feature-settings: 'liga' 1, 'lnum' 1;
 }
 
 body,
@@ -93,21 +127,70 @@ nav {
 section,
 div {
 	&.standard-padding {
-		padding: $section-tb-padding 24px;
+		padding: $section-tb-padding $section-rl-padding;
 
 		@include mobile {
-			padding: $section-tb-padding-mobile 0;
+			padding: $section-tb-padding-mobile $section-rl-padding-mobile;
 		}
 	}
 }
 
 .container {
+	@extend %clearfix;
 	width: 100%;
 	max-width: $container-width;
 	margin: 0 auto;
+	text-align: left;
+
+	@include landscape {
+		max-width: $max-width-desktop;
+	}
+
+	@include desktop-large {
+		max-width: $max-width-desktop-lg;
+	}
+
+	@include vertical {
+		max-width: $container-width;
+	}
+
+	@include mobile {
+		$container-width-tablet: 640px;
+	}
+
+	&.center-text {
+		text-align: center;
+	}
 
 	&.slim-container {
-		max-width: $container-width-slim;
+		@include landscape {
+			max-width: $container-width-slim;
+		}
+	}
+
+	&.slimmer-container {
+		@include landscape {
+			max-width: $container-width-slimmer;
+		}
+	}
+
+	&.slimmest-container {
+		@include landscape {
+			max-width: $container-width-slimmest;
+		}
+	}
+
+	&.full-width {
+		max-width: 100%;
+	}
+
+	&.no-max-width {
+		max-width: none;
+		padding: 5%;
+	}
+
+	&.no-pad-bottom {
+		padding-bottom: 0;
 	}
 }
 

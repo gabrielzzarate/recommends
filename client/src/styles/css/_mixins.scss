@@ -61,13 +61,13 @@
 }
 
 @mixin landscape {
-  @media all and (min-width: 901px) {
+  @media all and (min-width: 1214px) {
     @content;
   }
 }
 
 @mixin vertical {
-  @media all and (max-width: 900px) {
+  @media all and (max-width: 1215px) {
     @content;
   }
 }
