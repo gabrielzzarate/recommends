@@ -139,7 +139,7 @@ h5 {
   line-height: 1.15;
   margin: 0 0 1em 0;
   padding: 0 0 0.5em 5px;
-  border-bottom: 1px solid #88ac90; }
+  border-bottom: 1px solid #8da793; }
   @media all and (max-width: 560px) {
     h5 {
       font-size: 15px;
@@ -176,7 +176,7 @@ li {
         font-size: 1rem; } }
   p.alt,
   li.alt {
-    color: #88ac90;
+    color: #8da793;
     margin-bottom: 0; }
   p.caption,
   li.caption {
@@ -193,9 +193,11 @@ li {
 a {
   color: inherit;
   text-decoration: none;
-  background-image: linear-gradient(to top, #ffa3ba 0, #ffa3ba 0.13169rem, #eea37b 0.13169rem, #eea37b 100%);
+  background-image: linear-gradient(to top, #ea7c48 0, #ea7c48 0.13169rem, rgba(255, 124, 77, 0) 0.13169rem, rgba(255, 124, 77, 0) 100%);
   transition: 0.2s;
   outline: none; }
+  a:hover {
+    color: #ea7c48; }
 
 p a,
 span a,
@@ -534,6 +536,10 @@ div.standard-padding {
   width: 50%;
   padding-bottom: 20px;
   padding-top: 13px; }
+  .field-wrapper:nth-of-type(odd) {
+    padding-right: 5px; }
+  .field-wrapper:nth-of-type(even) {
+    padding-left: 5px; }
   @media all and (max-width: 767px) {
     .field-wrapper {
       width: 100%; } }
@@ -550,11 +556,14 @@ div.standard-padding {
   .field-wrapper.button-wrapper {
     padding: 10px 0 0 0; }
 
+.button-wrapper {
+  padding: 10px 0 0 0; }
+
 .form-section:not(:first-of-type) {
   padding-top: 10px; }
 
 .form-divider {
-  background: #ea7c48;
+  background: #8da793;
   margin: 15px 0 30px 0; }
 
 .form-sub {
@@ -586,7 +595,7 @@ div.standard-padding {
     letter-spacing: 0.035em;
     line-height: 1; }
     .inset-submit .button:hover {
-      background: #bb633a; }
+      background: #ea7c48; }
 
 input,
 label,
@@ -622,7 +631,7 @@ textarea {
   border: none;
   height: 40px;
   border-radius: 0;
-  background-color: #88ac90;
+  background-color: #8da793;
   margin-top: 8px;
   color: #645d77; }
   input[type='text']:focus,
@@ -694,9 +703,8 @@ textarea {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 29px 0 0 38px;
-  font-style: italic;
-  text-transform: none;
+  padding: 24px 0 0 38px;
+  text-align: left;
   cursor: pointer; }
   .checkbox-label:after {
     content: '';
@@ -800,22 +808,21 @@ button,
 .button,
 .input[type='submit'] {
   display: inline-block;
-  max-width: 88.8px;
-  width: 100%;
-  border-radius: 0.19753rem;
-  text-align: center;
-  background: #fff;
-  color: #ea7c48;
+  font-size: 1rem;
+  color: inherit;
   text-decoration: none;
-  padding: 0 16px;
-  font-size: 15px;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  text-align: center;
-  border: 0;
-  transition: all 0.2s;
+  background: linear-gradient(to top, #ea7c48 0, #ea7c48 0.13169rem, rgba(255, 124, 77, 0) 0.13169rem, rgba(255, 124, 77, 0) 100%);
+  transition: 0.2s;
+  outline: none;
   -webkit-appearance: none;
-  cursor: pointer; }
+  cursor: pointer;
+  border: 0;
+  padding: 3px 5px;
+  line-height: 1.4em; }
+  button:hover,
+  .button:hover,
+  .input[type='submit']:hover {
+    color: #ea7c48; }
   button:focus,
   .button:focus,
   .input[type='submit']:focus {
@@ -824,49 +831,6 @@ button,
   .button.full-width,
   .input[type='submit'].full-width {
     max-width: 100%; }
-  button.purple-btn,
-  .button.purple-btn,
-  .input[type='submit'].purple-btn {
-    background: #ea7c48;
-    color: #fff; }
-
-.action-button {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-  justify-content: center;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  font-family: "Ciutadella";
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-size: 0.875rem;
-  line-height: 2.25rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  text-transform: uppercase;
-  -webkit-tap-highlight-color: transparent;
-  will-change: transform, opacity;
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  min-width: 64px;
-  height: 36px;
-  padding: 0 16px;
-  border: none;
-  outline: none;
-  text-align: center;
-  -webkit-appearance: none;
-  overflow: hidden;
-  vertical-align: middle;
-  border-radius: 2px; }
-  .action-button:hover {
-    background: #a6c2e5; }
 
 a {
   text-decoration: none; }
@@ -944,7 +908,6 @@ a {
       padding: 16px 0 0 0; }
 
 .content-space {
-  text-align: center;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 0.19753rem;
@@ -955,6 +918,9 @@ a {
     padding: 0; }
   .content-space.hover-state:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+
+.landing {
+  height: 100%; }
 
 .entry-card-wrapper {
   display: grid;

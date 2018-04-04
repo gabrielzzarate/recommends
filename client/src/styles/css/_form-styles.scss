@@ -29,6 +29,14 @@ form {
 	padding-bottom: 20px;
 	padding-top: 13px;
 
+	&:nth-of-type(odd) {
+		padding-right: 5px;
+	}
+
+	&:nth-of-type(even) {
+		padding-left: 5px;
+	}
+
 	@include form-flip {
 		width: 100%;
 	}
@@ -59,6 +67,10 @@ form {
 	}
 }
 
+.button-wrapper {
+	padding: 10px 0 0 0;
+}
+
 .form-section {
 	@extend %clearfix;
 
@@ -68,7 +80,7 @@ form {
 }
 
 .form-divider {
-	background: $accent-color2;
+	background: $bg-color-alt;
 	margin: 15px 0 30px 0;
 }
 
@@ -104,7 +116,7 @@ form {
 		line-height: 1;
 
 		&:hover {
-			background: shade($accent-color2, 20%);
+			background: $accent-color2;
 		}
 	}
 }
@@ -230,9 +242,8 @@ textarea {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	padding: 29px 0 0 38px;
-	font-style: italic;
-	text-transform: none;
+	padding: 24px 0 0 38px;
+	text-align: left;
 	cursor: pointer;
 
 	&:after {

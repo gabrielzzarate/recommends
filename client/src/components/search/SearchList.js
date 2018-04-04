@@ -10,7 +10,6 @@ import {
 
 class SearchList extends Component {
 	renderResults() {
-		console.log('venues', this.props.venues);
 		return (
 			<div className="SearchList__wrapper">
 				{this.props.venues.map(data => {

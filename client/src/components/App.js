@@ -8,6 +8,8 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 //import EntryNew from './entries/EntryNew';
+import EntryEdit from './entries/EntryEdit';
+import ShareEntries from './share/ShareEntries';
 import SearchList from './search/SearchList';
 import Modal from './Modal';
 
@@ -28,6 +30,8 @@ class App extends Component {
 					<main>
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/dashboard" component={Dashboard} />
+						<Route exact path="/entry/:_id" component={EntryEdit} />
+						<Route exact path="/share" component={ShareEntries} />
 						<Route path="/results" component={SearchList} />
 						<Route path="/results/review" component={Modal} />
 						{/*<Route path="/dashboard" component={EntryNew} /> */}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchEntries } from '../../actions';
 import { findDistance } from '../../utils/findDistance';
 
@@ -49,7 +50,9 @@ class EntryList extends Component {
 						</div>
 						<div className="card-action-icons">
 							<i className="material-icons">share</i>
-							<i className="material-icons">mode edit</i>
+							<Link to={`/entry/${entry._id}`}>
+								<i className="material-icons">mode edit</i>
+							</Link>
 						</div>
 					</div>
 				</div>

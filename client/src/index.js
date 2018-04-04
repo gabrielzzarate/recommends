@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
-//import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
@@ -12,18 +12,21 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './components/App';
 
-// const persistConfig = {
-// 	key: 'root',
-// 	storage
-// };
+const persistConfig = {
+	key: 'root',
+	storage: storage,
+	whitelist: ['entries']
+};
 
-//const persistedReducer = persistReducer(persistConfig, reducers);
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
-//let persistor = persistStore(store);
+const persistedReducer = persistReducer(persistConfig, reducers);
+const store = createStore(persistedReducer, {}, applyMiddleware(reduxThunk));
+let persistor = persistStore(store);
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<PersistGate loading={null} persistor={persistor}>
+			<App />
+		</PersistGate>
 	</Provider>,
 	document.getElementById('root')
 );

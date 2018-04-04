@@ -266,13 +266,17 @@ a {
 	text-decoration: none;
 	background-image: linear-gradient(
 		to top,
-		#ffa3ba 0,
-		#ffa3ba 0.13169rem,
-		$accent-color1 0.13169rem,
-		$accent-color1 100%
+		$accent-color2 0,
+		$accent-color2 0.13169rem,
+		rgba(255, 124, 77, 0) 0.13169rem,
+		rgba(255, 124, 77, 0) 100%
 	);
 	transition: 0.2s;
 	outline: none;
+
+	&:hover {
+		color: $accent-color2;
+	}
 }
 
 p a,

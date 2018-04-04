@@ -15,7 +15,14 @@ module.exports = app => {
 	});
 
 	app.post('/api/entries', requireLogin, async (req, res) => {
-		const { name, id, location, categories, featuredPhotos, price } = req.body.venue;
+		const {
+			name,
+			id,
+			location,
+			categories,
+			featuredPhotos,
+			price
+		} = req.body.venue;
 		const { userRecommendation } = req.body.userInput;
 
 		const entry = new Entry({
@@ -53,11 +60,13 @@ module.exports = app => {
 				client_secret: keys.fourSquareClientSecret,
 				ll: `${lat}, ${lng}`,
 				query: term,
-				v: '20170801',
+				v: '20180328', // 20140715
 				limit: 10,
 				venuePhotos: 1
 			}
 		};
+
+		console.log('options', options);
 
 		const foursquareRequest = await request(options, (err, response, body) => {
 			let json = JSON.parse(body);
