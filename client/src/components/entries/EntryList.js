@@ -20,7 +20,7 @@ class EntryList extends Component {
 				<div className="entry-card" key={entry._id}>
 					{entry.photo ? (
 						<img
-							src={entry.photo.prefix + 350 + entry.photo.suffix}
+							src={entry.photo.prefix + 440 + entry.photo.suffix}
 							alt={entry.name}
 						/>
 					) : null}
@@ -28,10 +28,10 @@ class EntryList extends Component {
 						<h2>{entry.name}</h2>
 						<h3>{entry.category}</h3>
 					</div>
-					<div className="card-secondary">{entry.userRecommendation}</div>
-					<div className="card-actions">
+					<p className="card-secondary italic">{entry.userRecommendation}</p>
+					<div className="card-actions bottom-xs">
 						<div className="card-action-buttons">
-							<span>{str.repeat(entry.price)} </span>
+							<span className="entry-price">{str.repeat(entry.price)} </span>
 							<a
 								href={`https://www.google.com/maps/search/?api=1&query=${convertEntryName(
 									entry.name
@@ -49,9 +49,11 @@ class EntryList extends Component {
 							</a>
 						</div>
 						<div className="card-action-icons">
-							<i className="material-icons">share</i>
-							<Link to={`/entry/${entry._id}`}>
-								<i className="material-icons">mode edit</i>
+							<Link className="action-icons" to="/share/">
+								<i className="material-icons">share</i>
+							</Link>
+							<Link className="action-icons" to={`/entry/${entry._id}`}>
+								<i className="material-icons">edit</i>
 							</Link>
 						</div>
 					</div>
@@ -61,7 +63,7 @@ class EntryList extends Component {
 	}
 
 	render() {
-		console.log('entry list props:', this.props);
+		console.log('entry props', this.props);
 		return <div className="entry-card-wrapper">{this.renderEntries()}</div>;
 	}
 }

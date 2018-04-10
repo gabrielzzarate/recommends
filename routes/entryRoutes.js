@@ -32,7 +32,8 @@ module.exports = app => {
 			address: location.address,
 			lat: location.lat,
 			lng: location.lng,
-			price: price.tier,
+			price: price ? price.tier : 1,
+			checked: false,
 			category: categories[0].shortName,
 			userRecommendation: userRecommendation,
 			_user: req.user.id
@@ -65,8 +66,6 @@ module.exports = app => {
 				venuePhotos: 1
 			}
 		};
-
-		console.log('options', options);
 
 		const foursquareRequest = await request(options, (err, response, body) => {
 			let json = JSON.parse(body);

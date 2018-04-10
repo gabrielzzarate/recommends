@@ -17,3 +17,19 @@
 		}
 	}
 }
+
+// entries share review
+
+.entries-review {
+	background: $bg-color;
+	color: $bg-color-alt;
+	margin-bottom: 15px;
+
+	.entry-review {
+		padding: 12px;
+
+		h4 {
+			margin: 0;
+		}
+	}
+}

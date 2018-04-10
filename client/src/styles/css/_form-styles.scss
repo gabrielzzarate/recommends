@@ -2,10 +2,6 @@
 // Project Form Styles
 // ////////////////////////////////////
 
-$red: red;
-$offwhite: #fafafa;
-$mdgray: gray;
-
 // 1. Variables
 
 $field-height: 40px;
@@ -26,15 +22,31 @@ form {
 	position: relative;
 	float: left;
 	width: 50%;
-	padding-bottom: 20px;
+	padding-bottom: 24px;
 	padding-top: 13px;
 
 	&:nth-of-type(odd) {
 		padding-right: 5px;
+
+		@include form-flip {
+			padding-right: 0;
+		}
 	}
 
 	&:nth-of-type(even) {
 		padding-left: 5px;
+
+		label {
+			padding-left: 7px;
+		}
+
+		@include form-flip {
+			padding-left: 0;
+
+			label {
+				padding-left: 2px;
+			}
+		}
 	}
 
 	@include form-flip {
@@ -60,6 +72,14 @@ form {
 	&.full-width-field,
 	&.button-wrapper {
 		width: 100%;
+		padding-left: 5px;
+		padding-right: 0;
+
+		@include form-flip {
+			label {
+				padding-left: 2px;
+			}
+		}
 	}
 
 	&.button-wrapper {
@@ -116,7 +136,8 @@ form {
 		line-height: 1;
 
 		&:hover {
-			background: $accent-color2;
+			background: $accent-color1;
+			color: #fff;
 		}
 	}
 }
@@ -254,11 +275,9 @@ textarea {
 		left: 10px;
 		width: 20px;
 		height: 20px;
-		border: 1px solid $accent-color2;
-		background-color: $accent-color2;
-		//background-image: url('../images/icon-checkmark.svg');
-		background-repeat: no-repeat;
-		background-position: center center;
+		border: 1px solid $ltgray;
+		background-color: $offwhite;
+		background-image: none;
 		box-shadow: inset 0 1px 0 rgba(35, 40, 43, 0);
 		z-index: 1;
 		border-radius: 50%;
@@ -279,6 +298,11 @@ input[type='radio']:checked + .checkbox-label:after {
 	border: 1px solid $ltgray;
 	background-color: $offwhite;
 	background-image: none;
+	border: 1px solid $accent-color2;
+	background-color: $accent-color2;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url('./styles/images/icon-checkmark.svg');
 	box-shadow: inset 0 1px 0 rgba(35, 40, 43, 0.15);
 }
 
@@ -302,21 +326,19 @@ input[type='radio']:checked + .checkbox-label:after {
 	display: inline-block;
 	position: absolute;
 	left: 0px;
-	bottom: 15px;
+	bottom: 0;
 	padding-left: 5px;
 	@include font-size(10px);
 	font-style: italic;
 	font-weight: 500;
-	color: $red;
+	color: $accent-color2;
 	transform: translate(0, -10px);
-	z-index: -1;
-	opacity: 0;
 	transition: all 0.3s ease-out;
 }
 
 .field-wrapper.error {
 	height: auto;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 
 	.error-message {
 		transform: translate(0, 0);
@@ -326,10 +348,10 @@ input[type='radio']:checked + .checkbox-label:after {
 	}
 
 	label {
-		color: $red;
+		color: $accent-color2;
 
 		&:after {
-			color: $red;
+			color: $accent-color2;
 		}
 	}
 
@@ -340,27 +362,27 @@ input[type='radio']:checked + .checkbox-label:after {
 	input[type='date'],
 	input[type='url'],
 	textarea {
-		border-bottom: 2px solid $red;
+		border-bottom: 2px solid $accent-color2;
 
 		&:hover,
 		&:focus {
-			border-bottom: 2px solid $red;
+			border-bottom: 2px solid $accent-color2;
 		}
 
 		&:focus {
 			+ label {
-				color: $red;
+				color: $accent-color2;
 			}
 		}
 	}
 
 	select {
-		border-bottom: 2px solid $red;
+		border-bottom: 2px solid $accent-color2;
 		//background-image: url('../images/icon-dropdown_error.svg');
 
 		&:hover,
 		&:focus {
-			border: 1px solid $red;
+			border: 1px solid $accent-color2;
 		}
 	}
 }

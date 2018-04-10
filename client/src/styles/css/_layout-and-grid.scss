@@ -17,7 +17,7 @@ $col-padding: 20px;
 $section-tb-padding: 60px;
 $section-rl-padding: 48px;
 $section-tb-padding-mobile: 40px;
-$section-rl-padding-mobile: 24px;
+$section-rl-padding-mobile: 16px;
 $col-initial-padding: 24px;
 $col-middle-padding: 12px;
 $max-width-desktop-lg: 1280px;
@@ -343,4 +343,8 @@ div {
 	-webkit-box-align: end;
 	-ms-flex-align: end;
 	align-items: flex-end;
+}
+
+.pull-right {
+	float: right;
 }

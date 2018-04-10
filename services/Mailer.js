@@ -7,7 +7,7 @@ class Mailer extends helper.Mail {
 		super();
 
 		this.sgApi = sendgrid(keys.sendGridKey);
-		this.from_email = new helper.Email('no-reply@emaily.com');
+		this.from_email = new helper.Email('no-reply@recommends.com');
 		this.subject = subject;
 		this.body = new helper.Content('text/html', content);
 		this.recipients = this.formatAddresses(recipients);
@@ -18,12 +18,12 @@ class Mailer extends helper.Mail {
 	}
 
 	formatAddresses(recipients) {
-		return recipients.map( ({ email }) => {
+		return recipients.map(({ email }) => {
 			return new helper.Email(email);
 		});
 	}
 
-	addClickTracking(){
+	addClickTracking() {
 		const trackingSettings = new helper.TrackingSettings();
 		const clickTracking = new helper.ClickTracking(true, true);
 

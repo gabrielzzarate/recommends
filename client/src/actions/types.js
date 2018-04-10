@@ -4,3 +4,4 @@ export const FETCH_ENTRIES = 'fetch_entries';
 export const SEARCH_VENUES = 'search_venues';
 export const UPDATE_TERM = 'update_term';
 export const REVIEW_VENUE = 'review_venue';
+export const CHECKED_ENTRY = 'checked_entry';

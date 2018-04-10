@@ -5,7 +5,8 @@ import {
 	SEARCH_VENUES,
 	UPDATE_TERM,
 	REVIEW_VENUE,
-	FIND_USER
+	FIND_USER,
+	CHECKED_ENTRY
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -14,12 +15,37 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const findUserLocation = () => dispatch => {
-	navigator.geolocation.getCurrentPosition(function(position) {
+	console.log('getting position');
+
+	var options = {
+		enableHighAccuracy: false,
+		maximumAge: Infinity,
+		timeout: 60000
+	};
+
+	function error(err) {
+		console.warn(`ERROR(${err.code}): ${err.message}`);
+	}
+
+	navigator.geolocation.getCurrentPosition(success, error, options);
+
+	function success(pos) {
+		var crd = pos.coords;
+
+		console.log('Your current position is:');
+		console.log(`Latitude : ${crd.latitude}`);
+		console.log(`Longitude: ${crd.longitude}`);
+		console.log(`More or less ${crd.accuracy} meters.`);
 		dispatch({
 			type: FIND_USER,
-			payload: { lat: position.coords.latitude, lng: position.coords.longitude }
+			payload: { lat: crd.latitude, lng: crd.longitude }
 		});
-	});
+	}
+	//console.log('position', position);
+	// dispatch({
+	// 	type: FIND_USER,
+	// 	payload: { lat: position.coords.latitude, lng: position.coords.longitude }
+	// });
 };
 
 export const fetchEntries = () => async dispatch => {
@@ -44,8 +70,20 @@ export const submitVenue = (userInput, history, venue) => async dispatch => {
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
+export const submitShare = (values, entries, history) => async dispatch => {
+	const res = await axios.post('/api/share', { values, entries });
+
+	history.push('/dashboard');
+	dispatch({ type: FETCH_USER, payload: res.data });
+};
+
 export const updateSearchTerm = term => dispatch => {
 	dispatch({ type: UPDATE_TERM, payload: term });
+};
+
+export const checkEntry = entry => dispatch => {
+	entry.checked = true;
+	dispatch({ type: CHECKED_ENTRY, payload: entry });
 };
 
 // export const submitEntry = (values, history) => async dispatch => {

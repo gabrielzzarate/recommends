@@ -1,34 +1,98 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import ShareField from './ShareField';
+import validateEmails from '../../utils/validateEmails';
+import formFields from './formFields';
 
 class ShareListForm extends Component {
-	render() {
-		console.log('share props', this.props);
-		renderFields {
-			this.props.entries.map(entries => {
-				return (
-					<form>
-						<div className="field-wrapper">
-							<Field 
+	renderShareList() {
+		switch (this.props.entries) {
+			case null:
+				return;
+			default:
+				return this.props.entries.map(entry => {
+					return (
+						<div className="field-wrapper checkbox" key={entry._id}>
+							<Field
 								key={entry._id}
 								component="input"
 								type="checkbox"
-								label={entry.name}
-								name={entry.name}
+								name={entry._id}
+								id={entry.venueId}
+								entry={entry}
 							/>
+							<label htmlFor={entry.venueId} className="checkbox-label">
+								{entry.name}
+							</label>
 						</div>
-					</form>
-
-				);
-			}
+					);
+				});
 		}
+	}
+	renderShareFields() {
+		return _.map(formFields, ({ label, name }) => {
+			return (
+				<Field
+					key={name}
+					component={ShareField}
+					type="text"
+					label={label}
+					name={name}
+				/>
+			);
+		});
+	}
+	render() {
 		return (
-			<form>
-				{this.renderFields()}
-			</form>
+			<div className="standard-padding share-entries">
+				<div className="container">
+					<div className="content-space">
+						<h2>Share Entries</h2>
+						<form
+							onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}
+							className="form-wrapper"
+						>
+							<div className="form-section">{this.renderShareList()}</div>
+							<hr className="form-divider" />
+							<div className="form-section">{this.renderShareFields()}</div>
+							<div className="button-wrapper">
+								<button className="pull-right" type="submit">
+									Next
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }
 
-export default ShareListForm;
+function validate(values) {
+	const errors = {};
+
+	errors.recipients = validateEmails(values.recipients || '');
+
+	_.each(formFields, ({ name, label }) => {
+		if (!values[name]) {
+			errors[name] = `You must provide a ${label}`;
+		}
+	});
+
+	return errors;
+}
+
+function mapStateToProps({ entries }) {
+	return {
+		entries
+	};
+}
+
+export default connect(mapStateToProps)(
+	reduxForm({ validate, destroyOnUnmount: false, form: 'shareForm' })(
+		withRouter(ShareListForm)
+	)
+);

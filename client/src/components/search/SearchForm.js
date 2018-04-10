@@ -11,6 +11,7 @@ class SearchForm extends Component {
 		this.props.updateSearchTerm(values.term);
 	}
 	render() {
+		console.log('searchProps', this.props);
 		return (
 			<div className="container slim-container">
 				<form onSubmit={this.props.handleSubmit(this.handleSearch.bind(this))}>

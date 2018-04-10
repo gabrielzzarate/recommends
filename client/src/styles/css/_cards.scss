@@ -2,17 +2,21 @@
 
 .entry-card-wrapper {
 	display: grid;
-	grid-template-columns: 350px 350px 350px;
+	grid-template-columns: 440px 440px;
 	grid-gap: 15px;
 
 	@include vertical {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@include tablet-small {
 		grid-template-columns: 1fr;
 		grid-gap: 0;
 	}
 }
 
 .entry-card {
-	max-width: 400px;
+	width: 100%;
 	background: $text-color-inverse;
 	box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
 		0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -25,6 +29,7 @@
 	}
 
 	img {
+		width: 100%;
 		border-top-left-radius: $border-radius;
 		border-top-right-radius: $border-radius;
 	}
@@ -38,13 +43,13 @@
 		}
 
 		h3 {
-			color: $gray;
+			color: $accent-color1;
 		}
 	}
 
 	.card-secondary {
 		padding: 0 1rem 8px 1rem;
-		color: $gray;
+		color: $text-color;
 	}
 
 	.card-actions {
@@ -53,13 +58,17 @@
 		align-items: center;
 		box-sizing: border-box;
 		min-height: 52px;
-		padding: 8px;
+		padding: 12px 19px;
 
 		.card-action-buttons {
-			span {
+			.entry-price {
 				display: inline-block;
-				padding: 0 16px;
-				margin-right: 8px;
+				color: #fff;
+				padding: 2px 12px;
+				margin-right: 12px;
+				@include font-size(14px);
+				border-radius: $border-radius;
+				@include background-opacity($text-color, 20%);
 			}
 		}
 
@@ -74,9 +83,12 @@
 			justify-content: flex-end;
 			color: $gray;
 
-			i {
-				///margin: -6px 0;
+			.action-icons {
 				padding: 0 6px;
+
+				&:first-of-type {
+					margin-right: 8px;
+				}
 			}
 		}
 	}

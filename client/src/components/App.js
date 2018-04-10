@@ -7,7 +7,6 @@ import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
-//import EntryNew from './entries/EntryNew';
 import EntryEdit from './entries/EntryEdit';
 import ShareEntries from './share/ShareEntries';
 import SearchList from './search/SearchList';
@@ -16,11 +15,12 @@ import Modal from './Modal';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.props.findUserLocation();
+		//this.props.findUserLocation();
 	}
 
 	componentDidMount() {
 		this.props.fetchUser();
+		this.props.findUserLocation();
 	}
 	render() {
 		return (

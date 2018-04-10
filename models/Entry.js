@@ -12,6 +12,7 @@ const entrySchema = new Schema({
 	lng: Number,
 	price: Number,
 	category: String,
+	checked: Boolean,
 	_user: { type: Schema.Types.ObjectId, ref: 'User' },
 	dateCreated: Date
 });
