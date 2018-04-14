@@ -8,12 +8,36 @@ import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
 
 class ShareListForm extends Component {
+	state = { checked: true };
+	toggle(state) {
+		let checked = !state.checked;
+		this.setState({ checked });
+	}
 	renderShareList() {
 		switch (this.props.entries) {
 			case null:
 				return;
 			default:
-				return this.props.entries.map(entry => {
+				return this.props.entries.map((entry, index) => {
+					if (entry.checked) {
+						return (
+							<div className="field-wrapper checkbox" key={entry._id}>
+								<Field
+									key={entry._id}
+									component="input"
+									type="checkbox"
+									name={entry._id}
+									id={entry.venueId}
+									entry={entry}
+									checked={this.state.checked}
+									onClick={() => this.toggle(this.state)}
+								/>
+								<label htmlFor={entry.venueId} className="checkbox-label">
+									{entry.name}
+								</label>
+							</div>
+						);
+					}
 					return (
 						<div className="field-wrapper checkbox" key={entry._id}>
 							<Field
@@ -33,15 +57,9 @@ class ShareListForm extends Component {
 		}
 	}
 	renderShareFields() {
-		return _.map(formFields, ({ label, name }) => {
+		return _.map(formFields, ({ label, name, type }) => {
 			return (
-				<Field
-					key={name}
-					component={ShareField}
-					type="text"
-					label={label}
-					name={name}
-				/>
+				<Field key={name} component={ShareField} label={label} name={name} />
 			);
 		});
 	}
@@ -59,7 +77,11 @@ class ShareListForm extends Component {
 							<hr className="form-divider" />
 							<div className="form-section">{this.renderShareFields()}</div>
 							<div className="button-wrapper">
-								<button className="pull-right" type="submit">
+								<button
+									disabled={this.props.pristine || this.props.submitting}
+									className="pull-right"
+									type="submit"
+								>
 									Next
 								</button>
 							</div>

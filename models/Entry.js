@@ -6,6 +6,9 @@ const entrySchema = new Schema({
 	name: String,
 	venueId: String,
 	address: String,
+	city: String,
+	state: String,
+	country: String,
 	userRecommendation: String,
 	photo: Object,
 	lat: Number,
@@ -14,7 +17,7 @@ const entrySchema = new Schema({
 	category: String,
 	checked: Boolean,
 	_user: { type: Schema.Types.ObjectId, ref: 'User' },
-	dateCreated: Date
+	dateAdded: Date
 });
 
 mongoose.model('entries', entrySchema);

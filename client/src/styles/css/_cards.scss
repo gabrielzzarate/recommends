@@ -2,16 +2,12 @@
 
 .entry-card-wrapper {
 	display: grid;
-	grid-template-columns: 440px 440px;
+	grid-template-columns: 1fr 1fr;
 	grid-gap: 15px;
-
-	@include vertical {
-		grid-template-columns: 1fr 1fr;
-	}
 
 	@include tablet-small {
 		grid-template-columns: 1fr;
-		grid-gap: 0;
+		grid-gap: 15px 0;
 	}
 }
 
@@ -55,7 +51,8 @@
 	.card-actions {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		align-items: flex-end;
+		flex-grow: 1;
 		box-sizing: border-box;
 		min-height: 52px;
 		padding: 12px 19px;
@@ -126,8 +123,12 @@
 		a {
 			display: block;
 			position: absolute;
-			top: calc(50% - 48px / 2);
+			top: calc(50% - 38px / 2);
 			right: -10px;
+		}
+
+		i {
+			font-size: 27px;
 		}
 	}
 }
@@ -147,7 +148,8 @@
 
 .search-card-heading-secondary {
 	-webkit-font-smoothing: antialiased;
-	font-size: 0.875rem;
+	font-size: 0.8rem;
+	color: $text-color;
 	line-height: 1.25rem;
 	font-weight: 400;
 	letter-spacing: 0.04em;

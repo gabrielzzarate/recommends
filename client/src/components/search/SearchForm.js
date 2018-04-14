@@ -6,12 +6,11 @@ import { connect } from 'react-redux';
 class SearchForm extends Component {
 	handleSearch(values) {
 		const { lat, lng } = this.props.userLocation;
-		this.props.searchEntries(values, lat, lng, this.props.history);
+		this.props.requestVenues(values, lat, lng, this.props.history);
 
 		this.props.updateSearchTerm(values.term);
 	}
 	render() {
-		console.log('searchProps', this.props);
 		return (
 			<div className="container slim-container">
 				<form onSubmit={this.props.handleSubmit(this.handleSearch.bind(this))}>

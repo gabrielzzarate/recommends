@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchEntries } from '../../actions';
+import { fetchEntries, checkEntry } from '../../actions';
 import { findDistance } from '../../utils/findDistance';
 
 class EntryList extends Component {
@@ -10,7 +10,7 @@ class EntryList extends Component {
 	}
 
 	renderEntries() {
-		return this.props.entries.reverse().map(entry => {
+		return this.props.entries.reverse().map((entry, index) => {
 			const str = '$';
 			const convertEntryName = name => {
 				let words = name.toLowerCase().split(' ');
@@ -26,7 +26,11 @@ class EntryList extends Component {
 					) : null}
 					<div className="card-primary">
 						<h2>{entry.name}</h2>
-						<h3>{entry.category}</h3>
+						<h3>
+							{entry.category}{' '}
+							<span className="vertical-pipe text-color">|</span>
+							<span className="text-color pad-left-sm">{entry.city}</span>
+						</h3>
 					</div>
 					<p className="card-secondary italic">{entry.userRecommendation}</p>
 					<div className="card-actions bottom-xs">
@@ -49,7 +53,11 @@ class EntryList extends Component {
 							</a>
 						</div>
 						<div className="card-action-icons">
-							<Link className="action-icons" to="/share/">
+							<Link
+								className="action-icons"
+								to="/share/"
+								onClick={() => this.props.checkEntry(entry, index)}
+							>
 								<i className="material-icons">share</i>
 							</Link>
 							<Link className="action-icons" to={`/entry/${entry._id}`}>
@@ -72,4 +80,6 @@ function mapStateToProps({ userLocation }) {
 	return { userLocation };
 }
 
-export default connect(mapStateToProps, { fetchEntries })(EntryList);
+export default connect(mapStateToProps, { fetchEntries, checkEntry })(
+	EntryList
+);

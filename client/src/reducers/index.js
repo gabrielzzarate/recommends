@@ -3,15 +3,17 @@ import { reducer as reduxForm } from 'redux-form';
 import authReducer from './authReducer';
 import userLocationReducer from './userLocationReducer';
 import entriesReducer from './entriesReducer';
-import venuesReducer from './venuesReducer';
 import venueReviewReducer from './venueReviewReducer';
+import { venuesHasErrored, venuesIsLoading, venues } from './venuesReducer';
 import searchReducer from './searchReducer';
 
 export default combineReducers({
 	auth: authReducer,
 	form: reduxForm,
 	entries: entriesReducer,
-	venues: venuesReducer,
+	venuesHasErrored: venuesHasErrored,
+	venuesIsLoading: venuesIsLoading,
+	venues: venues,
 	venueReview: venueReviewReducer,
 	term: searchReducer,
 	userLocation: userLocationReducer

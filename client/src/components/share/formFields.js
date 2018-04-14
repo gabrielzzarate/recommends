@@ -1,10 +1,26 @@
 export default [
-	{ label: 'Share Title', name: 'title', initialValue: 'Lorem ipsum' },
-	{ label: 'Subject Line', name: 'subject', initialValue: 'Lorem ipsum' },
-	{ label: 'Email Body', name: 'body', initialValue: 'Lorem ipsum' },
 	{
-		label: 'Comma-Separated Recipient List',
+		label: 'Recipient Email Addresses',
 		name: 'recipients',
-		initialValue: 'Lorem ipsum'
+		type: 'text',
+		initialValue: 'Lorem ipsum',
+		component: 'ShareListForm',
+		placeholder: 'Comma-Separated Addresses'
+	},
+	{
+		label: 'Subject Line',
+		name: 'subject',
+		type: 'text',
+		component: 'ShareListForm',
+		initialValue: 'Lorem ipsum',
+		placeholder: 'Email Subject Line'
+	},
+	{
+		label: 'Email Body',
+		name: 'body',
+		type: 'textarea',
+		component: 'ShareListTextArea',
+		initialValue: 'Lorem ipsum',
+		placeholder: 'Email body'
 	}
 ];

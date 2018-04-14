@@ -5,7 +5,7 @@
 	.dashboard-user-greeting {
 		position: absolute;
 		top: 10px;
-		right: 25px;
+		right: 48px;
 		font-weight: 600;
 		font-family: $heading-font;
 
@@ -35,4 +35,13 @@
 			}
 		}
 	}
+}
+
+.back-link {
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+.edit-entry-details {
+	padding-bottom: 20px;
 }

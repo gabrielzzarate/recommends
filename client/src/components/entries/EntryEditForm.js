@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 class EntryEditForm extends Component {
-	entrySave(values, history) {
-		this.props.submitVenue(
-			values,
-			this.props.history,
-			this.props.initialValues
-		);
+	updateEntry(id, values, history) {
+		this.props.updateEntry(id, values.userRecommendation, this.props.history);
 	}
 
 	render() {
@@ -20,20 +16,23 @@ class EntryEditForm extends Component {
 		return (
 			<form
 				onSubmit={this.props.handleSubmit(values =>
-					this.entrySave(values, this.props.history)
+					this.updateEntry(initialValues._id, values, this.props.history)
 				)}
 			>
-				<div className="field-wrapper">
+				<div className="field-wrapper full-width-field">
 					<Field
 						name="userRecommendation"
 						component="textarea"
 						type="text"
 						placeholder="Reccommendation Description"
 					/>
-					<label>Update Description</label>
+					<label>Update Reccommendation</label>
 				</div>
 				<div className="field-wrapper button-wrapper">
-					<button type="submit">Save Changes</button>
+					<a onClick={this.props.onShowDialog}>Delete Entry</a>
+					<button className="pull-right" type="submit">
+						Save Changes
+					</button>
 				</div>
 			</form>
 		);

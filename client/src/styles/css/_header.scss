@@ -50,6 +50,12 @@ $header-height: 85px;
 	}
 
 	.header-inner {
+		&.blank {
+			height: 100%;
+			width: 100%;
+			background: $bg-color;
+			margin: 0;
+		}
 		@include mobile {
 			height: 56.6px;
 		}
@@ -121,53 +127,6 @@ $header-height: 85px;
 		}
 	}
 
-	.logo {
-		background: $text-color;
-		width: 83px;
-		height: 83px;
-		border-radius: 50%;
-		transition: all 0.2s;
-		display: flex;
-		align-items: center;
-
-		@include vertical {
-			width: 67.5px;
-			height: 67.5px;
-		}
-
-		@include mobile {
-			width: 40.5px;
-			height: 40.5px;
-		}
-
-		svg {
-			display: block;
-			margin: 0 auto;
-			width: 100%;
-			max-width: 35px;
-			stroke: $bg-color;
-			fill: $text-color;
-			stroke-miterlimit: 10;
-			stroke-width: 5px;
-
-			@include vertical {
-				max-width: 28px;
-			}
-
-			@include mobile {
-				max-width: 15px;
-			}
-		}
-
-		&:hover {
-			background: $accent-color2;
-
-			svg {
-				fill: $accent-color2;
-			}
-		}
-	}
-
 	.navigation-item {
 		display: inline-block;
 		transition: all 0.25s;
@@ -191,6 +150,55 @@ $header-height: 85px;
 
 		@include vertical {
 			margin: 1.4em 0 0 1em;
+		}
+	}
+}
+
+.logo {
+	background: $text-color;
+	width: 83px;
+	height: 83px;
+	border-radius: 50%;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+
+	@include vertical {
+		width: 67.5px;
+		height: 67.5px;
+	}
+
+	@include mobile {
+		width: 40.5px;
+		height: 40.5px;
+	}
+
+	svg {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 35px;
+		stroke: $bg-color;
+		fill: $text-color;
+		stroke-miterlimit: 10;
+		stroke-width: 5px;
+
+		@include vertical {
+			max-width: 28px;
+		}
+
+		@include mobile {
+			max-width: 15px;
+		}
+	}
+
+	&.hover-state {
+		&:hover {
+			background: $accent-color2;
+
+			svg {
+				fill: $accent-color2;
+			}
 		}
 	}
 }

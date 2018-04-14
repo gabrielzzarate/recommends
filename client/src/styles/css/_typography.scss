@@ -206,6 +206,7 @@ li {
 a {
 	color: inherit;
 	text-decoration: none;
+	cursor: pointer;
 	background-image: linear-gradient(
 		to top,
 		$accent-color2 0,
@@ -280,8 +281,8 @@ hr {
 	height: 2px;
 	border: 0;
 	outline: 0;
-	margin: 30px auto;
-	background: $accent-color1;
+	margin: 5px auto 20px auto;
+	background: $bg-color-alt;
 
 	@include mobile {
 		margin: 24px auto;
@@ -363,3 +364,22 @@ br.mobile-break {
 .mdblue-bg {
 	background: $accent-color1;
 }
+
+.vertical-pipe {
+	&.action {
+		color: $accent-color2;
+	}
+}
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.text-color {
+	color: $text-color;
+}
+

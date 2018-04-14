@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EntryList from './entries/EntryList';
 import SearchForm from './search/SearchForm';
-import { searchEntries, updateSearchTerm, findUserLocation } from '../actions';
+import { requestVenues, updateSearchTerm, findUserLocation } from '../actions';
 
 var options = {
 	enableHighAccuracy: false,
@@ -82,17 +82,18 @@ class Dashboard extends Component {
 				<div className="container">
 					<div className="content-space">
 						<h2>My Recommends</h2>
-						<p className="alt">Enter a search term to add Recommendations</p>
+						<p className="alt">
+							Enter a search term to find your favorite restaurants
+						</p>
 						<SearchForm
-							searchEntries={this.props.searchEntries}
+							requestVenues={this.props.requestVenues}
 							updateSearchTerm={this.props.updateSearchTerm}
 						/>
 					</div>
 
 					{this.renderEntries()}
+					<div className="dashboard-user-greeting">{this.renderUser()}</div>
 				</div>
-
-				<div className="dashboard-user-greeting">{this.renderUser()}</div>
 			</section>
 		);
 	}
@@ -103,7 +104,7 @@ function mapStateToProps({ auth, entries, venues }) {
 }
 
 export default connect(mapStateToProps, {
-	searchEntries,
+	requestVenues,
 	updateSearchTerm,
 	findUserLocation
 })(Dashboard);

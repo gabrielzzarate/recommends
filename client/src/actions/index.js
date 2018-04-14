@@ -2,11 +2,16 @@ import axios from 'axios';
 import {
 	FETCH_USER,
 	FETCH_ENTRIES,
-	SEARCH_VENUES,
+	UPDATE_ENTRY,
+	DELETE_ENTRY,
+	REQUEST_VENUES,
+	VENUES_HAS_ERRORED,
+	VENUES_IS_LOADING,
+	VENUES_FETCH_DATA_SUCCESS,
 	UPDATE_TERM,
 	REVIEW_VENUE,
 	FIND_USER,
-	CHECKED_ENTRY
+	CHECK_ENTRY
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -15,8 +20,6 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const findUserLocation = () => dispatch => {
-	console.log('getting position');
-
 	var options = {
 		enableHighAccuracy: false,
 		maximumAge: Infinity,
@@ -31,11 +34,6 @@ export const findUserLocation = () => dispatch => {
 
 	function success(pos) {
 		var crd = pos.coords;
-
-		console.log('Your current position is:');
-		console.log(`Latitude : ${crd.latitude}`);
-		console.log(`Longitude: ${crd.longitude}`);
-		console.log(`More or less ${crd.accuracy} meters.`);
 		dispatch({
 			type: FIND_USER,
 			payload: { lat: crd.latitude, lng: crd.longitude }
@@ -53,10 +51,100 @@ export const fetchEntries = () => async dispatch => {
 	dispatch({ type: FETCH_ENTRIES, payload: res.data });
 };
 
-export const searchEntries = (values, lat, lng, history) => async dispatch => {
-	const res = await axios.post('/api/search', { values, lat, lng });
-	history.push('/results');
-	dispatch({ type: SEARCH_VENUES, payload: res.data });
+// export const searchEntries = (values, lat, lng, history) => async dispatch => {
+// 	const res = await axios.post('/api/search', { values, lat, lng });
+// 	history.push('/results');
+// 	dispatch({ type: REQUEST_VENUES, payload: res.data });
+// };
+
+// export const requestVenues = (values, lat, lng, history) => async dispatch => {
+// 	console.log('requesting....');
+// 	dispatch(venuesIsLoading(true));
+
+// 	try {
+// 		const res = await axios.post('/api/search', { values, lat, lng });
+
+// 		dispatch(venuesFetchDataSuccess(res));
+// 		history.push('/results');
+// 	} catch (err) {
+// 		dispatch(venuesIsLoading(false));
+// 		dispatch(venuesHasErrored(true));
+// 	}
+// };
+
+export function requestVenues(values, lat, lng, history) {
+	return dispatch => {
+		dispatch(venuesIsLoading(true));
+
+		new Promise((resolve, reject) => {
+			axios
+				.post('/api/search', { values, lat, lng })
+				.catch(error => {
+					reject(error);
+					console.log('error');
+
+					dispatch(venuesIsLoading(false));
+
+					return error;
+				})
+				.then(response => {
+					dispatch(venuesFetchDataSuccess(response));
+					history.push('/results');
+				})
+				.catch(() => dispatch(venuesHasErrored(true)));
+		});
+	};
+}
+
+export function venuesHasErrored(bool) {
+	return {
+		type: VENUES_HAS_ERRORED,
+		hasErrored: bool
+	};
+}
+
+export function venuesIsLoading(bool) {
+	return {
+		type: VENUES_IS_LOADING,
+		isLoading: bool
+	};
+}
+
+export function venuesFetchDataSuccess(venues) {
+	console.log('suc', venues);
+	return {
+		type: VENUES_FETCH_DATA_SUCCESS,
+		venues: venues.data.response
+	};
+}
+
+export function errorAfterFiveSeconds() {
+	// We return a function instead of an action object
+	return dispatch => {
+		setTimeout(() => {
+			// This function is able to dispatch other action creators
+			dispatch(venuesHasErrored(true));
+		}, 5000);
+	};
+}
+
+export const updateEntry = (
+	id,
+	userRecommendation,
+	history
+) => async dispatch => {
+	const res = await axios.post('/api/entries/update', {
+		id,
+		userRecommendation
+	});
+	history.push('/dashboard');
+	dispatch({ type: UPDATE_ENTRY, payload: res.data });
+};
+
+export const deleteEntry = (id, history) => async dispatch => {
+	const res = await axios.post('/api/entries/delete', { id });
+	history.push('/dashboard');
+	dispatch({ type: DELETE_ENTRY, payload: res.data });
 };
 
 export const loadVenueReview = (venue, history) => dispatch => {
@@ -81,9 +169,9 @@ export const updateSearchTerm = term => dispatch => {
 	dispatch({ type: UPDATE_TERM, payload: term });
 };
 
-export const checkEntry = entry => dispatch => {
+export const checkEntry = (entry, index) => dispatch => {
 	entry.checked = true;
-	dispatch({ type: CHECKED_ENTRY, payload: entry });
+	dispatch({ type: CHECK_ENTRY, payload: { entry, index } });
 };
 
 // export const submitEntry = (values, history) => async dispatch => {

@@ -3,20 +3,35 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import {
-	searchEntries,
+	requestVenues,
 	updateSearchTerm,
 	loadVenueReview
 } from '../../actions';
 
 class SearchList extends Component {
+	constructor(props) {
+		super(props);
+		this.renderResults = this.renderResults.bind(this);
+	}
+	handleSearch() {
+		if (this.props.venues.totalResults === 0) {
+			return (
+				<div class="application-error content-space">
+					{this.props.venues.warning.text}
+				</div>
+			);
+		}
+
+		return this.renderResults();
+	}
 	renderResults() {
 		return (
 			<div className="SearchList__wrapper">
-				{this.props.venues.map(data => {
+				{this.props.venues.groups[0].items.map(data => {
 					const { venue } = data;
 					return (
 						<div className="SearchList__item" key={data.referralId}>
-							{venue.featuredPhotos.items ? (
+							{venue.featuredPhotos ? (
 								<img
 									src={
 										venue.featuredPhotos.items[0].prefix +
@@ -25,20 +40,17 @@ class SearchList extends Component {
 									}
 									alt={venue.name}
 								/>
-							) : null}{' '}
+							) : null}
+							{''}
 							<div className="search-list-item-content">
 								<div className="search-card-content-inner">
 									<span className="search-card-heading-primary">
 										{venue.name}
 									</span>
 
-									{venue.categories ? (
-										<span className="search-card-heading-secondary">
-											{/* {venue.categories[0].shortName ||
-												venue.categories[0].category}
-											*/}
-										</span>
-									) : null}
+									<span className="search-card-heading-secondary">
+										{venue.location.address}, {venue.location.city}
+									</span>
 
 									<a
 										onClick={() =>
@@ -52,42 +64,6 @@ class SearchList extends Component {
 									</a>
 								</div>
 							</div>
-							{/*
-							<h4 className="SearchList__item-name">{venue.name}</h4>
-							<span className="SearchList__item-address">
-								{venue.location.address}
-							</span>
-
-							{venue.url ? <a href={venue.url}>Learn More</a> : null}
-									
-							<button
-								onClick={() =>
-									this.props.loadVenueReview(venue, this.props.history)
-								}
-							>
-								Add
-							</button>
-										
-							{venue.featuredPhotos.items ? (
-								<img
-									src={
-										venue.featuredPhotos.items[0].prefix +
-											500 +
-										venue.featuredPhotos.items[0].suffix
-									}
-									alt={venue.name}
-								/>
-							) : null}{' '}
-										{venue.categories ? (
-											<div className="SearchList__item-category">
-												<span>
-													{venue.categories[0].shortName ||
-														venue.categories[0].category}
-												</span>
-											</div>
-										) : null}
-
-							*/}
 						</div>
 					);
 				})}
@@ -100,7 +76,8 @@ class SearchList extends Component {
 			case null:
 				return (
 					<div className="content-space">
-						<h3>Enter a search term to add Recommendations</h3>
+						<h2>Get Search Results</h2>
+						<p className="alt">Enter a search term to add Recommendations</p>
 						<SearchForm />
 					</div>
 				);
@@ -108,9 +85,9 @@ class SearchList extends Component {
 			case true:
 				return (
 					<div className="content-space">
-						<h3>Search results for: {this.props.term}</h3>
+						<h2>Search results for: {this.props.term}</h2>
 						<SearchForm
-							searchEntries={this.props.searchEntries}
+							requestVenues={this.props.requestVenues}
 							updateSearchTerm={this.props.updateSearchTerm}
 							term={this.props.term}
 						/>
@@ -120,9 +97,13 @@ class SearchList extends Component {
 			default:
 				return (
 					<div className="content-space">
-						<h3>Enter a search term to add Recommendations</h3>
+						<h2>Search results for: {this.props.term}</h2>
+						<p className="alt">
+							Browse search results and add your favorites to your Recommends
+							database.
+						</p>
 						<SearchForm
-							searchEntries={this.props.searchEntries}
+							requestVenues={this.props.requestVenues}
 							updateSearchTerm={this.props.updateSearchTerm}
 							term={this.props.term}
 						/>
@@ -133,10 +114,12 @@ class SearchList extends Component {
 
 	render() {
 		return (
-			<div className="SearchList flex-col flex-dashboard standard-padding">
+			<div className="SearchList standard-padding">
 				<div className="container">
 					{this.renderHeadline()}
-					{this.renderResults()}
+					{this.props.venues.groups[0].items
+						? this.handleSearch(this.renderResults)
+						: null}
 				</div>
 			</div>
 		);
@@ -148,7 +131,7 @@ function mapStateToProps({ venues, term }) {
 }
 
 export default connect(mapStateToProps, {
-	searchEntries,
+	requestVenues,
 	updateSearchTerm,
 	loadVenueReview
 })(withRouter(SearchList));
