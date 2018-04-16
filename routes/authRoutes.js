@@ -1,4 +1,6 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
 
 module.exports = app => {
 	// GoogleStrategy has an internal identifier as 'google'
@@ -27,5 +29,25 @@ module.exports = app => {
 
 	app.get('/api/current_user', (req, res) => {
 		res.send(req.user);
+	});
+
+	app.post('/api/current_user', async (req, res) => {
+		console.log('req.user', req.body);
+		const { bool, userId } = req.body;
+
+		const updateUser = await User.findByIdAndUpdate(userId, {
+			shownTutorial: bool
+		});
+
+		try {
+			await updateUser.save();
+			const user = await req.user.save();
+
+			console.log('use', user);
+
+			res.send(user);
+		} catch (err) {
+			res.status(404).send(err);
+		}
 	});
 };

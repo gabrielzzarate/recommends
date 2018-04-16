@@ -19,11 +19,15 @@ $header-height: 85px;
 	z-index: 100;
 	text-align: center;
 	font-family: $heading-font;
-	//font-size: 0.75rem;
 	text-transform: uppercase;
 	letter-spacing: 0.035em;
 	line-height: 1.2;
 	border-top: 0.2963rem solid $accent-color2;
+
+	&.blank {
+		background: $bg-color;
+		margin: 0;
+	}
 
 	a {
 		background-image: none;
@@ -50,12 +54,6 @@ $header-height: 85px;
 	}
 
 	.header-inner {
-		&.blank {
-			height: 100%;
-			width: 100%;
-			background: $bg-color;
-			margin: 0;
-		}
 		@include mobile {
 			height: 56.6px;
 		}
@@ -120,7 +118,6 @@ $header-height: 85px;
 
 		@include landscape {
 			text-align: center;
-			//width: 100%;
 			padding-top: 50px;
 			width: 83px;
 			border-bottom: 0.13169rem solid $bg-color;
@@ -133,8 +130,6 @@ $header-height: 85px;
 		text-transform: uppercase;
 		color: $text-color;
 		font-weight: 600;
-		//line-height: 1;
-		//letter-spacing: 0.035em;
 
 		@include landscape {
 			border-top: 0.13169rem solid $bg-color;
@@ -162,6 +157,16 @@ $header-height: 85px;
 	transition: all 0.2s;
 	display: flex;
 	align-items: center;
+
+	&.logo-small {
+		width: 60.5px;
+		height: 60.5px;
+		margin: 0 auto;
+
+		svg {
+			max-width: 24px;
+		}
+	}
 
 	@include vertical {
 		width: 67.5px;

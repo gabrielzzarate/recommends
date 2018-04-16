@@ -1,0 +1,295 @@
+// needed mixins
+
+@mixin landscape {
+	@media all and (min-width: 1214px) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media all and (max-width: 560px) {
+		@content;
+	}
+}
+
+@mixin background-opacity($color, $opacity: 0.7) {
+	background: $color; /* The Fallback */
+	background: rgba($color, $opacity);
+}
+
+// structure colors
+
+body,
+#root,
+#app,
+.wrapper {
+	background-color: $accent-color2;
+}
+
+body {
+	color: $text-color;
+}
+
+main {
+	background: $bg-color;
+}
+
+// typography colors
+
+h5 {
+	border-bottom: $bg-color-alt;
+}
+
+p {
+	&.alt {
+		color: $bg-color-alt;
+	}
+}
+
+a {
+	background-image: linear-gradient(
+		to top,
+		$accent-color2 0,
+		$accent-color2 0.13169rem,
+		rgba(255, 124, 77, 0) 0.13169rem,
+		rgba(255, 124, 77, 0) 100%
+	);
+
+	&:hover {
+		color: $accent-color2;
+	}
+}
+
+hr {
+	background: $bg-color-alt;
+}
+
+.purple {
+	color: $text-color-inverse;
+}
+
+.mdblue-bg {
+	background: $accent-color1;
+}
+
+.vertical-pipe {
+	&.action {
+		color: $accent-color2;
+	}
+}
+
+.text-color {
+	color: $text-color;
+}
+
+// form styles
+
+.form-divider {
+	background: $bg-color-alt;
+}
+
+.input-symbol {
+	color: $accent-color2;
+}
+
+.inset-submit {
+	.button {
+		background: $text-color;
+
+		&:hover {
+			background: $accent-color1;
+		}
+	}
+}
+
+input[type='text'],
+input[type='url'],
+input[type='email'],
+input[type='tel'],
+input[type='number'],
+input[type='date'],
+select,
+textarea {
+	background-color: $bg-color-alt;
+	color: $text-color;
+
+	&:focus {
+		+ label {
+			color: $accent-color1;
+		}
+	}
+}
+
+input[type='checkbox']:checked + .checkbox-label:after,
+input[type='radio']:checked + .checkbox-label:after {
+	border: 1px solid $accent-color2;
+	background-color: $accent-color2;
+}
+
+.error-message {
+	color: $accent-color2;
+}
+
+.field-wrapper.error {
+	label {
+		color: $accent-color2;
+
+		&:after {
+			color: $accent-color2;
+		}
+	}
+
+	input[type='text'],
+	input[type='number'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='date'],
+	input[type='url'],
+	textarea {
+		border-bottom: 2px solid $accent-color2;
+
+		&:hover,
+		&:focus {
+			border-bottom: 2px solid $accent-color2;
+		}
+
+		&:focus {
+			+ label {
+				color: $accent-color2;
+			}
+		}
+	}
+
+	select {
+		border-bottom: 2px solid $accent-color2;
+
+		&:hover,
+		&:focus {
+			border: 1px solid $accent-color2;
+		}
+	}
+}
+
+// button colors
+
+button {
+	background: linear-gradient(
+		to top,
+		$accent-color2 0,
+		$accent-color2 0.13169rem,
+		rgba(255, 124, 77, 0) 0.13169rem,
+		rgba(255, 124, 77, 0) 100%
+	);
+
+	&:hover {
+		color: $accent-color2;
+	}
+}
+
+.action-link {
+	&:hover {
+		@include background-opacity($text-color);
+		color: #fff;
+	}
+}
+
+// card colors
+
+.entry-card {
+	background: $text-color-inverse;
+}
+
+.card-primary {
+	h3 {
+		color: $accent-color1;
+	}
+}
+
+.card-secondary {
+	color: $text-color;
+}
+
+.entry-price {
+	@include background-opacity($text-color, 20%);
+}
+
+.search-list-item-content {
+	background: $accent-color2;
+}
+
+.search-card-heading-secondary {
+	color: $text-color;
+}
+
+// header colors
+
+.header {
+	background: $text-color-inverse;
+	border-top: 0.2963rem solid $accent-color2;
+
+	&.blank {
+		background: $bg-color;
+	}
+
+	@media screen and (min-width: 76em) {
+		border-top: none !important;
+	}
+
+	.navigation-item {
+		color: $text-color;
+
+		@include landscape {
+			border-top: 0.13169rem solid $bg-color !important;
+
+			&:hover {
+				color: $accent-color2;
+			}
+		}
+	}
+}
+
+.header-navright {
+	@include landscape {
+		border-bottom: 0.13169rem solid $bg-color;
+	}
+}
+
+.logo {
+	background: $text-color;
+
+	svg {
+		stroke: $bg-color;
+		fill: $text-color;
+	}
+
+	&.hover-state {
+		&:hover {
+			background: $accent-color2;
+
+			svg {
+				fill: $accent-color2;
+			}
+		}
+	}
+}
+
+// ui element colors
+
+.content-space {
+	background: $text-color-inverse;
+}
+
+.entries-review {
+	background: $bg-color;
+	color: $bg-color-alt;
+}
+
+// modal colors
+
+.modal-wrapper {
+	@include background-opacity($text-color, 0.8);
+
+	.modal-header {
+		border-bottom: 2px solid $accent-color1;
+	}
+}

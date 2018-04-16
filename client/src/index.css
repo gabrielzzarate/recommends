@@ -97,10 +97,6 @@ h2 {
   font-weight: 500;
   line-height: 1.1;
   margin: 0 0 0.15em 0; }
-  @media all and (max-width: 560px) {
-    h2 {
-      font-size: 24px;
-      font-size: 1.5rem; } }
 
 h3 {
   font-size: 1rem;
@@ -109,10 +105,6 @@ h3 {
   line-height: 1.1rem;
   letter-spacing: 0.02em;
   margin: 0 0 0.75em 0; }
-  @media all and (max-width: 560px) {
-    h3 {
-      font-size: 18px;
-      font-size: 1.125rem; } }
 
 h4 {
   font-size: 20px;
@@ -125,10 +117,6 @@ h4 {
   font-weight: 500;
   line-height: 1.25;
   margin: 0 0 0.5em 0; }
-  @media all and (max-width: 560px) {
-    h4 {
-      font-size: 15px;
-      font-size: 0.9375rem; } }
 
 h5 {
   font-size: 16px;
@@ -139,21 +127,12 @@ h5 {
   margin: 0 0 1em 0;
   padding: 0 0 0.5em 5px;
   border-bottom: 2px solid #8da793; }
-  @media all and (max-width: 560px) {
-    h5 {
-      font-size: 15px;
-      font-size: 0.9375rem; } }
 
 p,
 li {
   font-size: 1rem;
-  font-weight: 400; }
-  @media all and (max-width: 560px) {
-    p,
-    li {
-      font-size: 15px;
-      font-size: 0.9375rem;
-      line-height: 1.4; } }
+  font-weight: 400;
+  line-height: 1.2em; }
   p.smaller,
   li.smaller {
     font-size: 14px;
@@ -330,6 +309,11 @@ br.mobile-break {
   stroke-miterlimit: 10;
   stroke-width: 5px; }
 
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh; }
+
 html {
   overflow-x: hidden;
   box-sizing: border-box;
@@ -412,15 +396,15 @@ div.standard-padding {
   max-width: 960px;
   margin: 0 auto;
   text-align: left; }
-  @media all and (min-width: 1214px) {
+  @media all and (min-width: 1025px) {
     .container {
       max-width: 1000px; } }
+  @media all and (min-width: 1025px) and (max-width: 1320px) {
+    .container {
+      max-width: 1280px; } }
   @media all and (min-width: 1321px) {
     .container {
       max-width: 1280px; } }
-  @media all and (max-width: 1215px) {
-    .container {
-      max-width: 960px; } }
   .container.center-text {
     text-align: center; }
   @media all and (min-width: 1214px) {
@@ -605,8 +589,10 @@ div.standard-padding {
 .button-wrapper {
   padding: 10px 0 0 0; }
 
-.form-section:not(:first-of-type) {
-  padding-top: 10px; }
+.form-section {
+  padding: 20px 0; }
+  .form-section:not(:first-of-type) {
+    padding-top: 10px; }
 
 .form-divider {
   background: #8da793;
@@ -637,6 +623,7 @@ div.standard-padding {
     color: #fff;
     border-radius: 0.19753rem;
     font-size: 0.75rem;
+    font-family: "Ciutadella", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.035em;
     line-height: 1; }
@@ -677,6 +664,7 @@ textarea {
   outline: none;
   border: none;
   height: 40px;
+  font-family: "Ciutadella", Helvetica, Arial, sans-serif;
   border-radius: 0;
   background-color: #8da793;
   margin-top: 8px;
@@ -734,16 +722,20 @@ textarea {
   line-height: 1.5; }
 
 ::-webkit-input-placeholder {
-  color: #fff; }
+  color: #fff;
+  font-family: "Ciutadella", Helvetica, Arial, sans-serif; }
 
 :-moz-placeholder {
-  color: #fff; }
+  color: #fff;
+  font-family: "Ciutadella", Helvetica, Arial, sans-serif; }
 
 ::-moz-placeholder {
-  color: #fff; }
+  color: #fff;
+  font-family: "Ciutadella", Helvetica, Arial, sans-serif; }
 
 :-ms-input-placeholder {
-  color: #fff; }
+  color: #fff;
+  font-family: "Ciutadella", Helvetica, Arial, sans-serif; }
 
 .checkbox-label {
   display: block;
@@ -917,9 +909,9 @@ a {
   margin: 0;
   padding: 24px 16px;
   min-height: 100vh;
-  background: #eea37b;
+  background: #645d77;
   /* The Fallback */
-  background: rgba(238, 163, 123, 0.8);
+  background: rgba(100, 93, 119, 0.8);
   overflow-x: hidden;
   overflow-y: hidden;
   z-index: 999;
@@ -1130,6 +1122,8 @@ a {
   color: #645d77;
   line-height: 1.25rem;
   font-weight: 400;
+  max-width: 90%;
+  text-overflow: ellipsis;
   letter-spacing: 0.04em;
   text-decoration: inherit;
   text-transform: inherit;
@@ -1158,6 +1152,9 @@ a {
   letter-spacing: 0.035em;
   line-height: 1.2;
   border-top: 0.2963rem solid #ea7c48; }
+  .header.blank {
+    background: #eff1ef;
+    margin: 0; }
   .header a {
     background-image: none; }
   @media screen and (min-width: 84em) {
@@ -1176,11 +1173,6 @@ a {
       position: absolute;
       width: calc(16.494845360824742% - 0.2963rem);
       border-top: none; } }
-  .header .header-inner.blank {
-    height: 100%;
-    width: 100%;
-    background: #eff1ef;
-    margin: 0; }
   @media all and (max-width: 560px) {
     .header .header-inner {
       height: 56.6px; } }
@@ -1259,6 +1251,12 @@ a {
   transition: all 0.2s;
   display: flex;
   align-items: center; }
+  .logo.logo-small {
+    width: 60.5px;
+    height: 60.5px;
+    margin: 0 auto; }
+    .logo.logo-small svg {
+      max-width: 24px; }
   @media all and (max-width: 1215px) {
     .logo {
       width: 67.5px;
@@ -1321,5 +1319,11 @@ a {
 
 .edit-entry-details {
   padding-bottom: 20px; }
+
+.tutorial .modal-header h2 {
+  text-align: center;
+  padding: 12px 0; }
+.tutorial p {
+  font-size: 0.9rem; }
 
 /*# sourceMappingURL=index.css.map */

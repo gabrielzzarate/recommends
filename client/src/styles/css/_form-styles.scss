@@ -96,6 +96,7 @@ form {
 
 .form-section {
 	@extend %clearfix;
+	padding: 20px 0;
 
 	&:not(:first-of-type) {
 		padding-top: 10px;
@@ -134,6 +135,7 @@ form {
 		color: #fff;
 		border-radius: $border-radius;
 		font-size: 0.75rem;
+		font-family: $heading-font;
 		text-transform: uppercase;
 		letter-spacing: 0.035em;
 		line-height: 1;
@@ -181,13 +183,11 @@ textarea {
 	outline: none;
 	border: none;
 	height: $field-height;
+	font-family: $heading-font;
 	border-radius: 0;
 	background-color: $bg-color-alt;
 	margin-top: 8px;
 	color: $text-color;
-
-	&:hover {
-	}
 
 	&:focus {
 		outline: 0;
@@ -222,15 +222,6 @@ select {
 	padding-right: 28px;
 	background-repeat: no-repeat;
 	background-position: right center;
-	//background-image: url('../images/icon-dropdown_default.svg');
-
-	&:hover {
-		//	background-image: url('../images/icon-dropdown_hover.svg');
-	}
-
-	&:focus {
-		//	background-image: url('../images/icon-dropdown_focus.svg');
-	}
 }
 
 select::-ms-expand {
@@ -245,18 +236,22 @@ textarea {
 
 ::-webkit-input-placeholder {
 	color: #fff;
+	font-family: $heading-font;
 }
 
 :-moz-placeholder {
 	color: #fff;
+	font-family: $heading-font;
 }
 
 ::-moz-placeholder {
 	color: #fff;
+	font-family: $heading-font;
 }
 
 :-ms-input-placeholder {
 	color: #fff;
+	font-family: $heading-font;
 }
 
 // Checkboxes
@@ -346,7 +341,6 @@ input[type='radio']:checked + .checkbox-label:after {
 	.error-message {
 		transform: translate(0, 0);
 		-webkit-transform: translate(0, 0);
-		//@include opacity(1);
 		z-index: 1;
 	}
 
@@ -381,18 +375,10 @@ input[type='radio']:checked + .checkbox-label:after {
 
 	select {
 		border-bottom: 2px solid $accent-color2;
-		//background-image: url('../images/icon-dropdown_error.svg');
 
 		&:hover,
 		&:focus {
 			border: 1px solid $accent-color2;
 		}
-	}
-}
-
-.no-svg .gen-formfield.error,
-.no-svg .gen-formfield.field-check.error {
-	select {
-		//	background-image: url('../images/icon-dropdown_error.png');
 	}
 }

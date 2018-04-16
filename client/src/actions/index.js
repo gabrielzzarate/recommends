@@ -174,6 +174,11 @@ export const checkEntry = (entry, index) => dispatch => {
 	dispatch({ type: CHECK_ENTRY, payload: { entry, index } });
 };
 
+export const dismissTutorial = (bool, userId) => async dispatch => {
+	const res = await axios.post('/api/current_user', { bool, userId });
+	dispatch({ type: FETCH_USER, payload: res.data });
+};
+
 // export const submitEntry = (values, history) => async dispatch => {
 // 	const res = await axios.post('/api/entries', values);
 // 	history.push('/dashboard');

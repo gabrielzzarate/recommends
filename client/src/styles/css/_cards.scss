@@ -152,6 +152,8 @@
 	color: $text-color;
 	line-height: 1.25rem;
 	font-weight: 400;
+	max-width: 90%;
+	text-overflow: ellipsis;
 	letter-spacing: 0.04em;
 	text-decoration: inherit;
 	text-transform: inherit;

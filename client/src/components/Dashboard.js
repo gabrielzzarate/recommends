@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EntryList from './entries/EntryList';
 import SearchForm from './search/SearchForm';
-import { requestVenues, updateSearchTerm, findUserLocation } from '../actions';
+import Tutorial from './Tutorial';
+import {
+	requestVenues,
+	updateSearchTerm,
+	findUserLocation,
+	dismissTutorial
+} from '../actions';
 
 var options = {
 	enableHighAccuracy: false,
@@ -24,14 +30,7 @@ function error(err) {
 }
 
 class Dashboard extends Component {
-	constructor(props) {
-		super(props);
-		//this.findUser = this.findUser.bind(this);
-	}
-	componentWillMount() {
-		//this.findUser();
-		//navigator.geolocation.getCurrentPosition(success, error, options);
-	}
+	state = { showTutorial: this.props.auth.shownTutorial };
 
 	findUser() {
 		navigator.geolocation.getCurrentPosition(position => {
@@ -42,7 +41,6 @@ class Dashboard extends Component {
 			);
 		});
 	}
-
 	renderEntries() {
 		switch (this.props.entries) {
 			case null:
@@ -76,25 +74,40 @@ class Dashboard extends Component {
 				);
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+		console.log('np', nextProps);
+	}
 	render() {
+		console.log('auth user', this.props.auth);
 		return (
-			<section className="dashboard-section standard-padding">
-				<div className="container">
-					<div className="content-space">
-						<h2>My Recommends</h2>
-						<p className="alt">
-							Enter a search term to find your favorite restaurants
-						</p>
-						<SearchForm
-							requestVenues={this.props.requestVenues}
-							updateSearchTerm={this.props.updateSearchTerm}
-						/>
-					</div>
+			<div>
+				<section className="dashboard-section standard-padding">
+					<div className="container">
+						<div className="content-space">
+							<h2>My Recommends</h2>
+							<p className="alt">
+								Enter a search term to find your favorite restaurants
+							</p>
+							<SearchForm
+								requestVenues={this.props.requestVenues}
+								updateSearchTerm={this.props.updateSearchTerm}
+							/>
+						</div>
 
-					{this.renderEntries()}
-					<div className="dashboard-user-greeting">{this.renderUser()}</div>
-				</div>
-			</section>
+						{this.renderEntries()}
+						<div className="dashboard-user-greeting">{this.renderUser()}</div>
+					</div>
+				</section>
+				{this.state.showTutorial === false ? (
+					<Tutorial
+						dismissTutorial={this.props.dismissTutorial}
+						userId={this.props.auth._id}
+						showTutorial={this.state.showTutorial}
+					/>
+				) : (
+					''
+				)}
+			</div>
 		);
 	}
 }
@@ -106,5 +119,6 @@ function mapStateToProps({ auth, entries, venues }) {
 export default connect(mapStateToProps, {
 	requestVenues,
 	updateSearchTerm,
-	findUserLocation
+	findUserLocation,
+	dismissTutorial
 })(Dashboard);

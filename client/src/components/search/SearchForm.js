@@ -20,7 +20,7 @@ class SearchForm extends Component {
 							component="input"
 							type="text"
 							label="Search for your Reccomendations"
-							placeholder="Search Venues"
+							placeholder="Search restaurants"
 							name="term"
 							value={this.props.term ? this.props.term : null}
 							className="inline-field"
