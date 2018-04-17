@@ -6,6 +6,7 @@ module.exports = {
 	cookieKey: process.env.COOKIE_KEY,
 	redirectDomain: process.env.REDIRECT_DOMAIN,
 	fourSquareClientID: process.env.FOURSQUARE_CLIENT_ID,
-	fourSquareClientSecret: process.env.FOURSQUARE_CLIENT_SECRET
+	fourSquareClientSecret: process.env.FOURSQUARE_CLIENT_SECRET,
+	sendGridKey: process.env.SEND_GRID_KEY
 };
 
