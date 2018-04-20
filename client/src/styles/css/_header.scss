@@ -185,8 +185,8 @@ $header-height: 85px;
 	}
 
 	@include mobile {
-		width: 40.5px;
-		height: 40.5px;
+		width: 50.5px;
+		height: 50.5px;
 	}
 
 	svg {
@@ -197,14 +197,19 @@ $header-height: 85px;
 		stroke: $bg-color;
 		fill: $text-color;
 		stroke-miterlimit: 10;
-		stroke-width: 5px;
+		stroke-width: 4px;
+
+		.cls-1 {
+			stroke-miterlimit: 10;
+			stroke-width: 4px;
+		}
 
 		@include vertical {
 			max-width: 28px;
 		}
 
 		@include mobile {
-			max-width: 15px;
+			max-width: 20px;
 		}
 	}
 

@@ -305,10 +305,6 @@ br.mobile-break {
 *:after {
   box-sizing: inherit; }
 
-.cls-1 {
-  stroke-miterlimit: 10;
-  stroke-width: 5px; }
-
 html.no-scroll,
 body.no-scroll {
   overflow: hidden;
@@ -1290,8 +1286,8 @@ a {
       height: 67.5px; } }
   @media all and (max-width: 560px) {
     .logo {
-      width: 40.5px;
-      height: 40.5px; } }
+      width: 50.5px;
+      height: 50.5px; } }
   .logo svg {
     display: block;
     margin: 0 auto;
@@ -1300,13 +1296,16 @@ a {
     stroke: #eff1ef;
     fill: #645d77;
     stroke-miterlimit: 10;
-    stroke-width: 5px; }
+    stroke-width: 4px; }
+    .logo svg .cls-1 {
+      stroke-miterlimit: 10;
+      stroke-width: 4px; }
     @media all and (max-width: 1215px) {
       .logo svg {
         max-width: 28px; } }
     @media all and (max-width: 560px) {
       .logo svg {
-        max-width: 15px; } }
+        max-width: 20px; } }
   .logo.hover-state:hover {
     background: #ea7c48; }
     .logo.hover-state:hover svg {
