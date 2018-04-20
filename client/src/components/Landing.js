@@ -6,7 +6,7 @@ export default class Landing extends Component {
 			<div className="standard-padding landing">
 				<div className="flex-row vertically-centered">
 					<div className="landing-intro-box content-space">
-						<div className="logo">
+						<div className="logo landing-logo">
 							<svg viewBox="0 0 62.62 106.71">
 								<title>Recommends Logo</title>
 								<g id="Layer_2" data-name="Layer 2">

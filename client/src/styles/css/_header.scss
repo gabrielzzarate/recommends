@@ -168,6 +168,17 @@ $header-height: 85px;
 		}
 	}
 
+	&.landing-logo {
+		@include mobile {
+			width: 67.5px;
+			height: 67.5px;
+
+			svg {
+				max-width: 28px;
+			}
+		}
+	}
+
 	@include vertical {
 		width: 67.5px;
 		height: 67.5px;

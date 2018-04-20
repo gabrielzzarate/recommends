@@ -12,10 +12,13 @@ module.exports = app => {
 		const { values, entries } = req.body;
 		const { title, subject, body, recipients } = values;
 
+		console.log('entries', req.user.name);
+
 		const share = new Share({
 			title,
 			subject,
 			body,
+			username: req.user.name,
 			recipients: recipients.split(',').map(email => ({ email: email.trim() })),
 			entries: entries,
 			_user: req.user.id,
@@ -28,7 +31,6 @@ module.exports = app => {
 		try {
 			await mailer.send();
 			await share.save();
-			req.user.credits -= 1;
 			const user = await req.user.save();
 
 			res.send(user); // user model response with the new value of credits

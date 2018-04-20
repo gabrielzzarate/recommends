@@ -14,7 +14,7 @@ h5 {
   border-bottom: #c6c996; }
 
 p.alt {
-  color: #c6c996; }
+  color: #5e4f63; }
 
 a {
   background-image: linear-gradient(to top, #ed708d 0, #ed708d 0.13169rem, rgba(255, 124, 77, 0) 0.13169rem, rgba(255, 124, 77, 0) 100%); }
@@ -70,7 +70,10 @@ textarea {
 input[type='checkbox']:checked + .checkbox-label:after,
 input[type='radio']:checked + .checkbox-label:after {
   border: 1px solid #ed708d;
-  background-color: #ed708d; }
+  background-color: #ed708d;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("./styles/images/icon-checkmark.svg"); }
 
 .error-message {
   color: #ed708d; }
@@ -141,6 +144,24 @@ button {
 
 .search-list-item-content {
   background: #ed708d; }
+
+.SearchList__item svg {
+  width: 100%; }
+  .SearchList__item svg .cls-1,
+  .SearchList__item svg .placeholder-bg {
+    width: 100%;
+    height: 100%;
+    fill: #5e4f63; }
+  .SearchList__item svg .cls-2,
+  .SearchList__item svg .placeholder-logo {
+    fill: none;
+    stroke: #eeefe8;
+    stroke-miterlimit: 10;
+    stroke-width: 4px; }
+    @media all and (max-width: 560px) {
+      .SearchList__item svg .cls-2,
+      .SearchList__item svg .placeholder-logo {
+        stroke-width: 1px; } }
 
 .search-card-heading-secondary {
   color: #5e4f63; }

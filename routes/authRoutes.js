@@ -32,7 +32,6 @@ module.exports = app => {
 	});
 
 	app.post('/api/current_user', async (req, res) => {
-		console.log('req.user', req.body);
 		const { bool, userId } = req.body;
 
 		const updateUser = await User.findByIdAndUpdate(userId, {
@@ -42,8 +41,6 @@ module.exports = app => {
 		try {
 			await updateUser.save();
 			const user = await req.user.save();
-
-			console.log('use', user);
 
 			res.send(user);
 		} catch (err) {

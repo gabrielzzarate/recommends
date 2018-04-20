@@ -165,7 +165,13 @@ label {
 	@include font-size(11px);
 	text-transform: uppercase;
 	font-weight: 500;
+	width: 100%;
+	text-overflow: ellipsis;
 	transition: color 0.2s;
+
+	@include mobile {
+		font-size: 11px;
+	}
 }
 
 input[type='text'],
@@ -280,7 +286,6 @@ textarea {
 		z-index: 1;
 		border-radius: 50%;
 		cursor: pointer;
-		//@include transition(all 0.2s);
 	}
 }
 
@@ -288,14 +293,11 @@ input[type='radio'],
 input[type='checkbox'] {
 	position: absolute;
 	top: -60px;
-	//@include opacity(0);
+	opacity: 0;
 }
 
 input[type='checkbox']:checked + .checkbox-label:after,
 input[type='radio']:checked + .checkbox-label:after {
-	border: 1px solid $ltgray;
-	background-color: $offwhite;
-	background-image: none;
 	border: 1px solid $accent-color2;
 	background-color: $accent-color2;
 	background-repeat: no-repeat;

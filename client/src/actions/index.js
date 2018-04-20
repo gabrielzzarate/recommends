@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
 	FETCH_USER,
 	FETCH_ENTRIES,
+	LOG_OUT,
 	UPDATE_ENTRY,
 	DELETE_ENTRY,
 	REQUEST_VENUES,
@@ -17,6 +18,11 @@ import {
 export const fetchUser = () => async dispatch => {
 	const res = await axios.get('/api/current_user');
 	dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const logOut = () => async dispatch => {
+	const res = await axios.get('/api/logout');
+	dispatch({ type: LOG_OUT, payload: false });
 };
 
 export const findUserLocation = () => dispatch => {
@@ -175,6 +181,7 @@ export const checkEntry = (entry, index) => dispatch => {
 };
 
 export const dismissTutorial = (bool, userId) => async dispatch => {
+	console.log('dismissing');
 	const res = await axios.post('/api/current_user', { bool, userId });
 	dispatch({ type: FETCH_USER, payload: res.data });
 };

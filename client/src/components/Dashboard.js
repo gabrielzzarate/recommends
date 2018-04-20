@@ -10,37 +10,30 @@ import {
 	dismissTutorial
 } from '../actions';
 
-var options = {
-	enableHighAccuracy: false,
-	maximumAge: Infinity,
-	timeout: 60000
-};
-
-function success(pos) {
-	var crd = pos.coords;
-
-	console.log('Your current position is:');
-	console.log(`Latitude : ${crd.latitude}`);
-	console.log(`Longitude: ${crd.longitude}`);
-	console.log(`More or less ${crd.accuracy} meters.`);
-}
-
-function error(err) {
-	console.warn(`ERROR(${err.code}): ${err.message}`);
-}
-
 class Dashboard extends Component {
-	state = { showTutorial: this.props.auth.shownTutorial };
+	constructor(props) {
+		super(props);
 
-	findUser() {
-		navigator.geolocation.getCurrentPosition(position => {
-			console.log(position);
-			this.props.findUserLocation(
-				position.coords.latitude,
-				position.coords.longitude
-			);
-		});
+		this.state = {
+			bool: true,
+			shownTutorial: this.props.auth.shownTutorial
+		};
+		this.dismiss = this.dismiss.bind(this);
 	}
+
+	dismiss() {
+		this.setState({ shownTutorial: true, bool: false });
+		this.props.dismissTutorial(true, this.props.auth._id);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({ shownTutorial: nextProps.auth.shownTutorial });
+	}
+
+	componentDidMount() {
+		this.props.findUserLocation();
+	}
+
 	renderEntries() {
 		switch (this.props.entries) {
 			case null:
@@ -54,13 +47,7 @@ class Dashboard extends Component {
 			case null:
 				return;
 			case false:
-				return (
-					<li>
-						<a className="button" href="/auth/google">
-							Login With Google
-						</a>
-					</li>
-				);
+				return;
 			default:
 				return (
 					<div>
@@ -74,11 +61,8 @@ class Dashboard extends Component {
 				);
 		}
 	}
-	componentWillReceiveProps(nextProps) {
-		console.log('np', nextProps);
-	}
 	render() {
-		console.log('auth user', this.props.auth);
+		console.log('state', this.state);
 		return (
 			<div>
 				<section className="dashboard-section standard-padding">
@@ -98,11 +82,11 @@ class Dashboard extends Component {
 						<div className="dashboard-user-greeting">{this.renderUser()}</div>
 					</div>
 				</section>
-				{this.state.showTutorial === false ? (
+				{this.state.shownTutorial === false && this.state.bool == true ? (
 					<Tutorial
 						dismissTutorial={this.props.dismissTutorial}
-						userId={this.props.auth._id}
 						showTutorial={this.state.showTutorial}
+						dismiss={this.dismiss}
 					/>
 				) : (
 					''

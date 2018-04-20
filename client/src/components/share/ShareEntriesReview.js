@@ -37,7 +37,7 @@ const ShareEntriesReview = ({
 			return entry;
 		}
 	});
-
+	console.log('val', formValues);
 	return (
 		<div className="modal-wrapper">
 			<div className="modal-outer-centered">

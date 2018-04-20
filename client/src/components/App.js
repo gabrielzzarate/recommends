@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -11,26 +11,55 @@ import EntryEditWrapper from './entries/EntryEditWrapper';
 import ShareEntries from './share/ShareEntries';
 import SearchList from './search/SearchList';
 import Modal from './Modal';
+import NoMatch from './NoMatch';
+import PrivateRoute from '../utils/PrivateRoute';
 
 class App extends Component {
 	componentDidMount() {
 		this.props.fetchUser();
-		this.props.findUserLocation();
 	}
 	render() {
-		console.log('props', this.props);
+		console.log('app auth', this.props.auth);
 		return (
 			<BrowserRouter>
 				<div id="app" className="wrapper">
-					<Header auth={this.props.auth} />
+					<Header auth={this.props.auth} logOut={this.props.logOut} />
 					<main>
-						<Route exact path="/" component={Landing} />
-						<Route exact path="/api/logout" component={Landing} />
-						<Route exact path="/dashboard" component={Dashboard} />
-						<Route exact path="/entry/:_id" component={EntryEditWrapper} />
-						<Route exact path="/share" component={ShareEntries} />
-						<Route path="/results" component={SearchList} />
-						<Route path="/results/review" component={Modal} />
+						<Switch>
+							<Route exact path="/" component={Landing} />
+							<Route exact path="/api/logout" component={Landing} />
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/dashboard"
+								component={Dashboard}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/entry/:_id"
+								component={EntryEditWrapper}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/share"
+								component={ShareEntries}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/results"
+								component={SearchList}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/results/review"
+								component={Modal}
+							/>
+							<PrivateRoute component={NoMatch} auth={this.props.auth} />
+						</Switch>
 					</main>
 				</div>
 			</BrowserRouter>

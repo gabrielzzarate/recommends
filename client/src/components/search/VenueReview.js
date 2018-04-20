@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { unFixBody } from '../../utils/fixBody';
 
 const VenueReview = props => {
 	return (
@@ -28,7 +29,7 @@ const VenueReview = props => {
 					</div>
 
 					<div className="field-wrapper button-wrapper">
-						<Link className="button" to="/results">
+						<Link className="button" onClick={() => unFixBody()} to="/results">
 							Back
 						</Link>
 						<button type="submit" className="pull-right">

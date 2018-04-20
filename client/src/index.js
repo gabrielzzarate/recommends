@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
@@ -13,8 +14,8 @@ import App from './components/App';
 
 const persistConfig = {
 	key: 'root',
-	storage: storage
-	//whitelist: ['entries, userLocation']
+	storage: storage,
+	blacklist: ['auth']
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -29,4 +30,4 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById('root')
 );
-//registerServiceWorker();
+registerServiceWorker();

@@ -1,68 +1,7 @@
 const keys = require('../../config/keys');
 
 module.exports = share => {
-  const sharedEntriesLoop = share.entries.map(entry => {
-    if (entry === null) {
-      return;
-    }
-    const str = '$';
-    const convertEntryName = name => {
-      let words = name.toLowerCase().split(' ');
-      return words.join('+');
-    };
-
-    return `<table class="entry-share-card" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="space-top"></td>
-      </tr>
-      <tr>
-        <td class="card-top"></td>
-      </tr>
-      <tr>
-        <td class="card-main">
-          <img src=${entry.photo.prefix + 400 + entry.photo.suffix} alt=${
-      entry.name
-    } />
-          <table class="entry-share-card-primary" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td>
-                <h2 class="entry-name webfont-regular">${entry.name}</h2>
-                <h3 class="entry-category webfont-regular">${
-                  entry.category
-                }</h3>
-                <p class="entry-description webfont-regular">${
-                  entry.userRecommendation
-                }</p>
-              </td>
-            <tr>
-          </table>
-          <table class="card-actions-buttons" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td>
-              <a
-                href={https://www.google.com/maps/search/?api=1&query=${convertEntryName(
-                  entry.name
-                )}
-                target="_blank"
-                class="link directions-link webfont-regular"
-              >Directions</a>
-              <a href="" class="link webfont-regular" target="_blank">More Info</a>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <tr>
-          <td class="card-bottom"></td>
-        </tr>
-        <tr>
-        <td class="space-bottom"></td>
-        </tr>
-      </tr>
-    </table>`;
-  });
-
-  var sharedEntries = sharedEntriesLoop.join('');
-  return `
+	return `
 <!doctype html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -70,34 +9,35 @@ module.exports = share => {
     <meta name="viewport" content="initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Recommends Email Sharing</title>
+
     <style type="text/css">
       /* Fonts ///////////////////////////// */
          
-    @font-face {
-      font-family: 'Ciutadella'; 
-      src:
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.eot') format('embedded-opentype'),
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.ttf') format('truetype'),
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.woff2') format('woff2'),
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.woff') format('woff');
-      font-weight: 700;
-      font-style: regular;
-    }
+      @font-face {
+        font-family: 'Ciutadella'; 
+        src:
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.eot') format('embedded-opentype'),
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.ttf') format('truetype'),
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.woff2') format('woff2'),
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+      }
 
-    @font-face {
-      font-family: 'Ciutadella'; 
-      src:
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.eot') format('embedded-opentype'),
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.ttf') format('truetype'), 
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.woff2') format('woff2'),
-        url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.woff') format('woff');
-      font-weight: 400;
-      font-style: regular;
-    }
+      @font-face {
+        font-family: 'Ciutadella'; 
+        src:
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.eot') format('embedded-opentype'),
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.ttf') format('truetype'), 
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.woff2') format('woff2'),
+          url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/fonts/ciutadella-regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
       
      /* Global ///////////////////////////// */
      * { margin:0; padding:0;}
-     * { font-family: 'Ciutadella', Helvetica, Arial, sans-serif; }
+     * { font-family: 'Ciutadella', 'Helvetica', Helvetica, Arial, sans-serif; }
      * { text-rendering: optimizeLegibility; }
 
       img {
@@ -341,7 +281,7 @@ module.exports = share => {
       }
 
       .body-content {
-       padding: 20px;
+       padding: 0 20px 20px 20px;
        text-align: center;
       }
 
@@ -371,22 +311,22 @@ module.exports = share => {
       .card-top {
        background-image: url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/images/card-top.png');
        background-position: center top;
-      background-repeat: no-repeat;
-      height: 28px;
+       background-repeat: no-repeat;
+       height: 28px;
       }
       
       .card-bottom {
        background-image: url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/images/card-bottom.png');
        background-position: center top;
-      background-repeat: no-repeat;
-      height: 21px;
+       background-repeat: no-repeat;
+       height: 21px;
       }
       
       .card-main {
        background-image: url('https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/images/card-main.png');
        background-position: center top;
-      background-repeat: repeat-y;
-      text-align: center;
+       background-repeat: repeat-y;
+       text-align: center;
       }
     
     .card-actions {
@@ -448,7 +388,7 @@ module.exports = share => {
       hr {
         border: 0;
         border-bottom: 1px solid #f6f6f6;
-        Margin: 20px 0; }
+        margin: 20px 0; }
 
       /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
@@ -514,14 +454,16 @@ module.exports = share => {
     </style>
   </head>
   <body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin: 0; padding: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; background-color: #ffffff;">
-    <table border="0" align="center" cellpadding="0" cellspacing="0" class="body" height="100%" width="100%">
+
+    <!-- begin Main Wrapper -->
+    <table class="body email-wrapper" border="0" align="center" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
       <tr>
         <td>&nbsp;</td>
-        <td class="container" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin: 0; padding: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; background-color: #ffffff;">
+        <td align="center" valign="top" class="container">
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader">I want to share some recommendations with you</span>
+            <span class="preheader">Lorem ipsum dolor sit amet</span>
             
             <table class="main">
               
@@ -548,12 +490,102 @@ module.exports = share => {
                         <table class="body-content" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                           <td>
-                            <p class="webfont-regular">${share.body}</p>
+                            <p class="webfont-regular">I wanted to share some of my favorite restaurants with you.</p>
                           </td>
                         </tr>
                       </table>
                   
-                      ${sharedEntries}
+                      <!-- Card 1 -->
+                      <table class="entry-share-card" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="space-top"></td>
+                        </tr>
+                        <tr>
+                          <td class="card-top"></td>
+                        </tr>
+                        <tr>
+                          <td class="card-main">
+                            <img src="./images/unnamed.jpg" alt=${entry.name} />
+                            <table class="entry-share-card-primary" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td>
+                                  <h2 class="entry-name webfont-regular">So Ba Vietnamese Restaurant</h2>
+                                  <h3 class="entry-category webfont-regular">
+                                    Vietnamese
+                                  </h3>
+                                  <p class="entry-description webfont-regular">
+                                   Its really tasty
+                                  </p>
+                                </td>
+                              <tr>
+                            </table>
+                            <table class="card-actions-buttons" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td>
+                                <a
+                                  href="https://www.google.com/maps/search/?api=1&query="
+                                  target="_blank"
+                                  class="link directions-link webfont-regular"
+                                >Directions</a>
+                                <a href="" class="link webfont-regular" target="_blank">More Info</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <tr>
+                            <td class="card-bottom"></td>
+                          </tr>
+                          <tr>
+                          <td class="space-bottom"></td>
+                          </tr>
+                        </tr>
+                    </table>
+
+                    <!-- Card 1 -->
+                    <table class="entry-share-card" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="space-top"></td>
+                        </tr>
+                        <tr>
+                          <td class="card-top"></td>
+                        </tr>
+                        <tr>
+                          <td class="card-main">
+                            <img src="./images/unnamed.jpg" alt=${entry.name} />
+                            <table class="entry-share-card-primary" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td>
+                                  <h2 class="entry-name webfont-regular">So Ba Vietnamese Restaurant</h2>
+                                  <h3 class="entry-category webfont-regular">
+                                    Vietnamese
+                                  </h3>
+                                  <p class="entry-description webfont-regular">
+                                   Its really tasty
+                                  </p>
+                                </td>
+                              <tr>
+                            </table>
+                            <table class="card-actions-buttons" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td>
+                                <a
+                                  href="https://www.google.com/maps/search/?api=1&query="
+                                  target="_blank"
+                                  class="link directions-link webfont-regular"
+                                >Directions</a>
+                                <a href="" class="link webfont-regular" target="_blank">More Info</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <tr>
+                            <td class="card-bottom"></td>
+                          </tr>
+                          <tr>
+                          <td class="space-bottom"></td>
+                          </tr>
+                        </tr>
+                    </table>
 
                     <table class="email-content-footer">
                       <tr><td></td></tr>

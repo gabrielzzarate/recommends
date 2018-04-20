@@ -154,7 +154,7 @@ li {
         font-size: 1rem; } }
   p.alt,
   li.alt {
-    color: #8da793;
+    color: #645d77;
     margin-bottom: 0; }
   p.italic,
   li.italic {
@@ -312,7 +312,8 @@ br.mobile-break {
 html.no-scroll,
 body.no-scroll {
   overflow: hidden;
-  height: 100vh; }
+  position: fixed;
+  width: 100%; }
 
 html {
   overflow-x: hidden;
@@ -647,7 +648,12 @@ label {
   font-size: 0.6875rem;
   text-transform: uppercase;
   font-weight: 500;
+  width: 100%;
+  text-overflow: ellipsis;
   transition: color 0.2s; }
+  @media all and (max-width: 560px) {
+    label {
+      font-size: 11px; } }
 
 input[type='text'],
 input[type='url'],
@@ -764,13 +770,11 @@ textarea {
 input[type='radio'],
 input[type='checkbox'] {
   position: absolute;
-  top: -60px; }
+  top: -60px;
+  opacity: 0; }
 
 input[type='checkbox']:checked + .checkbox-label:after,
 input[type='radio']:checked + .checkbox-label:after {
-  border: 1px solid #c0c7d0;
-  background-color: #fafafa;
-  background-image: none;
   border: 1px solid #ea7c48;
   background-color: #ea7c48;
   background-repeat: no-repeat;
@@ -1085,6 +1089,23 @@ a {
   position: relative; }
   .SearchList__item img {
     width: 100%; }
+  .SearchList__item svg {
+    width: 100%; }
+    .SearchList__item svg .cls-1,
+    .SearchList__item svg .placeholder-bg {
+      width: 100%;
+      height: 100%;
+      fill: #645d77; }
+    .SearchList__item svg .cls-2,
+    .SearchList__item svg .placeholder-logo {
+      fill: none;
+      stroke: #eff1ef;
+      stroke-miterlimit: 10;
+      stroke-width: 4px; }
+      @media all and (max-width: 560px) {
+        .SearchList__item svg .cls-2,
+        .SearchList__item svg .placeholder-logo {
+          stroke-width: 1px; } }
 
 .search-list-item-content {
   position: absolute;
@@ -1257,6 +1278,12 @@ a {
     margin: 0 auto; }
     .logo.logo-small svg {
       max-width: 24px; }
+  @media all and (max-width: 560px) {
+    .logo.landing-logo {
+      width: 67.5px;
+      height: 67.5px; }
+      .logo.landing-logo svg {
+        max-width: 28px; } }
   @media all and (max-width: 1215px) {
     .logo {
       width: 67.5px;

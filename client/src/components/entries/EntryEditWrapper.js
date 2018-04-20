@@ -45,10 +45,6 @@ function mapStateToProps({ entries }, ownProps) {
 	};
 }
 
-// export default connect(mapStateToProps)(
-// 	reduxForm({ form: 'searchForm' })(withRouter(SearchForm))
-// );
-
 export default connect(mapStateToProps, {
 	submitVenue,
 	updateEntry,

@@ -40,6 +40,7 @@ class EntryList extends Component {
 								href={`https://www.google.com/maps/search/?api=1&query=${convertEntryName(
 									entry.name
 								)}`}
+								title="see map"
 								target="_blank"
 								className="action-button"
 							>
@@ -55,12 +56,17 @@ class EntryList extends Component {
 						<div className="card-action-icons">
 							<Link
 								className="action-icons"
+								title="share entry"
 								to="/share/"
 								onClick={() => this.props.checkEntry(entry, index)}
 							>
 								<i className="material-icons">share</i>
 							</Link>
-							<Link className="action-icons" to={`/entry/${entry._id}`}>
+							<Link
+								title="edit entry"
+								className="action-icons"
+								to={`/entry/${entry._id}`}
+							>
 								<i className="material-icons">edit</i>
 							</Link>
 						</div>

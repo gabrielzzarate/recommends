@@ -1,6 +1,6 @@
 export const FETCH_USER = 'fetch_user';
 export const FIND_USER = 'find_user';
-
+export const LOG_OUT = 'log_out';
 export const FETCH_ENTRIES = 'fetch_entries';
 export const UPDATE_ENTRY = 'update_entry';
 export const DELETE_ENTRY = 'delete_entry';
@@ -11,3 +11,4 @@ export const VENUES_FETCH_DATA_SUCCESS = 'venues_fetch_data_success';
 export const UPDATE_TERM = 'update_term';
 export const REVIEW_VENUE = 'review_venue';
 export const CHECK_ENTRY = 'checked_entry';
+export const LOAD_EMAIL_SHARE = 'load_email_share';

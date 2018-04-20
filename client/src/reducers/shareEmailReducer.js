@@ -1,4 +1,6 @@
-export default [
+import { LOAD_EMAIL_SHARE } from '../actions/types';
+
+const data = [
 	{
 		label: 'Comma-Separated Recipient Email Addresses',
 		name: 'recipients',
@@ -24,3 +26,14 @@ export default [
 		placeholder: 'Email body'
 	}
 ];
+
+export default function(state = {}, action) {
+	switch (action.type) {
+		case LOAD_EMAIL_SHARE:
+			return {
+				data: action.data
+			};
+		default:
+			return data;
+	}
+}

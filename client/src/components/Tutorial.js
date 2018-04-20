@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { fixBody, unFixBody } from '../utils/fixBody';
 
 class Tutorial extends Component {
-	state = { show: this.props.showTutorial };
-
 	componentDidMount() {
 		fixBody();
 	}
@@ -12,8 +10,7 @@ class Tutorial extends Component {
 	}
 	handleDismiss() {
 		unFixBody();
-		this.props.dismissTutorial(true, this.props.userId);
-		this.setState({ show: false });
+		this.props.dismiss();
 	}
 	render() {
 		return (
