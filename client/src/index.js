@@ -8,6 +8,9 @@ import storage from 'redux-persist/lib/storage';
 //import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+import { unregister } from './registerServiceWorker';
+
+unregister();
 
 import reducers from './reducers';
 import App from './components/App';
