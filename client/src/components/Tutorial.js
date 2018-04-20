@@ -50,8 +50,8 @@ class Tutorial extends Component {
 								</p>
 
 								<p>
-									Search for your newest recommendations, write out why you like
-									them, and add them to your catalog of recommendations.
+									Search for your favorite restaurants and add them to your
+									catalog of recommendations.
 								</p>
 
 								<h3 className="bold">Share Your Taste with Your Friends</h3>
@@ -60,12 +60,8 @@ class Tutorial extends Component {
 									Recommends allows you to share your favorite restaurants with
 									your friends via email.
 								</p>
-								<p>
-									Navigate to the share tab and start sharing your
-									recommendations. Your friends will receive a nicely formatted
-									email with imagery, restaurant information, and the reasons
-									why you like those restaurants.
-								</p>
+
+								<h3 className="bold">We hope you enjoy using Recommends!</h3>
 
 								<button
 									onClick={() => this.handleDismiss()}

@@ -14,8 +14,7 @@ import App from './components/App';
 
 const persistConfig = {
 	key: 'root',
-	storage: storage,
-	blacklist: ['auth']
+	storage: storage
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -25,41 +25,41 @@ class App extends Component {
 				<div id="app" className="wrapper">
 					<Header auth={this.props.auth} logOut={this.props.logOut} />
 					<main>
-						{/*<Switch> */}
-						<Route exact path="/" component={Landing} />
-						<Route exact path="/api/logout" component={Landing} />
-						<PrivateRoute
-							auth={this.props.auth}
-							exact
-							path="/dashboard"
-							component={Dashboard}
-						/>
-						<PrivateRoute
-							auth={this.props.auth}
-							exact
-							path="/entry/:_id"
-							component={EntryEditWrapper}
-						/>
-						<PrivateRoute
-							auth={this.props.auth}
-							exact
-							path="/share"
-							component={ShareEntries}
-						/>
-						<PrivateRoute
-							auth={this.props.auth}
-							exact
-							path="/results"
-							component={SearchList}
-						/>
-						<PrivateRoute
-							auth={this.props.auth}
-							exact
-							path="/results/review"
-							component={Modal}
-						/>
-						{/*<PrivateRoute component={NoMatch} auth={this.props.auth} />
-						</Switch> */}
+						<Switch>
+							<Route exact path="/" component={Landing} />
+							<Route exact path="/api/logout" component={Landing} />
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/dashboard"
+								component={Dashboard}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/entry/:_id"
+								component={EntryEditWrapper}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/share"
+								component={ShareEntries}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/results"
+								component={SearchList}
+							/>
+							<PrivateRoute
+								auth={this.props.auth}
+								exact
+								path="/results/review"
+								component={Modal}
+							/>
+							<PrivateRoute component={NoMatch} auth={this.props.auth} />
+						</Switch>
 					</main>
 				</div>
 			</BrowserRouter>
