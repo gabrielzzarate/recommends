@@ -28,31 +28,31 @@ class App extends Component {
 						{/*<Switch> */}
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/api/logout" component={Landing} />
-						<PrivateRoute
+						<Route
 							auth={this.props.auth}
 							exact
 							path="/dashboard"
 							component={Dashboard}
 						/>
-						<PrivateRoute
+						<Route
 							auth={this.props.auth}
 							exact
 							path="/entry/:_id"
 							component={EntryEditWrapper}
 						/>
-						<PrivateRoute
+						<Route
 							auth={this.props.auth}
 							exact
 							path="/share"
 							component={ShareEntries}
 						/>
-						<PrivateRoute
+						<Route
 							auth={this.props.auth}
 							exact
 							path="/results"
 							component={SearchList}
 						/>
-						<PrivateRoute
+						<Route
 							auth={this.props.auth}
 							exact
 							path="/results/review"
