@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 //import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 
@@ -29,4 +29,3 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById('root')
 );
-registerServiceWorker();
