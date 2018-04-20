@@ -10,10 +10,10 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { unregister } from './registerServiceWorker';
 
-unregister();
-
 import reducers from './reducers';
 import App from './components/App';
+
+unregister();
 
 const persistConfig = {
 	key: 'root',
