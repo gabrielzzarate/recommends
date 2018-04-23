@@ -3,6 +3,7 @@
 $modal-width: 590px;
 $dialog-width: 420px;
 $video-width: 800px;
+$notice-width: 200px;
 
 // General modal
 
@@ -22,6 +23,14 @@ $video-width: 800px;
 	z-index: 999;
 	-webkit-backface-visibility: hidden;
 
+	&.notice-wrapper {
+		background: transparent;
+
+		@include mobile {
+			padding: 0;
+		}
+	}
+
 	@include not-mobile {
 		padding: $section-rl-padding-mobile;
 	}
@@ -40,11 +49,30 @@ $video-width: 800px;
 		display: table;
 		width: 100%;
 		height: 100%;
+
+		&.notice-outer {
+			display: block;
+			position: relative;
+		}
 	}
 
 	.modal-inner-centered {
 		display: table-cell;
 		vertical-align: middle;
+
+		&.notice-inner {
+			display: block;
+			position: absolute;
+			right: 0;
+			bottom: 10px;
+			max-width: 250px;
+			width: 100%;
+
+			@include mobile {
+				bottom: 0;
+				max-width: 100%;
+			}
+		}
 	}
 
 	.modal-container {
@@ -64,6 +92,23 @@ $video-width: 800px;
 
 		&.dialog-modal {
 			max-width: $dialog-width;
+			z-index: 999;
+		}
+
+		&.notice-modal {
+			max-width: $notice-width;
+			padding: 7px;
+			background: $accent-color2;
+			color: #fff;
+			font-size: 30px !important;
+			font-family: $heading-font;
+			font-weight: 700;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+			@include mobile {
+				max-width: 100%;
+				padding: 0;
+			}
 		}
 
 		&.video-modal {

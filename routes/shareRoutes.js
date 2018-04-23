@@ -4,6 +4,7 @@ const requireLogin = require('../middlewares/requireLogin');
 const Entry = mongoose.model('entries');
 const Share = mongoose.model('shares');
 const Mailer = require('../services/Mailer');
+const User = mongoose.model('users');
 const keys = require('../config/keys');
 const shareTemplate = require('../services/emailTemplates/shareTemplate');
 
@@ -11,8 +12,6 @@ module.exports = app => {
 	app.post('/api/share', requireLogin, async (req, res) => {
 		const { values, entries } = req.body;
 		const { title, subject, body, recipients } = values;
-
-		console.log('entries', req.user.name);
 
 		const share = new Share({
 			title,
@@ -28,12 +27,16 @@ module.exports = app => {
 		// Send an email
 		const mailer = new Mailer(share, shareTemplate(share));
 
+		const userShareNumber = await User.findByIdAndUpdate(req.user._id, {
+			shareNumber: req.user.shareNumber + 1
+		});
+
 		try {
 			await mailer.send();
 			await share.save();
 			const user = await req.user.save();
 
-			res.send(user); // user model response with the new value of credits
+			res.send(user);
 		} catch (err) {
 			res.status(422).send(err);
 		}

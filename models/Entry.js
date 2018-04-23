@@ -10,6 +10,7 @@ const entrySchema = new Schema({
 	state: String,
 	country: String,
 	userRecommendation: String,
+	moreInfo: String,
 	photo: Object,
 	lat: Number,
 	lng: Number,

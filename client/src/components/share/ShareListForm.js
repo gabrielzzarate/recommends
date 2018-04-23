@@ -4,8 +4,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import ShareField from './ShareField';
+import ShareCheckbox from './ShareCheckbox';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
+import EmailFields from './EmailFields';
 
 class ShareListForm extends Component {
 	state = { checked: true };
@@ -19,25 +21,26 @@ class ShareListForm extends Component {
 				return;
 			default:
 				return this.props.entries.map((entry, index) => {
-					if (entry.checked) {
-						return (
-							<div className="field-wrapper checkbox" key={entry._id}>
-								<Field
-									key={entry._id}
-									component="input"
-									type="checkbox"
-									name={entry._id}
-									id={entry.venueId}
-									entry={entry}
-									checked={this.state.checked}
-									onClick={() => this.toggle(this.state)}
-								/>
-								<label htmlFor={entry.venueId} className="checkbox-label">
-									{entry.name}
-								</label>
-							</div>
-						);
-					}
+					// if (entry.checked) {
+					// 	return (
+					// 		<div className="field-wrapper checkbox" key={entry._id}>
+					// 			<Field
+					// 				key={entry._id}
+					// 				component={ShareCheckbox}
+					// 				//type={ShareCheckbox}
+					// 				name={entry._id}
+					// 				id={entry.venueId}
+					// 				entry={entry}
+					// 				//value={true}
+					// 				defaultChecked={this.state.checked}
+					// 				onClick={() => this.value == !this.value}
+					// 			/>
+					// 			<label htmlFor={entry.venueId} className="checkbox-label">
+					// 				{entry.name}
+					// 			</label>
+					// 		</div>
+					// 	);
+					// }
 					return (
 						<div className="field-wrapper checkbox" key={entry._id}>
 							<Field
@@ -56,13 +59,6 @@ class ShareListForm extends Component {
 				});
 		}
 	}
-	renderShareFields() {
-		return _.map(formFields, ({ label, name, type }) => {
-			return (
-				<Field key={name} component={ShareField} label={label} name={name} />
-			);
-		});
-	}
 	render() {
 		return (
 			<div className="standard-padding share-entries">
@@ -75,7 +71,7 @@ class ShareListForm extends Component {
 						>
 							<div className="form-section">{this.renderShareList()}</div>
 							<hr className="form-divider" />
-							<div className="form-section">{this.renderShareFields()}</div>
+							<EmailFields initialValues={this.props.initialValues} />
 							<div className="button-wrapper">
 								<button
 									disabled={this.props.pristine || this.props.submitting}
@@ -114,7 +110,9 @@ function mapStateToProps({ entries }) {
 }
 
 export default connect(mapStateToProps)(
-	reduxForm({ validate, destroyOnUnmount: false, form: 'shareForm' })(
+	reduxForm({ validate, destroyOnUnmount: false, form: 'shareEntryForm' })(
 		withRouter(ShareListForm)
 	)
 );
+
+/* destroyOnUnmount: false, */

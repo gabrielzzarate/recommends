@@ -40,13 +40,15 @@ module.exports = share => {
             <tr>
               <td>
               <a
-                href={https://www.google.com/maps/search/?api=1&query=${convertEntryName(
+                href="https://www.google.com/maps/search/?api=1&query=${convertEntryName(
                   entry.name
-                )}
+                )}"
                 target="_blank"
                 class="link directions-link webfont-regular"
               >Directions</a>
-              <a href="" class="link webfont-regular" target="_blank">More Info</a>
+              <a href="${
+                entry.moreInfo
+              }" class="link webfont-regular" target="_blank">More Info</a>
               </td>
             </tr>
           </table>

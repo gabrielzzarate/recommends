@@ -209,7 +209,7 @@ ol {
   list-style: decimal; }
 
 strong {
-  font-weight: 500; }
+  font-weight: 700; }
 
 em {
   font-weight: 500;
@@ -307,7 +307,6 @@ br.mobile-break {
 
 html.no-scroll,
 body.no-scroll {
-  overflow: hidden;
   position: fixed;
   width: 100%; }
 
@@ -556,11 +555,17 @@ div.standard-padding {
   padding-top: 13px; }
   .field-wrapper:nth-of-type(odd) {
     padding-right: 5px; }
+    @media all and (min-width: 1214px) {
+      .field-wrapper:nth-of-type(odd) {
+        padding-right: 5px; } }
     @media all and (max-width: 767px) {
       .field-wrapper:nth-of-type(odd) {
         padding-right: 0; } }
   .field-wrapper:nth-of-type(even) {
     padding-left: 5px; }
+    @media all and (min-width: 1214px) {
+      .field-wrapper:nth-of-type(even) {
+        padding-left: 5px; } }
     @media all and (max-width: 767px) {
       .field-wrapper:nth-of-type(even) {
         padding-left: 0; } }
@@ -762,6 +767,9 @@ textarea {
     z-index: 1;
     border-radius: 50%;
     cursor: pointer; }
+  @media all and (max-width: 560px) {
+    .checkbox-label {
+      padding: 25px 0 0 38px; } }
 
 input[type='radio'],
 input[type='checkbox'] {
@@ -916,6 +924,11 @@ a {
   overflow-y: hidden;
   z-index: 999;
   -webkit-backface-visibility: hidden; }
+  .modal-wrapper.notice-wrapper {
+    background: transparent; }
+    @media all and (max-width: 560px) {
+      .modal-wrapper.notice-wrapper {
+        padding: 0; } }
   @media all and (min-width: 561px) {
     .modal-wrapper {
       padding: 16px; } }
@@ -931,9 +944,23 @@ a {
     display: table;
     width: 100%;
     height: 100%; }
+    .modal-wrapper .modal-outer-centered.notice-outer {
+      display: block;
+      position: relative; }
   .modal-wrapper .modal-inner-centered {
     display: table-cell;
     vertical-align: middle; }
+    .modal-wrapper .modal-inner-centered.notice-inner {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      max-width: 250px;
+      width: 100%; }
+      @media all and (max-width: 560px) {
+        .modal-wrapper .modal-inner-centered.notice-inner {
+          bottom: 0;
+          max-width: 100%; } }
   .modal-wrapper .modal-container {
     position: relative;
     width: 100%;
@@ -948,7 +975,21 @@ a {
       .modal-wrapper .modal-container {
         padding: 50px 32px 32px; } }
     .modal-wrapper .modal-container.dialog-modal {
-      max-width: 420px; }
+      max-width: 420px;
+      z-index: 999; }
+    .modal-wrapper .modal-container.notice-modal {
+      max-width: 200px;
+      padding: 7px;
+      background: #ea7c48;
+      color: #fff;
+      font-size: 30px !important;
+      font-family: "Ciutadella", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+      @media all and (max-width: 560px) {
+        .modal-wrapper .modal-container.notice-modal {
+          max-width: 100%;
+          padding: 0; } }
     .modal-wrapper .modal-container.video-modal {
       max-width: 800px; }
     .modal-wrapper .modal-container .modal-header {

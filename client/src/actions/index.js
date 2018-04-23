@@ -12,7 +12,9 @@ import {
 	UPDATE_TERM,
 	REVIEW_VENUE,
 	FIND_USER,
-	CHECK_ENTRY
+	CHECK_ENTRY,
+	SHARE_SUCCESS,
+	DISMISS_SHARE_DIALOG
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -117,7 +119,6 @@ export function venuesIsLoading(bool) {
 }
 
 export function venuesFetchDataSuccess(venues) {
-	console.log('suc', venues);
 	return {
 		type: VENUES_FETCH_DATA_SUCCESS,
 		venues: venues.data.response
@@ -168,6 +169,7 @@ export const submitShare = (values, entries, history) => async dispatch => {
 	const res = await axios.post('/api/share', { values, entries });
 
 	history.push('/dashboard');
+	dispatch({ type: SHARE_SUCCESS, payload: res.data });
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
@@ -181,9 +183,12 @@ export const checkEntry = (entry, index) => dispatch => {
 };
 
 export const dismissTutorial = (bool, userId) => async dispatch => {
-	console.log('dismissing');
 	const res = await axios.post('/api/current_user', { bool, userId });
 	dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const dismissShareDialog = () => dispatch => {
+	dispatch({ type: DISMISS_SHARE_DIALOG, payload: false });
 };
 
 // export const submitEntry = (values, history) => async dispatch => {

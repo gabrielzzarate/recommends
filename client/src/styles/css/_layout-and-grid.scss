@@ -40,7 +40,7 @@ $border-radius: 0.19753rem;
 html,
 body {
 	&.no-scroll {
-		overflow: hidden;
+		//overflow: hidden;
 		position: fixed;
 		width: 100%;
 	}

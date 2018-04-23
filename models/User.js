@@ -6,7 +6,8 @@ const userSchema = new Schema({
 	googleId: String,
 	name: String,
 	shownTutorial: { type: Boolean, default: false },
-	image: String
+	image: String,
+	shareNumber: { type: Number, default: 0 }
 });
 
 mongoose.model('users', userSchema);

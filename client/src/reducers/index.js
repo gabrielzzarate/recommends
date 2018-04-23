@@ -7,6 +7,7 @@ import venueReviewReducer from './venueReviewReducer';
 import { venuesHasErrored, venuesIsLoading, venues } from './venuesReducer';
 import searchReducer from './searchReducer';
 import shareEmailReducer from './shareEmailReducer';
+import shareNumberReducer from './shareNumberReducer';
 
 export default combineReducers({
 	auth: authReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
 	venueReview: venueReviewReducer,
 	term: searchReducer,
 	userLocation: userLocationReducer,
-	shareEmail: shareEmailReducer
+	shareEmail: shareEmailReducer,
+	shareNumber: shareNumberReducer
 });

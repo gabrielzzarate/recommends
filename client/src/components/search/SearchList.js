@@ -27,6 +27,32 @@ class SearchList extends Component {
 					<p>
 						Grant Recommends location access to search restaurants near you.
 					</p>
+					<p>
+						If you have already denied Recommends location permissions, follow
+						the instructions below to change your default location settings.
+					</p>
+					<ol>
+						<li>
+							On your computer, open <strong>Chrome.</strong>
+						</li>
+						<li>
+							At the top right, click <strong>More</strong> and then{' '}
+							<strong>Settings.</strong>
+						</li>
+						<li>
+							At the bottom, click <strong>Advanced.</strong>
+						</li>
+						<li>
+							Under "Privacy and Security," click{' '}
+							<strong>Content settings.</strong>
+						</li>
+						<li>
+							Click <strong>Location.</strong>
+						</li>
+						<li>
+							Turn <strong>Ask before accessing</strong> on or off.
+						</li>
+					</ol>
 					<p className="italic">{this.props.venues.body.meta.errorDetail}.</p>
 					{this.props.findUserLocation()}
 				</div>
@@ -36,6 +62,7 @@ class SearchList extends Component {
 		return this.renderResults();
 	}
 	renderResults() {
+		console.log('this.', this.props.venues);
 		return (
 			<div className="SearchList__wrapper">
 				{this.props.venues.groups[0].items.map(data => {

@@ -10,7 +10,7 @@ class EntryList extends Component {
 	}
 
 	renderEntries() {
-		return this.props.entries.reverse().map((entry, index) => {
+		return this.props.entries.map((entry, index) => {
 			const str = '$';
 			const convertEntryName = name => {
 				let words = name.toLowerCase().split(' ');

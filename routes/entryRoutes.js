@@ -54,6 +54,7 @@ module.exports = app => {
 			location,
 			categories,
 			featuredPhotos,
+			url,
 			price
 		} = req.body.venue;
 		const { userRecommendation } = req.body.userInput;
@@ -72,6 +73,7 @@ module.exports = app => {
 			checked: false,
 			category: categories[0].shortName,
 			userRecommendation: userRecommendation,
+			moreInfo: url,
 			dateAdded: new Date(),
 			_user: req.user.id
 		});

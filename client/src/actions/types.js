@@ -12,3 +12,5 @@ export const UPDATE_TERM = 'update_term';
 export const REVIEW_VENUE = 'review_venue';
 export const CHECK_ENTRY = 'checked_entry';
 export const LOAD_EMAIL_SHARE = 'load_email_share';
+export const SHARE_SUCCESS = 'share_success';
+export const DISMISS_SHARE_DIALOG = 'dimiss_share_dialog';

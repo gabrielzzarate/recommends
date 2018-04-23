@@ -5,25 +5,22 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import formFields from './formFields';
 import * as actions from '../../actions';
+import { fixBody, unFixBody } from '../../utils/fixBody';
 
 const ShareEntriesReview = ({
 	onCancel,
 	formValues,
 	entries,
 	submitShare,
+	shareEmail,
 	history
 }) => {
-	const reviewFields = _.map(formFields, ({ name, label }) => {
-		return (
-			<div className="field-wrapper full-width-field" key={name}>
-				<label>{label}</label>
-				<div>{formValues[name]}</div>
-			</div>
-		);
-	});
+	fixBody();
 
 	const reviewEntries = _.map(entries, entry => {
-		if (formValues[entry._id]) {
+		const id = entry._id;
+		console.log('valuess', formValues);
+		if (formValues.values[id]) {
 			return (
 				<div className="entry-review" key={entry.name}>
 					<h4>{entry.name}</h4>
@@ -33,11 +30,11 @@ const ShareEntriesReview = ({
 	});
 
 	const sharedEntries = _.map(entries, entry => {
-		if (formValues[entry._id]) {
+		const id = entry._id;
+		if (formValues.values[id]) {
 			return entry;
 		}
 	});
-	console.log('val', formValues);
 	return (
 		<div className="modal-wrapper">
 			<div className="modal-outer-centered">
@@ -47,12 +44,27 @@ const ShareEntriesReview = ({
 							Review your recommendations before you send them to your friends!
 						</h5>
 						<div className="entries-review">{reviewEntries}</div>
-						{reviewFields}
+
+						<div className="field-wrapper full-width-field">
+							<label>Comma-Separated Recipient Email Addresses</label>
+							<div>{formValues.values.recipients}</div>
+						</div>
+						<div className="field-wrapper full-width-field">
+							<label>Subject Line</label>
+							<div>{formValues.values.subject}</div>
+						</div>
+						<div className="field-wrapper full-width-field">
+							<label>Email Body</label>
+							<div>{formValues.values.body}</div>
+						</div>
 						<div className="button-wrapper action-row">
 							<button onClick={onCancel}>Back</button>
 							<button
 								className="pull-right"
-								onClick={() => submitShare(formValues, sharedEntries, history)}
+								onClick={() => {
+									submitShare(formValues.values, sharedEntries, history);
+									unFixBody();
+								}}
 							>
 								Share Entries
 							</button>
@@ -65,7 +77,10 @@ const ShareEntriesReview = ({
 };
 
 function mapStateToProps(state) {
-	return { formValues: state.form.shareForm.values, entries: state.entries };
+	return {
+		entries: state.entries,
+		shareEmail: state.shareEmail
+	};
 }
 
 export default connect(mapStateToProps, actions)(
