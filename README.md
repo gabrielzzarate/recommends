@@ -1,6 +1,4 @@
-# Recommends
-
-## _save and share your recommendations_
+# Recommends _save and share your recommendations_
 
 ### Your Personal Recommendation Database
 
@@ -20,8 +18,8 @@ email.
 * Mongoose
 * React
 * Redux
+* Heroku
 * Passport.js
 * Google Oauth
 * Foursquare API
 * Sendgrid Email Service
-
