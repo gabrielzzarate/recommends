@@ -1,4 +1,5 @@
-# Recommends _save and share your recommendations_
+![Recommends](https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/images/recommends-heading_email.png)
+_save and share your recommendations_
 
 ### Your Personal Recommendation Database
 
