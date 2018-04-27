@@ -19,7 +19,8 @@ $notice-width: 200px;
 	min-height: 100vh;
 	@include background-opacity($text-color, 0.8);
 	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 	z-index: 999;
 	-webkit-backface-visibility: hidden;
 
@@ -37,7 +38,7 @@ $notice-width: 200px;
 
 	@include landscape {
 		overflow-x: hidden;
-		overflow-y: auto;
+		overflow-y: scroll;
 	}
 
 	@include mobile-medium {
@@ -135,4 +136,16 @@ $notice-width: 200px;
 
 .venue-info-review {
 	padding-bottom: 20px;
+}
+
+// share review modal
+
+.share-review-modal {
+	.field-wrapper {
+		padding-left: 5px;
+	}
+}
+
+.share-review-item {
+	padding-top: 5px;
 }

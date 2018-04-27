@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import ShareListForm from './ShareListForm';
 import ShareEntriesReview from './ShareEntriesReview';
+import { fixBody, unFixBody } from '../../utils/fixBody';
 
 class ShareEntries extends Component {
 	state = { showFormReview: false };
+
+	componentWillReceiveProps(nextProps) {
+		unFixBody();
+	}
 
 	renderContent() {
 		if (this.state.showFormReview) {
