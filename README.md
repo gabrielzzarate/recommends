@@ -1,4 +1,4 @@
-![Recommends](https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/images/recommends-heading_email.png)
+![Recommends](https://s3-us-west-2.amazonaws.com/www.recommends-assets.com/images/recommends_githug.png)
 _save and share your recommendations_
 
 ### Your Personal Recommendation Database
