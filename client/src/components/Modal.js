@@ -28,11 +28,8 @@ class Modal extends Component {
 				<div className="modal-outer-centered">
 					<div className="modal-inner-centered">
 						<div className="container modal-container dialog-modal">
-							<div className="modal-content">
-								<p>
-									This exact venue is already a part of your Recommends
-									database.
-								</p>
+							<div className="modal-content centered">
+								<p>This venue is already part of your Recommends database.</p>
 								<Link
 									className="button"
 									onClick={() => unFixBody()}

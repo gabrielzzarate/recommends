@@ -73,7 +73,7 @@ input[type='radio']:checked + .checkbox-label:after {
   background-color: #ed708d;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("./styles/images/icon-checkmark.svg"); }
+  background-image: url("./images/icon-checkmark.svg"); }
 
 .error-message {
   color: #ed708d; }
@@ -201,7 +201,7 @@ button {
 
 .entries-review {
   background: #eeefe8;
-  color: #c6c996; }
+  color: #5e4f63; }
 
 .modal-wrapper {
   background: #5e4f63;

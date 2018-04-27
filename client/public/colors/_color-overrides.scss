@@ -126,7 +126,7 @@ input[type='radio']:checked + .checkbox-label:after {
 	background-color: $accent-color2;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-image: url('./styles/images/icon-checkmark.svg');
+	background-image: url('./images/icon-checkmark.svg');
 }
 
 .error-message {
@@ -309,7 +309,7 @@ button {
 
 .entries-review {
 	background: $bg-color;
-	color: $bg-color-alt;
+	color: $text-color;
 }
 
 // modal colors

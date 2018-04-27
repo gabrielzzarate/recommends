@@ -19,7 +19,6 @@ const ShareEntriesReview = ({
 
 	const reviewEntries = _.map(entries, entry => {
 		const id = entry._id;
-		console.log('valuess', formValues);
 		if (formValues.values[id]) {
 			return (
 				<div className="entry-review" key={entry.name}>
@@ -39,23 +38,25 @@ const ShareEntriesReview = ({
 		<div className="modal-wrapper">
 			<div className="modal-outer-centered">
 				<div className="modal-inner-centered">
-					<div className="container modal-container">
-						<h5>
-							Review your recommendations before you send them to your friends!
-						</h5>
+					<div className="container modal-container share-review-modal">
+						<h5>Review your share email before you send it to your friends!</h5>
 						<div className="entries-review">{reviewEntries}</div>
 
 						<div className="field-wrapper full-width-field">
 							<label>Comma-Separated Recipient Email Addresses</label>
-							<div>{formValues.values.recipients}</div>
+							<div className="share-review-item">
+								{formValues.values.recipients}
+							</div>
 						</div>
 						<div className="field-wrapper full-width-field">
 							<label>Subject Line</label>
-							<div>{formValues.values.subject}</div>
+							<div className="share-review-item">
+								{formValues.values.subject}
+							</div>
 						</div>
 						<div className="field-wrapper full-width-field">
 							<label>Email Body</label>
-							<div>{formValues.values.body}</div>
+							<div className="share-review-item">{formValues.values.body}</div>
 						</div>
 						<div className="button-wrapper action-row">
 							<button onClick={onCancel}>Back</button>

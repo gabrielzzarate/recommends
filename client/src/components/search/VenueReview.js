@@ -15,27 +15,26 @@ const VenueReview = props => {
 				</span>
 			</div>
 			<form onSubmit={props.handleSubmit(props.onVenueSubmit)}>
-				<div className="form-section">
-					<div className="field-wrapper full-width-field">
-						<Field
-							name="userRecommendation"
-							component="textarea"
-							type="text"
-							id="userRecommendation"
-						/>
-						<label htmlFor="userRecommendation">
-							Why You Recommend {props.venueReview.name}
-						</label>
-					</div>
+				<div className="field-wrapper full-width-field">
+					<Field
+						name="userRecommendation"
+						component="textarea"
+						type="text"
+						placeholder="write down your recommendation"
+						id="userRecommendation"
+					/>
+					<label htmlFor="userRecommendation">
+						Why You Recommend {props.venueReview.name}
+					</label>
+				</div>
 
-					<div className="field-wrapper button-wrapper">
-						<Link className="button" onClick={() => unFixBody()} to="/results">
-							Back
-						</Link>
-						<button type="submit" className="pull-right">
-							Save Recommendation
-						</button>
-					</div>
+				<div className="field-wrapper button-wrapper">
+					<Link className="button" onClick={() => unFixBody()} to="/results">
+						Back
+					</Link>
+					<button type="submit" className="pull-right">
+						Save Recommendation
+					</button>
 				</div>
 			</form>
 		</div>
