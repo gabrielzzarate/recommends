@@ -15,11 +15,6 @@ export default function(state = [], action) {
 					...action.item
 				};
 			});
-		// return [
-		// 	...state.slice(1, action.payload.index),
-		// 	action.payload.entry,
-		// 	...state.slice(action.payload.index)
-		// ];
 
 		default:
 			return state;

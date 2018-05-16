@@ -40,7 +40,7 @@ class EntryEditWrapper extends Component {
 function mapStateToProps({ entries }, ownProps) {
 	return {
 		initialValues: entries.find(entry => {
-			return entry._id == ownProps.match.params._id;
+			return entry._id === ownProps.match.params._id;
 		})
 	};
 }

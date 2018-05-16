@@ -3,7 +3,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import formFields from './formFields';
+//import formFields from './formFields';
 import * as actions from '../../actions';
 import { fixBody, unFixBody } from '../../utils/fixBody';
 

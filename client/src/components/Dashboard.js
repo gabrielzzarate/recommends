@@ -4,7 +4,7 @@ import EntryList from './entries/EntryList';
 import SearchForm from './search/SearchForm';
 import Tutorial from './Tutorial';
 import ShareNumberDialog from './share/ShareNumberDialog';
-import { fixBody, unFixBody } from '../utils/fixBody';
+import { unFixBody } from '../utils/fixBody';
 import {
 	requestVenues,
 	updateSearchTerm,
@@ -69,7 +69,6 @@ class Dashboard extends Component {
 		}
 	}
 	render() {
-		console.log('state', this.props);
 		return (
 			<div>
 				<section className="dashboard-section standard-padding">
@@ -89,7 +88,7 @@ class Dashboard extends Component {
 						<div className="dashboard-user-greeting">{this.renderUser()}</div>
 					</div>
 				</section>
-				{this.state.shownTutorial === false && this.state.bool == true ? (
+				{this.state.shownTutorial === false && this.state.bool === true ? (
 					<Tutorial
 						dismissTutorial={this.props.dismissTutorial}
 						showTutorial={this.state.showTutorial}

@@ -13,23 +13,6 @@ const data = {
 		'I think you would really enjoy checking out these places, they are some of my favorites.',
 	placeholderBody: 'body'
 };
-// },
-// {
-// 	label: 'Subject Line',
-// 	name: 'subject',
-// 	type: 'text',
-// 	component: 'ShareListForm',
-// 	starting: 'Lorem ipsum',
-// 	placeholder: 'Email Subject Line'
-// },
-// {
-// 	label: 'Email Body',
-// 	name: 'body',
-// 	type: 'textarea',
-// 	component: 'ShareListTextArea',
-// 	starting: 'Lorem ipsum',
-// 	placeholder: 'Email body'
-// }
 
 export default function(state = {}, action) {
 	switch (action.type) {

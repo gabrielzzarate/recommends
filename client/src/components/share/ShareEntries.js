@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import ShareListForm from './ShareListForm';
 import ShareEntriesReview from './ShareEntriesReview';
-import { fixBody, unFixBody } from '../../utils/fixBody';
+import { unFixBody } from '../../utils/fixBody';
 
 class ShareEntries extends Component {
 	state = { showFormReview: false };

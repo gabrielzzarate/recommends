@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field } from 'redux-form';
 import ShareField from './ShareField';
 import ShareTextArea from './ShareTextArea';
-import formFields from './formFields';
 
 const EmailFields = initialValues => {
-	const { subject, body } = initialValues;
+	//const { subject, body } = initialValues;
 
 	if (initialValues === undefined) {
 		return <div>Loading...</div>;

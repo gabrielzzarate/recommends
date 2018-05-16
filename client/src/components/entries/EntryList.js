@@ -77,7 +77,6 @@ class EntryList extends Component {
 	}
 
 	render() {
-		console.log('entry props', this.props);
 		return <div className="entry-card-wrapper">{this.renderEntries()}</div>;
 	}
 }

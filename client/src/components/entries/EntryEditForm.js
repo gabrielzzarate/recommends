@@ -8,7 +8,6 @@ class EntryEditForm extends Component {
 
 	render() {
 		const { initialValues } = this.props;
-		console.log('edit values', this.props.initialValues);
 
 		if (this.props.initialValues === undefined) {
 			return <div>Loading...</div>;

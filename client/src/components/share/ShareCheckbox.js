@@ -1,5 +1,5 @@
 // ShareChecbox contains logic to render a single label and checkbox input
-import React, { Component } from 'react';
+import React from 'react';
 
 // export default ({ input, label, meta: { error, touched } }) => {
 // 	return (

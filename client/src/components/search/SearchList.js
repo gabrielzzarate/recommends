@@ -62,7 +62,6 @@ class SearchList extends Component {
 		return this.renderResults();
 	}
 	renderResults() {
-		console.log('this.', this.props.venues);
 		return (
 			<div className="SearchList__wrapper">
 				{this.props.venues.groups[0].items.map(data => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -11,15 +11,17 @@ import EntryEditWrapper from './entries/EntryEditWrapper';
 import ShareEntries from './share/ShareEntries';
 import SearchList from './search/SearchList';
 import Modal from './Modal';
-import NoMatch from './NoMatch';
-import PrivateRoute from '../utils/PrivateRoute';
+//import NoMatch from './NoMatch';
+//import PrivateRoute from '../utils/PrivateRoute';
 
 class App extends Component {
 	componentDidMount() {
 		this.props.fetchUser();
+		console.log(
+			'built with create react app by Gabriel Zarate http://zarate.me/. Design inspired by Rob Weychert http://v6.robweychert.com/'
+		);
 	}
 	render() {
-		console.log('app auth', this.props.auth);
 		return (
 			<BrowserRouter>
 				<div id="app" className="wrapper">

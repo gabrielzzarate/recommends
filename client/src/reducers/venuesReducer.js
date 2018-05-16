@@ -7,7 +7,6 @@ import {
 export function venuesHasErrored(state = false, action) {
 	switch (action.type) {
 		case VENUES_HAS_ERRORED:
-			console.log('errored....');
 			return action.hasErrored;
 		default:
 			return state;
@@ -16,7 +15,6 @@ export function venuesHasErrored(state = false, action) {
 export function venuesIsLoading(state = false, action) {
 	switch (action.type) {
 		case VENUES_IS_LOADING:
-			console.log('loading...');
 			return action.isLoading;
 		default:
 			return state;
@@ -25,7 +23,6 @@ export function venuesIsLoading(state = false, action) {
 export function venues(state = [], action) {
 	switch (action.type) {
 		case VENUES_FETCH_DATA_SUCCESS:
-			console.log('success...');
 			return action.venues;
 		default:
 			return state;
