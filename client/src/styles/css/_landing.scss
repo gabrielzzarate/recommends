@@ -28,4 +28,22 @@
 			padding-top: 15px;
 		}
 	}
+
+	.credits {
+		position: absolute;
+		left: 0;
+		bottom: 20px;
+		text-align: center;
+
+		@include vertical {
+			width: 100%;
+		}
+
+		@include landscape {
+			display: inline-block;
+			position: absolute;
+			left: 50%;
+			margin-left: -38%;
+		}
+	}
 }

@@ -1360,6 +1360,25 @@ a {
   display: inline-block;
   padding-top: 15px;
 }
+.landing .credits {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  text-align: center;
+}
+@media all and (max-width: 1215px) {
+  .landing .credits {
+    width: 100%;
+  }
+}
+@media all and (min-width: 1214px) {
+  .landing .credits {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -38%;
+  }
+}
 
 .entry-card-wrapper {
   display: grid;

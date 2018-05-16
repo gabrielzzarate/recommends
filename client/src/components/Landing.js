@@ -24,6 +24,12 @@ export default class Landing extends Component {
 						<a href="/auth/google">Login with Google</a>
 					</div>
 				</div>
+
+				<div className="credits">
+					Built with create-react-app by{' '}
+					<a href="http://zarate.me/">Gabriel Zarate</a>. Design inspired by{' '}
+					<a href="http://v6.robweychert.com/">Rob Weychert.</a>
+				</div>
 			</div>
 		);
 	}
