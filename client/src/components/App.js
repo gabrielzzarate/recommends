@@ -18,7 +18,7 @@ class App extends Component {
 	componentDidMount() {
 		this.props.fetchUser();
 		console.log(
-			'built with create react app by Gabriel Zarate http://zarate.me/. Design inspired by Rob Weychert http://v6.robweychert.com/'
+			'Built with create react app by Gabriel Zarate http://zarate.me/. Design inspired by Rob Weychert http://v6.robweychert.com/'
 		);
 	}
 	render() {
