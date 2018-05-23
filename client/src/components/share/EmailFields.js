@@ -4,8 +4,6 @@ import ShareField from './ShareField';
 import ShareTextArea from './ShareTextArea';
 
 const EmailFields = initialValues => {
-	//const { subject, body } = initialValues;
-
 	if (initialValues === undefined) {
 		return <div>Loading...</div>;
 	}

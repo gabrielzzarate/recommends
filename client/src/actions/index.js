@@ -46,38 +46,12 @@ export const findUserLocation = () => dispatch => {
 			payload: { lat: crd.latitude, lng: crd.longitude }
 		});
 	}
-	//console.log('position', position);
-	// dispatch({
-	// 	type: FIND_USER,
-	// 	payload: { lat: position.coords.latitude, lng: position.coords.longitude }
-	// });
 };
 
 export const fetchEntries = () => async dispatch => {
 	const res = await axios.get('/api/entries');
 	dispatch({ type: FETCH_ENTRIES, payload: res.data });
 };
-
-// export const searchEntries = (values, lat, lng, history) => async dispatch => {
-// 	const res = await axios.post('/api/search', { values, lat, lng });
-// 	history.push('/results');
-// 	dispatch({ type: REQUEST_VENUES, payload: res.data });
-// };
-
-// export const requestVenues = (values, lat, lng, history) => async dispatch => {
-// 	console.log('requesting....');
-// 	dispatch(venuesIsLoading(true));
-
-// 	try {
-// 		const res = await axios.post('/api/search', { values, lat, lng });
-
-// 		dispatch(venuesFetchDataSuccess(res));
-// 		history.push('/results');
-// 	} catch (err) {
-// 		dispatch(venuesIsLoading(false));
-// 		dispatch(venuesHasErrored(true));
-// 	}
-// };
 
 export function requestVenues(values, lat, lng, history) {
 	return dispatch => {
@@ -190,8 +164,3 @@ export const dismissShareDialog = () => dispatch => {
 	dispatch({ type: DISMISS_SHARE_DIALOG, payload: false });
 };
 
-// export const submitEntry = (values, history) => async dispatch => {
-// 	const res = await axios.post('/api/entries', values);
-// 	history.push('/dashboard');
-// 	dispatch({ type: FETCH_USER, payload: res.data });
-// };
