@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const RecipientSchema = require('./Recipient');
 const EntrySchema = require('./Entry');
 
-// schema for User Collection
+// schema for Share Collection
 const shareSchema = new Schema({
 	title: String,
 	body: String,

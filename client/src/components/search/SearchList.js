@@ -25,19 +25,21 @@ class SearchList extends Component {
 			return (
 				<div className="application-error content-space">
 					<p>
-						Grant Recommends location access to search restaurants near you.
+						Grant Recommends location access to search restaurants
+						near you.
 					</p>
 					<p>
-						If you have already denied Recommends location permissions, follow
-						the instructions below to change your default location settings.
+						If you have already denied Recommends location
+						permissions, follow the instructions below to change
+						your default location settings.
 					</p>
 					<ol>
 						<li>
 							On your computer, open <strong>Chrome.</strong>
 						</li>
 						<li>
-							At the top right, click <strong>More</strong> and then{' '}
-							<strong>Settings.</strong>
+							At the top right, click <strong>More</strong> and
+							then <strong>Settings.</strong>
 						</li>
 						<li>
 							At the bottom, click <strong>Advanced.</strong>
@@ -50,10 +52,13 @@ class SearchList extends Component {
 							Click <strong>Location.</strong>
 						</li>
 						<li>
-							Turn <strong>Ask before accessing</strong> on or off.
+							Turn <strong>Ask before accessing</strong> on or
+							off.
 						</li>
 					</ol>
-					<p className="italic">{this.props.venues.body.meta.errorDetail}.</p>
+					<p className="italic">
+						{this.props.venues.body.meta.errorDetail}.
+					</p>
 					{this.props.findUserLocation()}
 				</div>
 			);
@@ -109,12 +114,16 @@ class SearchList extends Component {
 									</span>
 
 									<span className="search-card-heading-secondary">
-										{venue.location.address}, {venue.location.city}
+										{venue.location.address},{' '}
+										{venue.location.city}
 									</span>
 
 									<a
 										onClick={() =>
-											this.props.loadVenueReview(venue, this.props.history)
+											this.props.loadVenueReview(
+												venue,
+												this.props.history
+											)
 										}
 										className="action-link"
 										aria-label="Add Recommendation"
@@ -137,7 +146,9 @@ class SearchList extends Component {
 				return (
 					<div className="content-space">
 						<h2>Get Search Results</h2>
-						<p className="alt">Enter a search term to add Recommendations</p>
+						<p className="alt">
+							Enter a search term to add Recommendations
+						</p>
 						<SearchForm />
 					</div>
 				);
@@ -159,8 +170,8 @@ class SearchList extends Component {
 					<div className="content-space">
 						<h2>Search results for: {this.props.term}</h2>
 						<p className="alt">
-							Browse search results and add your favorites to your Recommends
-							database.
+							Browse search results and add your favorites to your
+							Recommends database.
 						</p>
 						<SearchForm
 							requestVenues={this.props.requestVenues}
@@ -178,9 +189,6 @@ class SearchList extends Component {
 				<div className="container">
 					{this.renderHeadline()}
 					{this.handleSearch(this.renderResults)}
-					{/*this.props.venues.groups[0].items
-						? this.handleSearch(this.renderResults)
-						: null */}
 				</div>
 			</div>
 		);
