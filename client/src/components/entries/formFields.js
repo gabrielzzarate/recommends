@@ -1,4 +1,1 @@
-export default [
-	{ label: 'Entry Title', name: 'title' }
-	//{ label: 'Entry Category', name: 'category' }
-];
+export default [{ label: 'Entry Title', name: 'title' }];
