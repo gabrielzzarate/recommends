@@ -1147,23 +1147,24 @@ a {
   position: relative; }
   .SearchList__item img {
     width: 100%; }
-  .SearchList__item svg {
-    width: 100%; }
-    .SearchList__item svg .cls-1,
-    .SearchList__item svg .placeholder-bg {
-      width: 100%;
-      height: 100%;
-      fill: #645d77; }
-    .SearchList__item svg .cls-2,
-    .SearchList__item svg .placeholder-logo {
-      fill: none;
-      stroke: #eff1ef;
-      stroke-miterlimit: 10;
-      stroke-width: 4px; }
-      @media all and (max-width: 560px) {
-        .SearchList__item svg .cls-2,
-        .SearchList__item svg .placeholder-logo {
-          stroke-width: 1px; } }
+
+.placeholder-svg {
+  width: 100%; }
+  .placeholder-svg .cls-1,
+  .placeholder-svg .placeholder-bg {
+    width: 100%;
+    height: 100%;
+    fill: #645d77; }
+  .placeholder-svg .cls-2,
+  .placeholder-svg .placeholder-logo {
+    fill: none;
+    stroke: #eff1ef;
+    stroke-miterlimit: 10;
+    stroke-width: 4px; }
+    @media all and (max-width: 560px) {
+      .placeholder-svg .cls-2,
+      .placeholder-svg .placeholder-logo {
+        stroke-width: 1px; } }
 
 .search-list-item-content {
   position: absolute;
