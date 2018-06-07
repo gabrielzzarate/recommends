@@ -88,6 +88,7 @@ class SearchList extends Component {
 									data-name="Layer 1"
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 580.61 460.78"
+									className="placeholder-svg"
 								>
 									<title>recommends-placeholder</title>
 									<rect className="placeholder-bg" />

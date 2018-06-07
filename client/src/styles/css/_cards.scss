@@ -106,30 +106,32 @@
 	img {
 		width: 100%;
 	}
+}
 
-	svg {
+.placeholder-svg {
+	width: 100%;
+
+	.cls-1,
+	.placeholder-bg {
 		width: 100%;
+		height: 100%;
+		fill: $text-color;
+	}
 
-		.cls-1,
-		.placeholder-bg {
-			width: 100%;
-			height: 100%;
-			fill: $text-color;
-		}
+	.cls-2,
+	.placeholder-logo {
+		fill: none;
+		stroke: $bg-color;
+		stroke-miterlimit: 10;
+		stroke-width: 4px;
 
-		.cls-2,
-		.placeholder-logo {
-			fill: none;
-			stroke: $bg-color;
-			stroke-miterlimit: 10;
-			stroke-width: 4px;
-
-			@include mobile {
-				stroke-width: 1px;
-			}
+		@include mobile {
+			stroke-width: 1px;
 		}
 	}
 }
+
+
 
 .search-list-item-content {
 	position: absolute;
