@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-//import ShareField from './ShareField';
-//import ShareCheckbox from './ShareCheckbox';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
 import EmailFields from './EmailFields';
@@ -21,26 +19,6 @@ class ShareListForm extends Component {
 				return;
 			default:
 				return this.props.entries.map((entry, index) => {
-					// if (entry.checked) {
-					// 	return (
-					// 		<div className="field-wrapper checkbox" key={entry._id}>
-					// 			<Field
-					// 				key={entry._id}
-					// 				component={ShareCheckbox}
-					// 				//type={ShareCheckbox}
-					// 				name={entry._id}
-					// 				id={entry.venueId}
-					// 				entry={entry}
-					// 				//value={true}
-					// 				defaultChecked={this.state.checked}
-					// 				onClick={() => this.value == !this.value}
-					// 			/>
-					// 			<label htmlFor={entry.venueId} className="checkbox-label">
-					// 				{entry.name}
-					// 			</label>
-					// 		</div>
-					// 	);
-					// }
 					return (
 						<div className="field-wrapper checkbox" key={entry._id}>
 							<Field
@@ -51,7 +29,10 @@ class ShareListForm extends Component {
 								id={entry.venueId}
 								entry={entry}
 							/>
-							<label htmlFor={entry.venueId} className="checkbox-label">
+							<label
+								htmlFor={entry.venueId}
+								className="checkbox-label"
+							>
 								{entry.name}
 							</label>
 						</div>
@@ -66,15 +47,24 @@ class ShareListForm extends Component {
 					<div className="content-space">
 						<h2>Share Entries</h2>
 						<form
-							onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}
+							onSubmit={this.props.handleSubmit(
+								this.props.onSurveySubmit
+							)}
 							className="form-wrapper"
 						>
-							<div className="form-section">{this.renderShareList()}</div>
+							<div className="form-section">
+								{this.renderShareList()}
+							</div>
 							<hr className="form-divider" />
-							<EmailFields initialValues={this.props.initialValues} />
+							<EmailFields
+								initialValues={this.props.initialValues}
+							/>
 							<div className="button-wrapper">
 								<button
-									disabled={this.props.pristine || this.props.submitting}
+									disabled={
+										this.props.pristine ||
+										this.props.submitting
+									}
 									className="pull-right"
 									type="submit"
 								>
@@ -114,5 +104,3 @@ export default connect(mapStateToProps)(
 		withRouter(ShareListForm)
 	)
 );
-
-/* destroyOnUnmount: false, */

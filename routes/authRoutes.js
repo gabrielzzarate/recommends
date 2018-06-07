@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
 module.exports = app => {
-	// GoogleStrategy has an internal identifier as 'google'
-	// second argument (options object) : what access do we want to have : profile info and email address
+	// second argument: what access do we want to have : profile info and email address
 	app.get(
 		'/auth/google',
 		passport.authenticate('google', {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-// schema for User Collection
+// schema for Entry Collection
 const entrySchema = new Schema({
 	name: String,
 	venueId: String,
