@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Entry = mongoose.model('entries');
 const request = require('request');
-var rp = require('request-promise');
+const rp = require('request-promise');
 const keys = require('../config/keys');
 
 module.exports = app => {
@@ -61,7 +61,7 @@ module.exports = app => {
 
 		const entry = new Entry({
 			name,
-			photo: featuredPhotos.items[0],
+			photo: featuredPhotos ? featuredPhotos.items[0] : null,
 			venueId: id,
 			address: location.address,
 			city: location.city,
@@ -107,14 +107,23 @@ module.exports = app => {
 			json: true
 		};
 
-		rp(options)
-			.then(function(venues) {
-				res.send(venues);
-			})
-			.catch(function(err) {
-				// API call failed...
-				res.send(err);
-			});
+		// rp(options)
+		// 	.then(function(venues) {
+		// 		res.send(venues);
+		// 	})
+		// 	.catch(function(err) {
+		// 		// API call failed...
+		// 		res.send(err);
+		// 	});
+
+		try {
+			const req = await rp(options);
+			console.log('req', req);
+			res.send(req);
+		} catch (err) {
+			console.log('err', err);
+			res.status(404).send(err);
+		}
 
 		// const foursquareRequest = await request(options, (err, response, body) => {
 		// 	let json = JSON.parse(response);
